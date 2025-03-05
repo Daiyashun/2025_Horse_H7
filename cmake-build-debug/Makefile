@@ -176,29 +176,29 @@ Core/Applications/Cpp/IMU_N300WP.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.s
 .PHONY : Core/Applications/Cpp/IMU_N300WP.cpp.s
 
-Core/Applications/Cpp/Leg_Conteol.obj: Core/Applications/Cpp/Leg_Conteol.cpp.obj
-.PHONY : Core/Applications/Cpp/Leg_Conteol.obj
+Core/Applications/Cpp/Leg_Control.obj: Core/Applications/Cpp/Leg_Control.cpp.obj
+.PHONY : Core/Applications/Cpp/Leg_Control.obj
 
 # target to build an object file
-Core/Applications/Cpp/Leg_Conteol.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj
-.PHONY : Core/Applications/Cpp/Leg_Conteol.cpp.obj
+Core/Applications/Cpp/Leg_Control.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj
+.PHONY : Core/Applications/Cpp/Leg_Control.cpp.obj
 
-Core/Applications/Cpp/Leg_Conteol.i: Core/Applications/Cpp/Leg_Conteol.cpp.i
-.PHONY : Core/Applications/Cpp/Leg_Conteol.i
+Core/Applications/Cpp/Leg_Control.i: Core/Applications/Cpp/Leg_Control.cpp.i
+.PHONY : Core/Applications/Cpp/Leg_Control.i
 
 # target to preprocess a source file
-Core/Applications/Cpp/Leg_Conteol.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.i
-.PHONY : Core/Applications/Cpp/Leg_Conteol.cpp.i
+Core/Applications/Cpp/Leg_Control.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.i
+.PHONY : Core/Applications/Cpp/Leg_Control.cpp.i
 
-Core/Applications/Cpp/Leg_Conteol.s: Core/Applications/Cpp/Leg_Conteol.cpp.s
-.PHONY : Core/Applications/Cpp/Leg_Conteol.s
+Core/Applications/Cpp/Leg_Control.s: Core/Applications/Cpp/Leg_Control.cpp.s
+.PHONY : Core/Applications/Cpp/Leg_Control.s
 
 # target to generate assembly for a file
-Core/Applications/Cpp/Leg_Conteol.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.s
-.PHONY : Core/Applications/Cpp/Leg_Conteol.cpp.s
+Core/Applications/Cpp/Leg_Control.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.s
+.PHONY : Core/Applications/Cpp/Leg_Control.cpp.s
 
 Core/Applications/Cpp/Main.obj: Core/Applications/Cpp/Main.cpp.obj
 .PHONY : Core/Applications/Cpp/Main.obj
@@ -1375,9 +1375,9 @@ help:
 	@echo ... Core/Applications/Cpp/IMU_N300WP.obj
 	@echo ... Core/Applications/Cpp/IMU_N300WP.i
 	@echo ... Core/Applications/Cpp/IMU_N300WP.s
-	@echo ... Core/Applications/Cpp/Leg_Conteol.obj
-	@echo ... Core/Applications/Cpp/Leg_Conteol.i
-	@echo ... Core/Applications/Cpp/Leg_Conteol.s
+	@echo ... Core/Applications/Cpp/Leg_Control.obj
+	@echo ... Core/Applications/Cpp/Leg_Control.i
+	@echo ... Core/Applications/Cpp/Leg_Control.s
 	@echo ... Core/Applications/Cpp/Main.obj
 	@echo ... Core/Applications/Cpp/Main.i
 	@echo ... Core/Applications/Cpp/Main.s

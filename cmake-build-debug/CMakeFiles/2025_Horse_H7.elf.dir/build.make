@@ -96,19 +96,19 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.s: cmake_f
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.s"
 	D:\study\10_2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\study\RC_Codes\2025_Horse_H7\Core\Applications\Cpp\IMU_N300WP.cpp -o CMakeFiles\2025_Horse_H7.elf.dir\Core\Applications\Cpp\IMU_N300WP.cpp.s
 
-CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj: CMakeFiles/2025_Horse_H7.elf.dir/flags.make
-CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj: D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Leg_Conteol.cpp
-CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj: CMakeFiles/2025_Horse_H7.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\study\RC_Codes\2025_Horse_H7\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj"
-	D:\study\10_2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj -MF CMakeFiles\2025_Horse_H7.elf.dir\Core\Applications\Cpp\Leg_Conteol.cpp.obj.d -o CMakeFiles\2025_Horse_H7.elf.dir\Core\Applications\Cpp\Leg_Conteol.cpp.obj -c D:\study\RC_Codes\2025_Horse_H7\Core\Applications\Cpp\Leg_Conteol.cpp
+CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj: CMakeFiles/2025_Horse_H7.elf.dir/flags.make
+CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj: D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Leg_Control.cpp
+CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj: CMakeFiles/2025_Horse_H7.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\study\RC_Codes\2025_Horse_H7\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj"
+	D:\study\10_2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj -MF CMakeFiles\2025_Horse_H7.elf.dir\Core\Applications\Cpp\Leg_Control.cpp.obj.d -o CMakeFiles\2025_Horse_H7.elf.dir\Core\Applications\Cpp\Leg_Control.cpp.obj -c D:\study\RC_Codes\2025_Horse_H7\Core\Applications\Cpp\Leg_Control.cpp
 
-CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.i"
-	D:\study\10_2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\study\RC_Codes\2025_Horse_H7\Core\Applications\Cpp\Leg_Conteol.cpp > CMakeFiles\2025_Horse_H7.elf.dir\Core\Applications\Cpp\Leg_Conteol.cpp.i
+CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.i"
+	D:\study\10_2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\study\RC_Codes\2025_Horse_H7\Core\Applications\Cpp\Leg_Control.cpp > CMakeFiles\2025_Horse_H7.elf.dir\Core\Applications\Cpp\Leg_Control.cpp.i
 
-CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.s"
-	D:\study\10_2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\study\RC_Codes\2025_Horse_H7\Core\Applications\Cpp\Leg_Conteol.cpp -o CMakeFiles\2025_Horse_H7.elf.dir\Core\Applications\Cpp\Leg_Conteol.cpp.s
+CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.s"
+	D:\study\10_2021.10\bin\arm-none-eabi-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\study\RC_Codes\2025_Horse_H7\Core\Applications\Cpp\Leg_Control.cpp -o CMakeFiles\2025_Horse_H7.elf.dir\Core\Applications\Cpp\Leg_Control.cpp.s
 
 CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj: CMakeFiles/2025_Horse_H7.elf.dir/flags.make
 CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj: D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Main.cpp
@@ -799,7 +799,7 @@ CMakeFiles/2025_Horse_H7.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.
 2025_Horse_H7_elf_OBJECTS = \
 "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Callback.cpp.obj" \
 "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.obj" \
-"CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj" \
+"CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj" \
 "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj" \
 "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj" \
 "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/filter.c.obj" \
@@ -855,7 +855,7 @@ CMakeFiles/2025_Horse_H7.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.
 
 2025_Horse_H7.elf: CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Callback.cpp.obj
 2025_Horse_H7.elf: CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.obj
-2025_Horse_H7.elf: CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj
+2025_Horse_H7.elf: CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj
 2025_Horse_H7.elf: CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj
 2025_Horse_H7.elf: CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj
 2025_Horse_H7.elf: CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/filter.c.obj

@@ -85,7 +85,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/study/RC_Codes/2025_Horse_H7/Middlewares/Third_Party/FreeRTOS/Source/timers.c" "CMakeFiles/2025_Horse_H7.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Callback.cpp" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Callback.cpp.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Callback.cpp.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/IMU_N300WP.cpp" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.obj.d"
-  "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Leg_Conteol.cpp" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj.d"
+  "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Leg_Control.cpp" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Main.cpp" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/UART_DMA.cpp" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj.d"
   )

@@ -122,10 +122,10 @@
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/IMU_N300WP.h">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
-		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Leg_Conteol.cpp">
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Leg_Control.cpp">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
-		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Leg_Conteol.h">
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Leg_Control.h">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Main.cpp">
