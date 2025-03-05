@@ -164,6 +164,9 @@
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Inc/dma.h">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Inc/fdcan.h">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Inc/gpio.h">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
@@ -183,6 +186,9 @@
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Src/dma.c">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Src/fdcan.c">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Src/freertos.c">
@@ -329,6 +335,9 @@
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_exti.h">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fdcan.h">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
@@ -438,6 +447,9 @@
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c">

@@ -41,6 +41,7 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/main.c.obj: \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_mdma.h \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_exti.h \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_cortex.h \
+ D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_fdcan.h \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_flash.h \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_flash_ex.h \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_hsem.h \
@@ -65,6 +66,7 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/main.c.obj: \
  D:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2/cmsis_os2.h \
  D:\study\RC_Codes\2025_Horse_H7\Core\Inc/dma.h \
  D:\study\RC_Codes\2025_Horse_H7\Core\Inc/main.h \
+ D:\study\RC_Codes\2025_Horse_H7\Core\Inc/fdcan.h \
  D:\study\RC_Codes\2025_Horse_H7\Core\Inc/tim.h \
  D:\study\RC_Codes\2025_Horse_H7\Core\Inc/usart.h \
  D:\study\RC_Codes\2025_Horse_H7\Core\Inc/gpio.h \

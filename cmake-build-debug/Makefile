@@ -320,6 +320,30 @@ Core/Src/dma.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/dma.c.s
 .PHONY : Core/Src/dma.c.s
 
+Core/Src/fdcan.obj: Core/Src/fdcan.c.obj
+.PHONY : Core/Src/fdcan.obj
+
+# target to build an object file
+Core/Src/fdcan.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/fdcan.c.obj
+.PHONY : Core/Src/fdcan.c.obj
+
+Core/Src/fdcan.i: Core/Src/fdcan.c.i
+.PHONY : Core/Src/fdcan.i
+
+# target to preprocess a source file
+Core/Src/fdcan.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/fdcan.c.i
+.PHONY : Core/Src/fdcan.c.i
+
+Core/Src/fdcan.s: Core/Src/fdcan.c.s
+.PHONY : Core/Src/fdcan.s
+
+# target to generate assembly for a file
+Core/Src/fdcan.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/fdcan.c.s
+.PHONY : Core/Src/fdcan.c.s
+
 Core/Src/freertos.obj: Core/Src/freertos.c.obj
 .PHONY : Core/Src/freertos.obj
 
@@ -711,6 +735,30 @@ Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.s: Drivers/STM32H7xx_HAL_Dri
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c.s
 .PHONY : Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c.s
+
+Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.obj: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.obj
+.PHONY : Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.obj
+
+# target to build an object file
+Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.obj
+.PHONY : Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.obj
+
+Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.i: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.i
+.PHONY : Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.i
+
+# target to preprocess a source file
+Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.i
+.PHONY : Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.i
+
+Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.s: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.s
+.PHONY : Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.s
+
+# target to generate assembly for a file
+Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.s
+.PHONY : Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c.s
 
 Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.obj: Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c.obj
 .PHONY : Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.obj
@@ -1345,6 +1393,9 @@ help:
 	@echo ... Core/Src/dma.obj
 	@echo ... Core/Src/dma.i
 	@echo ... Core/Src/dma.s
+	@echo ... Core/Src/fdcan.obj
+	@echo ... Core/Src/fdcan.i
+	@echo ... Core/Src/fdcan.s
 	@echo ... Core/Src/freertos.obj
 	@echo ... Core/Src/freertos.i
 	@echo ... Core/Src/freertos.s
@@ -1394,6 +1445,9 @@ help:
 	@echo ... Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.obj
 	@echo ... Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.i
 	@echo ... Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.s
+	@echo ... Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.obj
+	@echo ... Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.i
+	@echo ... Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.s
 	@echo ... Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.obj
 	@echo ... Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.i
 	@echo ... Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.s
