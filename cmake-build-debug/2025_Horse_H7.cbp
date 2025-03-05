@@ -31,7 +31,6 @@
 					<Add option="-DUSE_HAL_DRIVER"/>
 					<Add option="-DSTM32H723xx"/>
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Core/Inc"/>
-					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Core/Applications"/>
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc"/>
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"/>
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Drivers/CMSIS/Device/ST/STM32H7xx/Include"/>
@@ -39,6 +38,7 @@
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Middlewares/Third_Party/FreeRTOS/Source/include"/>
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2"/>
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"/>
+					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Core/Applications"/>
 					<Add directory="d:\study\10_2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="d:\study\10_2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="d:\study\10_2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -67,7 +67,6 @@
 					<Add option="-DUSE_HAL_DRIVER"/>
 					<Add option="-DSTM32H723xx"/>
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Core/Inc"/>
-					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Core/Applications"/>
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc"/>
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"/>
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Drivers/CMSIS/Device/ST/STM32H7xx/Include"/>
@@ -75,6 +74,7 @@
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Middlewares/Third_Party/FreeRTOS/Source/include"/>
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2"/>
 					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"/>
+					<Add directory="D:/study/RC_Codes/2025_Horse_H7/Core/Applications"/>
 					<Add directory="d:\study\10_2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1"/>
 					<Add directory="d:\study\10_2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/arm-none-eabi"/>
 					<Add directory="d:\study\10_2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include/c++/10.3.1/backward"/>
@@ -110,7 +110,31 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/UART_DMA.c">
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Callback.cpp">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Callback.h">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/IMU_N300WP.cpp">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/IMU_N300WP.h">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Leg_Conteol.cpp">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Leg_Conteol.h">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Main.cpp">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Main.h">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/UART_DMA.cpp">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/UART_DMA.h">

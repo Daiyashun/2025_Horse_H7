@@ -128,29 +128,125 @@ depend:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/build
 .PHONY : 2025_Horse_H7.elf/fast
 
-Core/Applications/UART_DMA.obj: Core/Applications/UART_DMA.c.obj
+Core/Applications/Cpp/Callback.obj: Core/Applications/Cpp/Callback.cpp.obj
+.PHONY : Core/Applications/Cpp/Callback.obj
+
+# target to build an object file
+Core/Applications/Cpp/Callback.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Callback.cpp.obj
+.PHONY : Core/Applications/Cpp/Callback.cpp.obj
+
+Core/Applications/Cpp/Callback.i: Core/Applications/Cpp/Callback.cpp.i
+.PHONY : Core/Applications/Cpp/Callback.i
+
+# target to preprocess a source file
+Core/Applications/Cpp/Callback.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Callback.cpp.i
+.PHONY : Core/Applications/Cpp/Callback.cpp.i
+
+Core/Applications/Cpp/Callback.s: Core/Applications/Cpp/Callback.cpp.s
+.PHONY : Core/Applications/Cpp/Callback.s
+
+# target to generate assembly for a file
+Core/Applications/Cpp/Callback.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Callback.cpp.s
+.PHONY : Core/Applications/Cpp/Callback.cpp.s
+
+Core/Applications/Cpp/IMU_N300WP.obj: Core/Applications/Cpp/IMU_N300WP.cpp.obj
+.PHONY : Core/Applications/Cpp/IMU_N300WP.obj
+
+# target to build an object file
+Core/Applications/Cpp/IMU_N300WP.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.obj
+.PHONY : Core/Applications/Cpp/IMU_N300WP.cpp.obj
+
+Core/Applications/Cpp/IMU_N300WP.i: Core/Applications/Cpp/IMU_N300WP.cpp.i
+.PHONY : Core/Applications/Cpp/IMU_N300WP.i
+
+# target to preprocess a source file
+Core/Applications/Cpp/IMU_N300WP.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.i
+.PHONY : Core/Applications/Cpp/IMU_N300WP.cpp.i
+
+Core/Applications/Cpp/IMU_N300WP.s: Core/Applications/Cpp/IMU_N300WP.cpp.s
+.PHONY : Core/Applications/Cpp/IMU_N300WP.s
+
+# target to generate assembly for a file
+Core/Applications/Cpp/IMU_N300WP.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.s
+.PHONY : Core/Applications/Cpp/IMU_N300WP.cpp.s
+
+Core/Applications/Cpp/Leg_Conteol.obj: Core/Applications/Cpp/Leg_Conteol.cpp.obj
+.PHONY : Core/Applications/Cpp/Leg_Conteol.obj
+
+# target to build an object file
+Core/Applications/Cpp/Leg_Conteol.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj
+.PHONY : Core/Applications/Cpp/Leg_Conteol.cpp.obj
+
+Core/Applications/Cpp/Leg_Conteol.i: Core/Applications/Cpp/Leg_Conteol.cpp.i
+.PHONY : Core/Applications/Cpp/Leg_Conteol.i
+
+# target to preprocess a source file
+Core/Applications/Cpp/Leg_Conteol.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.i
+.PHONY : Core/Applications/Cpp/Leg_Conteol.cpp.i
+
+Core/Applications/Cpp/Leg_Conteol.s: Core/Applications/Cpp/Leg_Conteol.cpp.s
+.PHONY : Core/Applications/Cpp/Leg_Conteol.s
+
+# target to generate assembly for a file
+Core/Applications/Cpp/Leg_Conteol.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.s
+.PHONY : Core/Applications/Cpp/Leg_Conteol.cpp.s
+
+Core/Applications/Cpp/Main.obj: Core/Applications/Cpp/Main.cpp.obj
+.PHONY : Core/Applications/Cpp/Main.obj
+
+# target to build an object file
+Core/Applications/Cpp/Main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj
+.PHONY : Core/Applications/Cpp/Main.cpp.obj
+
+Core/Applications/Cpp/Main.i: Core/Applications/Cpp/Main.cpp.i
+.PHONY : Core/Applications/Cpp/Main.i
+
+# target to preprocess a source file
+Core/Applications/Cpp/Main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.i
+.PHONY : Core/Applications/Cpp/Main.cpp.i
+
+Core/Applications/Cpp/Main.s: Core/Applications/Cpp/Main.cpp.s
+.PHONY : Core/Applications/Cpp/Main.s
+
+# target to generate assembly for a file
+Core/Applications/Cpp/Main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.s
+.PHONY : Core/Applications/Cpp/Main.cpp.s
+
+Core/Applications/UART_DMA.obj: Core/Applications/UART_DMA.cpp.obj
 .PHONY : Core/Applications/UART_DMA.obj
 
 # target to build an object file
-Core/Applications/UART_DMA.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.c.obj
-.PHONY : Core/Applications/UART_DMA.c.obj
+Core/Applications/UART_DMA.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj
+.PHONY : Core/Applications/UART_DMA.cpp.obj
 
-Core/Applications/UART_DMA.i: Core/Applications/UART_DMA.c.i
+Core/Applications/UART_DMA.i: Core/Applications/UART_DMA.cpp.i
 .PHONY : Core/Applications/UART_DMA.i
 
 # target to preprocess a source file
-Core/Applications/UART_DMA.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.c.i
-.PHONY : Core/Applications/UART_DMA.c.i
+Core/Applications/UART_DMA.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.i
+.PHONY : Core/Applications/UART_DMA.cpp.i
 
-Core/Applications/UART_DMA.s: Core/Applications/UART_DMA.c.s
+Core/Applications/UART_DMA.s: Core/Applications/UART_DMA.cpp.s
 .PHONY : Core/Applications/UART_DMA.s
 
 # target to generate assembly for a file
-Core/Applications/UART_DMA.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.c.s
-.PHONY : Core/Applications/UART_DMA.c.s
+Core/Applications/UART_DMA.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.s
+.PHONY : Core/Applications/UART_DMA.cpp.s
 
 Core/Applications/filter.obj: Core/Applications/filter.c.obj
 .PHONY : Core/Applications/filter.obj
@@ -1225,6 +1321,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... 2025_Horse_H7.elf
+	@echo ... Core/Applications/Cpp/Callback.obj
+	@echo ... Core/Applications/Cpp/Callback.i
+	@echo ... Core/Applications/Cpp/Callback.s
+	@echo ... Core/Applications/Cpp/IMU_N300WP.obj
+	@echo ... Core/Applications/Cpp/IMU_N300WP.i
+	@echo ... Core/Applications/Cpp/IMU_N300WP.s
+	@echo ... Core/Applications/Cpp/Leg_Conteol.obj
+	@echo ... Core/Applications/Cpp/Leg_Conteol.i
+	@echo ... Core/Applications/Cpp/Leg_Conteol.s
+	@echo ... Core/Applications/Cpp/Main.obj
+	@echo ... Core/Applications/Cpp/Main.i
+	@echo ... Core/Applications/Cpp/Main.s
 	@echo ... Core/Applications/UART_DMA.obj
 	@echo ... Core/Applications/UART_DMA.i
 	@echo ... Core/Applications/UART_DMA.s

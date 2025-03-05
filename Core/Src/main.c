@@ -26,9 +26,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
 #include "UART_DMA.h"
 #include "vofa.h"
-
+#include "Cpp/Main.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -73,6 +74,10 @@ int main(void)
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
+/* Enable the CPU Cache */
+
+  /* Enable I-Cache---------------------------------------------------------*/
+  SCB_EnableICache();
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -101,7 +106,7 @@ int main(void)
   MX_TIM8_Init();
   MX_TIM12_Init();
   /* USER CODE BEGIN 2 */
-  //UART_DMA_Receive_init(&huart1, buffer_receive_1, buffer_receive_length_1);
+  Main();
   /* USER CODE END 2 */
 
   /* Init scheduler */

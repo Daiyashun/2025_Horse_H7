@@ -174,13 +174,13 @@ void UART_RX_task(void *argument)
 void UART_TX_task(void *argument)
 {
   /* USER CODE BEGIN UART_TX_task */
-  UART_DMA_Receive_init(&huart1, buffer_receive_1, 2);
-
+  //UART_DMA_Receive_init(&huart1, buffer_receive_1, buffer_receive_length_7);
+  //UART_DMA_Receive_init(&huart7, buffer_receive_7, buffer_receive_length_7);
+  UART_DMA_Receive_init(&huart10, buffer_receive_10, buffer_receive_length_10);
   /* Infinite loop */
   for(;;)
   {
-
-    Vofa_Transmit(&huart1,1);
+    Vofa_Transmit(&huart1,10);
     //HAL_UART_Transmit_DMA(&huart1, (uint8_t *)tempFloat, 56 * 4);
     osDelay(5);
   }

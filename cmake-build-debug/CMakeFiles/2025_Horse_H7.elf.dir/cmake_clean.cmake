@@ -2,8 +2,16 @@ file(REMOVE_RECURSE
   "2025_Horse_H7.elf"
   "2025_Horse_H7.elf.manifest"
   "2025_Horse_H7.elf.pdb"
-  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.c.obj"
-  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.c.obj.d"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Callback.cpp.obj"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Callback.cpp.obj.d"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.obj"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.obj.d"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Conteol.cpp.obj.d"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj.d"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj.d"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/filter.c.obj"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/filter.c.obj.d"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/vofa.c.obj"
@@ -96,6 +104,6 @@ file(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang ASM C)
+foreach(lang ASM C CXX)
   include(CMakeFiles/2025_Horse_H7.elf.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

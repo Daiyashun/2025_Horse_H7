@@ -3,15 +3,22 @@
 
 # compile ASM with D:/study/10_2021.10/bin/arm-none-eabi-gcc.exe
 # compile C with D:/study/10_2021.10/bin/arm-none-eabi-gcc.exe
+# compile CXX with D:/study/10_2021.10/bin/arm-none-eabi-g++.exe
 ASM_DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32H723xx -DUSE_HAL_DRIVER
 
-ASM_INCLUDES = -ID:\study\RC_Codes\2025_Horse_H7\Core\Inc -ID:\study\RC_Codes\2025_Horse_H7\Core\Applications -ID:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc -ID:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy -ID:\study\RC_Codes\2025_Horse_H7\Drivers\CMSIS\Device\ST\STM32H7xx\Include -ID:\study\RC_Codes\2025_Horse_H7\Drivers\CMSIS\Include -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2 -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F
+ASM_INCLUDES = -ID:\study\RC_Codes\2025_Horse_H7\Core\Inc -ID:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc -ID:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy -ID:\study\RC_Codes\2025_Horse_H7\Drivers\CMSIS\Device\ST\STM32H7xx\Include -ID:\study\RC_Codes\2025_Horse_H7\Drivers\CMSIS\Include -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2 -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F -ID:\study\RC_Codes\2025_Horse_H7\Core\Applications
 
 ASM_FLAGS = -g -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m7 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -x assembler-with-cpp -Og -g
 
 C_DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32H723xx -DUSE_HAL_DRIVER
 
-C_INCLUDES = -ID:\study\RC_Codes\2025_Horse_H7\Core\Inc -ID:\study\RC_Codes\2025_Horse_H7\Core\Applications -ID:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc -ID:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy -ID:\study\RC_Codes\2025_Horse_H7\Drivers\CMSIS\Device\ST\STM32H7xx\Include -ID:\study\RC_Codes\2025_Horse_H7\Drivers\CMSIS\Include -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2 -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F
+C_INCLUDES = -ID:\study\RC_Codes\2025_Horse_H7\Core\Inc -ID:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc -ID:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy -ID:\study\RC_Codes\2025_Horse_H7\Drivers\CMSIS\Device\ST\STM32H7xx\Include -ID:\study\RC_Codes\2025_Horse_H7\Drivers\CMSIS\Include -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2 -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F -ID:\study\RC_Codes\2025_Horse_H7\Core\Applications
 
 C_FLAGS = -g -std=gnu11 -fdiagnostics-color=always -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m7 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
+
+CXX_DEFINES = -DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32H723xx -DUSE_HAL_DRIVER
+
+CXX_INCLUDES = -ID:\study\RC_Codes\2025_Horse_H7\Core\Inc -ID:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc -ID:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy -ID:\study\RC_Codes\2025_Horse_H7\Drivers\CMSIS\Device\ST\STM32H7xx\Include -ID:\study\RC_Codes\2025_Horse_H7\Drivers\CMSIS\Include -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2 -ID:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F -ID:\study\RC_Codes\2025_Horse_H7\Core\Applications
+
+CXX_FLAGS = -g -std=gnu++17 -fdiagnostics-color=always -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m7 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g
 

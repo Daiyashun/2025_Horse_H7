@@ -1,5 +1,5 @@
-CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/main.c.obj: \
- D:\study\RC_Codes\2025_Horse_H7\Core\Src\main.c \
+CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj: \
+ D:\study\RC_Codes\2025_Horse_H7\Core\Applications\UART_DMA.cpp \
  D:\study\RC_Codes\2025_Horse_H7\Core\Inc/main.h \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal.h \
  D:\study\RC_Codes\2025_Horse_H7\Core\Inc/stm32h7xx_hal_conf.h \
@@ -22,6 +22,14 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/main.c.obj: \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\CMSIS\Device\ST\STM32H7xx\Include/system_stm32h7xx.h \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/Legacy/stm32_hal_legacy.h \
  d:\study\10_2021.10\lib\gcc\arm-none-eabi\10.3.1\include\stddef.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\math.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\cmath \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\arm-none-eabi\thumb\v7e-m+fp\hard\bits\c++config.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\arm-none-eabi\thumb\v7e-m+fp\hard\bits\os_defines.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\arm-none-eabi\thumb\v7e-m+fp\hard\bits\cpu_defines.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\pstl\pstl_config.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\cpp_type_traits.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\ext\type_traits.h \
  d:\study\10_2021.10\arm-none-eabi\include\math.h \
  d:\study\10_2021.10\arm-none-eabi\include\sys\reent.h \
  d:\study\10_2021.10\arm-none-eabi\include\_ansi.h \
@@ -33,6 +41,39 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/main.c.obj: \
  d:\study\10_2021.10\arm-none-eabi\include\sys\lock.h \
  d:\study\10_2021.10\arm-none-eabi\include\sys\cdefs.h \
  d:\study\10_2021.10\arm-none-eabi\include\_ansi.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\std_abs.h \
+ d:\study\10_2021.10\arm-none-eabi\include\stdlib.h \
+ d:\study\10_2021.10\arm-none-eabi\include\machine\stdlib.h \
+ d:\study\10_2021.10\arm-none-eabi\include\alloca.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\specfun.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\stl_algobase.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\functexcept.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\exception_defines.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\ext\numeric_traits.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\stl_pair.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\move.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\type_traits \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\stl_iterator_base_types.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\stl_iterator_base_funcs.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\concept_check.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\debug\assertions.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\stl_iterator.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\ptr_traits.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\debug\debug.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\bits\predefined_ops.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\limits \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\tr1\gamma.tcc \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\tr1\special_function_util.h \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\tr1\bessel_function.tcc \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\tr1\beta_function.tcc \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\tr1\ell_integral.tcc \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\tr1\exp_integral.tcc \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\tr1\hypergeometric.tcc \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\tr1\legendre_function.tcc \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\tr1\modified_bessel_func.tcc \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\tr1\poly_hermite.tcc \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\tr1\poly_laguerre.tcc \
+ d:\study\10_2021.10\arm-none-eabi\include\c++\10.3.1\tr1\riemann_zeta.tcc \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_rcc_ex.h \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_gpio.h \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_gpio_ex.h \
@@ -52,23 +93,16 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/main.c.obj: \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_tim_ex.h \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart.h \
  D:\study\RC_Codes\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart_ex.h \
- D:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2/cmsis_os.h \
- D:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include/FreeRTOS.h \
- D:\study\RC_Codes\2025_Horse_H7\Core\Inc/FreeRTOSConfig.h \
- D:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include/projdefs.h \
- D:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include/portable.h \
- D:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include/deprecated_definitions.h \
- D:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F/portmacro.h \
- D:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include/mpu_wrappers.h \
- D:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
- D:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include/list.h \
- D:\study\RC_Codes\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2/cmsis_os2.h \
- D:\study\RC_Codes\2025_Horse_H7\Core\Inc/dma.h \
- D:\study\RC_Codes\2025_Horse_H7\Core\Inc/main.h \
- D:\study\RC_Codes\2025_Horse_H7\Core\Inc/tim.h \
  D:\study\RC_Codes\2025_Horse_H7\Core\Inc/usart.h \
+ D:\study\RC_Codes\2025_Horse_H7\Core\Inc/main.h \
+ D:\study\RC_Codes\2025_Horse_H7\Core\Applications\UART_DMA.h \
+ d:\study\10_2021.10\arm-none-eabi\include\string.h \
+ d:\study\10_2021.10\arm-none-eabi\include\sys\_locale.h \
+ d:\study\10_2021.10\arm-none-eabi\include\strings.h \
+ d:\study\10_2021.10\arm-none-eabi\include\sys\string.h \
+ D:\study\RC_Codes\2025_Horse_H7\Core\Applications\vofa.h \
+ D:\study\RC_Codes\2025_Horse_H7\Core\Inc/tim.h \
  D:\study\RC_Codes\2025_Horse_H7\Core\Inc/gpio.h \
- D:\study\RC_Codes\2025_Horse_H7\Core\Applications/UART_DMA.h \
- D:\study\RC_Codes\2025_Horse_H7\Core\Applications/vofa.h \
- D:\study\RC_Codes\2025_Horse_H7\Core\Applications/vofa_setting.h \
- D:\study\RC_Codes\2025_Horse_H7\Core\Applications/Cpp/Main.h
+ D:\study\RC_Codes\2025_Horse_H7\Core\Applications\vofa_setting.h \
+ D:\study\RC_Codes\2025_Horse_H7\Core\Applications\Cpp/IMU_N300WP.h \
+ D:\study\RC_Codes\2025_Horse_H7\Core\Applications/UART_DMA.h

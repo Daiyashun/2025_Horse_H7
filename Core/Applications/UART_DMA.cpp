@@ -7,19 +7,40 @@
 #include "UART_DMA.h"
 #include "string.h"
 #include "vofa.h"
-
+#include "Cpp/IMU_N300WP.h"
 //#include "task.h"
 
 //_Visual test;
 /*缓存数组预定义*/
-uint8_t buffer_receive_1[buffer_receive_length_1];
-uint8_t buffer_receive_2[buffer_receive_length_2];
-uint8_t buffer_receive_3[buffer_receive_length_3];
-uint8_t buffer_receive_4[buffer_receive_length_4];
-uint8_t buffer_receive_5[buffer_receive_length_5];
-uint8_t buffer_receive_6[buffer_receive_length_6];
-
+uint8_t buffer_receive_1[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000000")));
+uint8_t buffer_receive_2[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000000")));
+uint8_t buffer_receive_3[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000000")));
+uint8_t buffer_receive_4[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000000")));
+uint8_t buffer_receive_5[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000000")));
+uint8_t buffer_receive_6[buffer_receive_length_6]__attribute__((section(".ARM.__at_0x24000000")));
+uint8_t buffer_receive_7[buffer_receive_length_7]__attribute__((section(".ARM.__at_0x24000000")));
+uint8_t buffer_receive_8[buffer_receive_length_8]__attribute__((section(".ARM.__at_0x24000000")));
+uint8_t buffer_receive_9[buffer_receive_length_9]__attribute__((section(".ARM.__at_0x24000000")));;
+uint8_t buffer_receive_10[buffer_receive_length_10]__attribute__((section(".ARM.__at_0x24000000")));
 float real_data[50];
+IMU_N300WP IMU;
+
+void IMU_Receive_Serve(uint8_t *buffer,uint8_t length)
+{
+    for(uint8_t i = 0; i < length; i++)
+    {
+        IMU.Fd_data[i] = buffer[i];
+    }
+    if(IMU.data_check(IMU.Fd_data) == true)
+    {
+        IMU.data_get(IMU.Fd_data);
+        tempFloat[0] = IMU.Pitch;
+        tempFloat[1] = IMU.Roll;
+        tempFloat[2] = IMU.Yaw;
+        tempFloat[3] = 1;
+    }
+}
+
 /**
   * @brief          UART1-6中断接收服务函数
   * @param[in]      接收数组
@@ -32,6 +53,11 @@ static void UART3_Receive_Serve(uint8_t *buffer, uint8_t length);
 static void UART4_Receive_Serve(uint8_t *buffer, uint8_t length);
 static void UART5_Receive_Serve(uint8_t *buffer, uint8_t length);
 static void UART6_Receive_Serve(uint8_t *buffer, uint8_t length);
+static void UART7_Receive_Serve(uint8_t *buffer, uint8_t length);
+static void UART8_Receive_Serve(uint8_t *buffer, uint8_t length);
+static void UART9_Receive_Serve(uint8_t *buffer, uint8_t length);
+static void UART10_Receive_Serve(uint8_t *buffer, uint8_t length);
+
 /**
   * @brief          初始化串口DMA接收
   * @param[in]      UART接口
@@ -66,6 +92,10 @@ void UART_DMA_Receive_IT(UART_HandleTypeDef *usart, DMA_HandleTypeDef *DMA, uint
         //else if(usart == &huart4) UART4_Receive_Serve(buffer, real_length);//选择解码程序
         //else if(usart == &huart5) UART5_Receive_Serve(buffer, real_length);//选择解码程序
         //else if(usart == &huart6) UART6_Receive_Serve(buffer, real_length);//选择解码程序
+        else if(usart == &huart7) UART7_Receive_Serve(buffer, real_length);//选择解码程序
+        //else if(usart == &huart8) UART8_Receive_Serve(buffer, real_length);//选择解码程序
+        //else if(usart == &huart9) UART9_Receive_Serve(buffer, real_length);//选择解码程序
+        else if(usart == &huart10) UART10_Receive_Serve(buffer, real_length);//选择解码程序
         memset(buffer,0,real_length);
 
         HAL_UART_Receive_DMA(usart, buffer, length);//重新打开DMA接收
@@ -91,25 +121,21 @@ void HAL_UART_ErrorCallback (UART_HandleTypeDef *huart)
     }
 }
 
-union Data
-{
-    uint8_t temp_data[4 * 14 + 4];
-    float Upper_data[14];
-};
 
-union Data data1;
+
+
 //UART1中断接收函数
 static void UART1_Receive_Serve(uint8_t *buffer, uint8_t length)
 {
    // tempFloat[0] = 5;
-    tempFloat[0] ++;
+    //tempFloat[0] ++;
     for(uint8_t i = 0; i < length; i++)
     {
 
 
         // data1.temp_data[i]=buffer[i];
         // tempFloat[i] = data1.Upper_data[i];
-        //tempFloat[i] = buffer[i];
+        tempFloat[i] = (float)buffer[i];
     }
 }
 //UART2中断接收函数
@@ -137,6 +163,40 @@ static void UART5_Receive_Serve(uint8_t *buffer, uint8_t length)
 static void UART6_Receive_Serve(uint8_t *buffer, uint8_t length)
 {
 
+    //HAL_UART_Transmit(&huart6,buffer,length,0xff);
+}
+
+//UART7中断接收函数
+static void UART7_Receive_Serve(uint8_t *buffer, uint8_t length)
+{
+    if(buffer[0] == 1)
+    {
+        tempFloat[0] = 1;
+    }
+    //IMU_Receive_Serve(buffer,length);
+    //HAL_UART_Transmit(&huart6,buffer,length,0xff);
+}
+//UART8中断接收函数
+static void UART8_Receive_Serve(uint8_t *buffer, uint8_t length)
+{
+
+    //HAL_UART_Transmit(&huart6,buffer,length,0xff);
+}
+//UART9中断接收函数
+static void UART9_Receive_Serve(uint8_t *buffer, uint8_t length)
+{
+
+    //HAL_UART_Transmit(&huart6,buffer,length,0xff);
+}
+//UART10中断接收函数
+static void UART10_Receive_Serve(uint8_t *buffer, uint8_t length)
+{
+    IMU_Receive_Serve(buffer,length);
+    // for(uint8_t i = 0; i < length; i++)
+    // {
+    //     tempFloat[i] = buffer[i];
+    // }
+    //tempFloat[0] = 1;
     //HAL_UART_Transmit(&huart6,buffer,length,0xff);
 }
 
