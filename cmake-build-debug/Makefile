@@ -248,6 +248,30 @@ Core/Applications/UART_DMA.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.s
 .PHONY : Core/Applications/UART_DMA.cpp.s
 
+Core/Applications/bsp_mc02/can_bsp.obj: Core/Applications/bsp_mc02/can_bsp.c.obj
+.PHONY : Core/Applications/bsp_mc02/can_bsp.obj
+
+# target to build an object file
+Core/Applications/bsp_mc02/can_bsp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/bsp_mc02/can_bsp.c.obj
+.PHONY : Core/Applications/bsp_mc02/can_bsp.c.obj
+
+Core/Applications/bsp_mc02/can_bsp.i: Core/Applications/bsp_mc02/can_bsp.c.i
+.PHONY : Core/Applications/bsp_mc02/can_bsp.i
+
+# target to preprocess a source file
+Core/Applications/bsp_mc02/can_bsp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/bsp_mc02/can_bsp.c.i
+.PHONY : Core/Applications/bsp_mc02/can_bsp.c.i
+
+Core/Applications/bsp_mc02/can_bsp.s: Core/Applications/bsp_mc02/can_bsp.c.s
+.PHONY : Core/Applications/bsp_mc02/can_bsp.s
+
+# target to generate assembly for a file
+Core/Applications/bsp_mc02/can_bsp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/bsp_mc02/can_bsp.c.s
+.PHONY : Core/Applications/bsp_mc02/can_bsp.c.s
+
 Core/Applications/filter.obj: Core/Applications/filter.c.obj
 .PHONY : Core/Applications/filter.obj
 
@@ -1384,6 +1408,9 @@ help:
 	@echo ... Core/Applications/UART_DMA.obj
 	@echo ... Core/Applications/UART_DMA.i
 	@echo ... Core/Applications/UART_DMA.s
+	@echo ... Core/Applications/bsp_mc02/can_bsp.obj
+	@echo ... Core/Applications/bsp_mc02/can_bsp.i
+	@echo ... Core/Applications/bsp_mc02/can_bsp.s
 	@echo ... Core/Applications/filter.obj
 	@echo ... Core/Applications/filter.i
 	@echo ... Core/Applications/filter.s

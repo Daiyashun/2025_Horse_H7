@@ -12,33 +12,48 @@
 
 //_Visual test;
 /*缓存数组预定义*/
-uint8_t buffer_receive_1[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000000")));
-uint8_t buffer_receive_2[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000000")));
-uint8_t buffer_receive_3[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000000")));
-uint8_t buffer_receive_4[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000000")));
-uint8_t buffer_receive_5[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000000")));
-uint8_t buffer_receive_6[buffer_receive_length_6]__attribute__((section(".ARM.__at_0x24000000")));
-uint8_t buffer_receive_7[buffer_receive_length_7]__attribute__((section(".ARM.__at_0x24000000")));
-uint8_t buffer_receive_8[buffer_receive_length_8]__attribute__((section(".ARM.__at_0x24000000")));
-uint8_t buffer_receive_9[buffer_receive_length_9]__attribute__((section(".ARM.__at_0x24000000")));;
-uint8_t buffer_receive_10[buffer_receive_length_10]__attribute__((section(".ARM.__at_0x24000000")));
-float real_data[50];
+uint8_t buffer_receive_1[buffer_receive_1_length];
+uint8_t buffer_receive_2[buffer_receive_1_length];
+uint8_t buffer_receive_3[buffer_receive_1_length];
+uint8_t buffer_receive_4[buffer_receive_1_length];
+uint8_t buffer_receive_5[buffer_receive_1_length];
+uint8_t buffer_receive_6[buffer_receive_length_6];
+uint8_t buffer_receive_7[buffer_receive_length_7];
+uint8_t buffer_receive_8[buffer_receive_length_8];
+uint8_t buffer_receive_9[buffer_receive_length_9];
+uint8_t buffer_receive_10[buffer_receive_length_10];
+
+// uint8_t buffer_receive_1[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000000")));
+// uint8_t buffer_receive_2[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000020")));
+// uint8_t buffer_receive_3[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000040")));
+// uint8_t buffer_receive_4[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000060")));
+// uint8_t buffer_receive_5[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000080")));
+// uint8_t buffer_receive_6[buffer_receive_length_6]__attribute__((section(".ARM.__at_0x240000A0")));
+// uint8_t buffer_receive_7[buffer_receive_length_7]__attribute__((section(".ARM.__at_0x240000C0")));
+// uint8_t buffer_receive_8[buffer_receive_length_8]__attribute__((section(".ARM.__at_0x240000E0")));
+// uint8_t buffer_receive_9[buffer_receive_length_9]__attribute__((section(".ARM.__at_0x24000100")));;
+// uint8_t buffer_receive_10[buffer_receive_length_10]__attribute__((section(".ARM.__at_0x24000100")));
 IMU_N300WP IMU;
 
-void IMU_Receive_Serve(uint8_t *buffer,uint8_t length)
+void IMU_Receive_Serve(uint8_t *buffer,uint8_t length, UART_HandleTypeDef *usart)
 {
+
     for(uint8_t i = 0; i < length; i++)
     {
-        IMU.Fd_data[i] = buffer[i];
+        if((buffer[i] == 0xFC) && (buffer[i+1] == TYPE_AHRS) && (i < 44) && (buffer[i + 55] == 0xFD))
+        {
+            IMU.ahrs_flag = 1;
+            for(int j = 0; j < AHRS_LEN; j++)
+            {
+                IMU.Fd_data[j] = buffer[i+j];
+            }
+            IMU.data_get(IMU.Fd_data);
+        }
+
     }
-    if(IMU.data_check(IMU.Fd_data) == true)
-    {
-        IMU.data_get(IMU.Fd_data);
-        tempFloat[0] = IMU.Pitch;
-        tempFloat[1] = IMU.Roll;
-        tempFloat[2] = IMU.Yaw;
-        tempFloat[3] = 1;
-    }
+    if(IMU.ahrs_flag!=1){HAL_UART_IRQHandler(usart);}
+
+
 }
 
 /**
@@ -56,7 +71,7 @@ static void UART6_Receive_Serve(uint8_t *buffer, uint8_t length);
 static void UART7_Receive_Serve(uint8_t *buffer, uint8_t length);
 static void UART8_Receive_Serve(uint8_t *buffer, uint8_t length);
 static void UART9_Receive_Serve(uint8_t *buffer, uint8_t length);
-static void UART10_Receive_Serve(uint8_t *buffer, uint8_t length);
+static void UART10_Receive_Serve(uint8_t *buffer, uint8_t length, UART_HandleTypeDef *usart);
 
 /**
   * @brief          初始化串口DMA接收
@@ -80,7 +95,7 @@ void UART_DMA_Receive_init(UART_HandleTypeDef *usart, uint8_t *buffer, uint8_t l
   */
 void UART_DMA_Receive_IT(UART_HandleTypeDef *usart, DMA_HandleTypeDef *DMA, uint8_t *buffer, uint8_t length)
 {
-    if(__HAL_UART_GET_FLAG(usart, UART_FLAG_IDLE) == 1)
+    if(usart->ReceptionType == HAL_UART_RECEPTION_STANDARD)
     {
         __HAL_UART_CLEAR_IDLEFLAG(usart);
         HAL_UART_DMAStop(usart);
@@ -95,12 +110,12 @@ void UART_DMA_Receive_IT(UART_HandleTypeDef *usart, DMA_HandleTypeDef *DMA, uint
         else if(usart == &huart7) UART7_Receive_Serve(buffer, real_length);//选择解码程序
         //else if(usart == &huart8) UART8_Receive_Serve(buffer, real_length);//选择解码程序
         //else if(usart == &huart9) UART9_Receive_Serve(buffer, real_length);//选择解码程序
-        else if(usart == &huart10) UART10_Receive_Serve(buffer, real_length);//选择解码程序
+        else if(usart == &huart10) UART10_Receive_Serve(buffer, real_length,usart);//选择解码程序
         memset(buffer,0,real_length);
-
-        HAL_UART_Receive_DMA(usart, buffer, length);//重新打开DMA接收
-
+        HAL_UART_IRQHandler(usart);
+        HAL_UART_Receive_DMA(usart, buffer, length);
     }
+
 }
 /**
   * @brief          串口异常的处理
@@ -189,9 +204,13 @@ static void UART9_Receive_Serve(uint8_t *buffer, uint8_t length)
     //HAL_UART_Transmit(&huart6,buffer,length,0xff);
 }
 //UART10中断接收函数
-static void UART10_Receive_Serve(uint8_t *buffer, uint8_t length)
+static void UART10_Receive_Serve(uint8_t *buffer, uint8_t length,UART_HandleTypeDef *usart)
 {
-    IMU_Receive_Serve(buffer,length);
+    IMU_Receive_Serve(buffer,length,usart);
+    tempFloat[0] = IMU.last_Pitch;
+    tempFloat[1] = IMU.last_Roll;
+    tempFloat[2] = IMU.last_Yaw;
+    tempFloat[3] = 1;
     // for(uint8_t i = 0; i < length; i++)
     // {
     //     tempFloat[i] = buffer[i];

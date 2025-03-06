@@ -140,6 +140,12 @@
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/UART_DMA.h">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/bsp_mc02/can_bsp.c">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/bsp_mc02/can_bsp.h">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/filter.c">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>

@@ -19,9 +19,9 @@ class IMU_N300WP
 public:
     uint8_t RX_IMU[IMU_LEN];       //MSG_IMU数据存储数组
     uint8_t RX_AHRS[AHRS_LEN];      //MSG_AHRS数据存储数组
-    uint8_t Fd_data[80];    //接收数组
+    uint8_t Fd_data[56];    //接收数组
     uint8_t last_num;       //上一帧数据的帧尾
-    float RollSpeed;        //横滚角速度
+     float RollSpeed;        //横滚角速度
     float PitchSpeed;       //俯仰角速度
     float YawSpeed;         //偏航角速度
     float Roll;             //横滚角
@@ -31,6 +31,16 @@ public:
     float Qx;            //四元数
     float Qy;            //四元数
     float Qz;            //四元数
+    float last_RollSpeed;        //横滚角速度
+    float last_PitchSpeed;       //俯仰角速度
+    float last_YawSpeed;         //偏航角速度
+    float last_Roll;             //横滚角
+    float last_Pitch;            //俯仰角
+    float last_Yaw;              //偏航角
+    float last_Qw;            //四元数
+    float last_Qx;            //四元数
+    float last_Qy;            //四元数
+    float last_Qz;            //四元数
     bool imu_flag;          //IMU数据接收标志位
     bool ahrs_flag;         //AHRS数据接收标志位
     bool data_check(uint8_t *data);      //接收数组有效性判断函数

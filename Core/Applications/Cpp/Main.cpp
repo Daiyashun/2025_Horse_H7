@@ -12,7 +12,10 @@ void MX_FREERTOS_Init(void);
 
 void Main()
 {
-
+   // HAL_Delay(1000);
+    __HAL_UART_CLEAR_IDLEFLAG(&huart10);
+    __HAL_UART_ENABLE_IT(&huart10,UART_IT_IDLE);
+    HAL_UART_Receive_DMA(&huart10,buffer_receive_10,100);
     /* Init scheduler */
     osKernelInitialize();
 

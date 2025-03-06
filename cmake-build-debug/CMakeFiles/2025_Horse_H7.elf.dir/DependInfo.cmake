@@ -37,6 +37,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/bsp_mc02/can_bsp.c" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/bsp_mc02/can_bsp.c.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/bsp_mc02/can_bsp.c.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/filter.c" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/filter.c.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/filter.c.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/vofa.c" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/vofa.c.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/vofa.c.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Src/dma.c" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/dma.c.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/dma.c.obj.d"

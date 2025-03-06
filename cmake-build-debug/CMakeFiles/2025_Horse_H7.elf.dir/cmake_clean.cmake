@@ -12,6 +12,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj.d"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj.d"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/bsp_mc02/can_bsp.c.obj"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/bsp_mc02/can_bsp.c.obj.d"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/filter.c.obj"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/filter.c.obj.d"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/vofa.c.obj"

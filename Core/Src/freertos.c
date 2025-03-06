@@ -55,13 +55,6 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
-/* Definitions for UART_RX */
-osThreadId_t UART_RXHandle;
-const osThreadAttr_t UART_RX_attributes = {
-  .name = "UART_RX",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
-};
 /* Definitions for UART_TX */
 osThreadId_t UART_TXHandle;
 const osThreadAttr_t UART_TX_attributes = {
@@ -76,7 +69,6 @@ const osThreadAttr_t UART_TX_attributes = {
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
-void UART_RX_task(void *argument);
 void UART_TX_task(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -111,9 +103,6 @@ void MX_FREERTOS_Init(void) {
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
-  /* creation of UART_RX */
-  UART_RXHandle = osThreadNew(UART_RX_task, NULL, &UART_RX_attributes);
-
   /* creation of UART_TX */
   UART_TXHandle = osThreadNew(UART_TX_task, NULL, &UART_TX_attributes);
 
@@ -145,25 +134,6 @@ void StartDefaultTask(void *argument)
   /* USER CODE END StartDefaultTask */
 }
 
-/* USER CODE BEGIN Header_UART_RX_task */
-/**
-* @brief Function implementing the UART_RX thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_UART_RX_task */
-void UART_RX_task(void *argument)
-{
-  /* USER CODE BEGIN UART_RX_task */
-  /* Infinite loop */
-  for(;;)
-  {
-
-    osDelay(5);
-  }
-  /* USER CODE END UART_RX_task */
-}
-
 /* USER CODE BEGIN Header_UART_TX_task */
 /**
 * @brief Function implementing the UART_TX thread.
@@ -176,13 +146,14 @@ void UART_TX_task(void *argument)
   /* USER CODE BEGIN UART_TX_task */
   //UART_DMA_Receive_init(&huart1, buffer_receive_1, buffer_receive_length_7);
   //UART_DMA_Receive_init(&huart7, buffer_receive_7, buffer_receive_length_7);
+
   UART_DMA_Receive_init(&huart10, buffer_receive_10, buffer_receive_length_10);
   /* Infinite loop */
   for(;;)
   {
     Vofa_Transmit(&huart1,10);
     //HAL_UART_Transmit_DMA(&huart1, (uint8_t *)tempFloat, 56 * 4);
-    osDelay(5);
+    osDelay(10);
   }
   /* USER CODE END UART_TX_task */
 }

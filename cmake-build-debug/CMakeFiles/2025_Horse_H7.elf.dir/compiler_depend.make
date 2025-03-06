@@ -415,6 +415,63 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj: D:/study/RC
   D:/study/10_2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
   D:/study/10_2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
 
+CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/bsp_mc02/can_bsp.c.obj: D:/study/RC_Codes/2025_Horse_H7/Core/Applications/bsp_mc02/can_bsp.c \
+  D:/study/RC_Codes/2025_Horse_H7/Core/Applications/vofa_setting.h \
+  D:/study/RC_Codes/2025_Horse_H7/Core/Applications/bsp_mc02/can_bsp.h \
+  D:/study/RC_Codes/2025_Horse_H7/Core/Inc/fdcan.h \
+  D:/study/RC_Codes/2025_Horse_H7/Core/Inc/main.h \
+  D:/study/RC_Codes/2025_Horse_H7/Core/Inc/stm32h7xx_hal_conf.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/CMSIS/Include/cmsis_compiler.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/CMSIS/Include/cmsis_gcc.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/CMSIS/Include/cmsis_version.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/CMSIS/Include/core_cm7.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/CMSIS/Include/mpu_armv7.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma_ex.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_exti.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fdcan.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio_ex.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h \
+  D:/study/RC_Codes/2025_Horse_H7/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
+  D:/study/10_2021.10/arm-none-eabi/include/_ansi.h \
+  D:/study/10_2021.10/arm-none-eabi/include/_newlib_version.h \
+  D:/study/10_2021.10/arm-none-eabi/include/machine/_default_types.h \
+  D:/study/10_2021.10/arm-none-eabi/include/machine/_types.h \
+  D:/study/10_2021.10/arm-none-eabi/include/machine/ieeefp.h \
+  D:/study/10_2021.10/arm-none-eabi/include/math.h \
+  D:/study/10_2021.10/arm-none-eabi/include/newlib.h \
+  D:/study/10_2021.10/arm-none-eabi/include/stdint.h \
+  D:/study/10_2021.10/arm-none-eabi/include/sys/_intsup.h \
+  D:/study/10_2021.10/arm-none-eabi/include/sys/_stdint.h \
+  D:/study/10_2021.10/arm-none-eabi/include/sys/_types.h \
+  D:/study/10_2021.10/arm-none-eabi/include/sys/cdefs.h \
+  D:/study/10_2021.10/arm-none-eabi/include/sys/config.h \
+  D:/study/10_2021.10/arm-none-eabi/include/sys/features.h \
+  D:/study/10_2021.10/arm-none-eabi/include/sys/lock.h \
+  D:/study/10_2021.10/arm-none-eabi/include/sys/reent.h \
+  D:/study/10_2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  D:/study/10_2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h
+
 CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/filter.c.obj: D:/study/RC_Codes/2025_Horse_H7/Core/Applications/filter.c \
   D:/study/RC_Codes/2025_Horse_H7/Core/Applications/filter.h \
   D:/study/RC_Codes/2025_Horse_H7/Core/Inc/stm32h7xx_hal_conf.h \
@@ -2936,6 +2993,8 @@ D:/study/RC_Codes/2025_Horse_H7/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RT
 
 D:/study/RC_Codes/2025_Horse_H7/Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 
+D:/study/RC_Codes/2025_Horse_H7/Core/Applications/bsp_mc02/can_bsp.h:
+
 D:/study/RC_Codes/2025_Horse_H7/Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
 
 D:/study/RC_Codes/2025_Horse_H7/Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
@@ -2966,6 +3025,10 @@ D:/study/10_2021.10/arm-none-eabi/include/sys/_locale.h:
 
 D:/study/10_2021.10/arm-none-eabi/include/sys/string.h:
 
+D:/study/RC_Codes/2025_Horse_H7/Core/Applications/bsp_mc02/can_bsp.c:
+
+D:/study/RC_Codes/2025_Horse_H7/Core/Inc/fdcan.h:
+
 D:/study/RC_Codes/2025_Horse_H7/Core/Applications/filter.c:
 
 D:/study/RC_Codes/2025_Horse_H7/Core/Applications/vofa.c:
@@ -2975,8 +3038,6 @@ D:/study/RC_Codes/2025_Horse_H7/Core/Src/dma.c:
 D:/study/RC_Codes/2025_Horse_H7/Core/Inc/dma.h:
 
 D:/study/RC_Codes/2025_Horse_H7/Core/Src/fdcan.c:
-
-D:/study/RC_Codes/2025_Horse_H7/Core/Inc/fdcan.h:
 
 D:/study/RC_Codes/2025_Horse_H7/Core/Src/gpio.c:
 
