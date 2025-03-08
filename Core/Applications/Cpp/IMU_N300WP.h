@@ -21,7 +21,7 @@ public:
     uint8_t RX_AHRS[AHRS_LEN];      //MSG_AHRS数据存储数组
     uint8_t Fd_data[56];    //接收数组
     uint8_t last_num;       //上一帧数据的帧尾
-     float RollSpeed;        //横滚角速度
+    float RollSpeed;        //横滚角速度
     float PitchSpeed;       //俯仰角速度
     float YawSpeed;         //偏航角速度
     float Roll;             //横滚角
@@ -31,6 +31,9 @@ public:
     float Qx;            //四元数
     float Qy;            //四元数
     float Qz;            //四元数
+    float X_Accelerometer;      //X轴加速度
+    float Y_Accelerometer;      //Y轴加速度
+    float Z_Accelerometer;      //Z轴加速度
     float last_RollSpeed;        //横滚角速度
     float last_PitchSpeed;       //俯仰角速度
     float last_YawSpeed;         //偏航角速度

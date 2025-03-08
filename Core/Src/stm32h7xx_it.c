@@ -426,14 +426,7 @@ void USART10_IRQHandler(void)
   /* USER CODE END USART10_IRQn 0 */
   HAL_UART_IRQHandler(&huart10);
   /* USER CODE BEGIN USART10_IRQn 1 */
-  // if(__HAL_UART_GET_FLAG(&huart10, UART_FLAG_IDLE) != RESET)
-  // {
-    UART_DMA_Receive_IT(&huart10,&hdma_usart10_rx,buffer_receive_10,buffer_receive_length_10);
-  // }
-  // else
-  // {
-  //   HAL_UART_IRQHandler(&huart10);
-  // }
+  UART_DMA_Receive_IT(&huart10,&hdma_usart10_rx,buffer_receive_10,buffer_receive_length_10);
   /* USER CODE END USART10_IRQn 1 */
 }
 

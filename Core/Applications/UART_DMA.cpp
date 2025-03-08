@@ -37,10 +37,9 @@ IMU_N300WP IMU;
 
 void IMU_Receive_Serve(uint8_t *buffer,uint8_t length, UART_HandleTypeDef *usart)
 {
-
     for(uint8_t i = 0; i < length; i++)
     {
-        if((buffer[i] == 0xFC) && (buffer[i+1] == TYPE_AHRS) && (i < 44) && (buffer[i + 55] == 0xFD))
+        if((buffer[i] == 0xFC) && (buffer[i+1] == TYPE_AHRS) && (buffer[i + 55] == 0xFD))
         {
             IMU.ahrs_flag = 1;
             for(int j = 0; j < AHRS_LEN; j++)
@@ -50,10 +49,16 @@ void IMU_Receive_Serve(uint8_t *buffer,uint8_t length, UART_HandleTypeDef *usart
             IMU.data_get(IMU.Fd_data);
         }
 
+        if((buffer[i] == 0xFC) && (buffer[i+1] == TYPE_IMU)  && (buffer[i + 63] == 0xFD))
+        {
+            IMU.imu_flag = 1;
+            for(int j = 0; j < IMU_LEN; j++)
+            {
+                IMU.Fd_data[j] = buffer[i+j];
+            }
+            IMU.data_get(IMU.Fd_data);
+        }
     }
-    if(IMU.ahrs_flag!=1){HAL_UART_IRQHandler(usart);}
-
-
 }
 
 /**
@@ -210,12 +215,15 @@ static void UART10_Receive_Serve(uint8_t *buffer, uint8_t length,UART_HandleType
     tempFloat[0] = IMU.last_Pitch;
     tempFloat[1] = IMU.last_Roll;
     tempFloat[2] = IMU.last_Yaw;
-    tempFloat[3] = 1;
-    // for(uint8_t i = 0; i < length; i++)
-    // {
-    //     tempFloat[i] = buffer[i];
-    // }
-    //tempFloat[0] = 1;
-    //HAL_UART_Transmit(&huart6,buffer,length,0xff);
+    tempFloat[3] = IMU.PitchSpeed;
+    tempFloat[4] = IMU.RollSpeed;
+    tempFloat[5] = IMU.YawSpeed;
+    tempFloat[6] = IMU.Qw;
+    tempFloat[7] = IMU.Qx;
+    tempFloat[8] = IMU.Qy;
+    tempFloat[9] = IMU.Qz;
+    tempFloat[10] = IMU.X_Accelerometer;
+    tempFloat[11] = IMU.Y_Accelerometer;
+    tempFloat[12] = IMU.Z_Accelerometer;
 }
 

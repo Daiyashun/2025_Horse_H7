@@ -23,20 +23,6 @@ bool IMU_N300WP::data_check(uint8_t* data)
 
 void IMU_N300WP::data_get(uint8_t* data)
 {
-
-    //将本帧中的数据存储到uint8_t的存储数组中
-    // if(imu_flag == 1)
-    // {
-    //     for(int i = 0; i < sizeof(data); i++)
-    //     {
-    //         RX_IMU[i] = data[i];
-    //     }
-    //
-    //     imu_flag = 0;   //重置标志位
-    // }
-    // if(ahrs_flag == 1)
-    // {
-
     if(ahrs_flag == 1)
     {
         for(int i = 0; i < 56; i++)
@@ -53,11 +39,23 @@ void IMU_N300WP::data_get(uint8_t* data)
         Qx = data_trans(RX_AHRS[35],RX_AHRS[36],RX_AHRS[37],RX_AHRS[38]);
         Qy = data_trans(RX_AHRS[39],RX_AHRS[40],RX_AHRS[41],RX_AHRS[42]);
         Qz = data_trans(RX_AHRS[43],RX_AHRS[44],RX_AHRS[45],RX_AHRS[46]);
-    }
         last_Pitch = Pitch;
         last_Roll = Roll;
         last_Yaw = Yaw;
         ahrs_flag = 0;  //重置标志位
+    }
+    if(imu_flag == 1)
+    {
+        for(int i = 0; i < 56; i++)
+        {
+            RX_IMU[i] = data[i];
+        }
+        X_Accelerometer = data_trans(RX_IMU[19],RX_IMU[20],RX_IMU[21],RX_IMU[22]);
+        Y_Accelerometer = data_trans(RX_IMU[23],RX_IMU[24],RX_IMU[25],RX_IMU[26]);
+        Z_Accelerometer = data_trans(RX_IMU[27],RX_IMU[28],RX_IMU[29],RX_IMU[30]);
+        imu_flag = 0;
+    }
+
     // }
 }
 
