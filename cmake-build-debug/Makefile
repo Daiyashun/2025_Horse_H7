@@ -224,6 +224,54 @@ Core/Applications/Cpp/Main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.s
 .PHONY : Core/Applications/Cpp/Main.cpp.s
 
+Core/Applications/Cpp/Upper_Visual.obj: Core/Applications/Cpp/Upper_Visual.cpp.obj
+.PHONY : Core/Applications/Cpp/Upper_Visual.obj
+
+# target to build an object file
+Core/Applications/Cpp/Upper_Visual.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Upper_Visual.cpp.obj
+.PHONY : Core/Applications/Cpp/Upper_Visual.cpp.obj
+
+Core/Applications/Cpp/Upper_Visual.i: Core/Applications/Cpp/Upper_Visual.cpp.i
+.PHONY : Core/Applications/Cpp/Upper_Visual.i
+
+# target to preprocess a source file
+Core/Applications/Cpp/Upper_Visual.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Upper_Visual.cpp.i
+.PHONY : Core/Applications/Cpp/Upper_Visual.cpp.i
+
+Core/Applications/Cpp/Upper_Visual.s: Core/Applications/Cpp/Upper_Visual.cpp.s
+.PHONY : Core/Applications/Cpp/Upper_Visual.s
+
+# target to generate assembly for a file
+Core/Applications/Cpp/Upper_Visual.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Upper_Visual.cpp.s
+.PHONY : Core/Applications/Cpp/Upper_Visual.cpp.s
+
+Core/Applications/FDCAN_receive_dm.obj: Core/Applications/FDCAN_receive_dm.cpp.obj
+.PHONY : Core/Applications/FDCAN_receive_dm.obj
+
+# target to build an object file
+Core/Applications/FDCAN_receive_dm.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/FDCAN_receive_dm.cpp.obj
+.PHONY : Core/Applications/FDCAN_receive_dm.cpp.obj
+
+Core/Applications/FDCAN_receive_dm.i: Core/Applications/FDCAN_receive_dm.cpp.i
+.PHONY : Core/Applications/FDCAN_receive_dm.i
+
+# target to preprocess a source file
+Core/Applications/FDCAN_receive_dm.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/FDCAN_receive_dm.cpp.i
+.PHONY : Core/Applications/FDCAN_receive_dm.cpp.i
+
+Core/Applications/FDCAN_receive_dm.s: Core/Applications/FDCAN_receive_dm.cpp.s
+.PHONY : Core/Applications/FDCAN_receive_dm.s
+
+# target to generate assembly for a file
+Core/Applications/FDCAN_receive_dm.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/FDCAN_receive_dm.cpp.s
+.PHONY : Core/Applications/FDCAN_receive_dm.cpp.s
+
 Core/Applications/UART_DMA.obj: Core/Applications/UART_DMA.cpp.obj
 .PHONY : Core/Applications/UART_DMA.obj
 
@@ -295,6 +343,30 @@ Core/Applications/filter.s: Core/Applications/filter.c.s
 Core/Applications/filter.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/filter.c.s
 .PHONY : Core/Applications/filter.c.s
+
+Core/Applications/user_lib.obj: Core/Applications/user_lib.c.obj
+.PHONY : Core/Applications/user_lib.obj
+
+# target to build an object file
+Core/Applications/user_lib.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/user_lib.c.obj
+.PHONY : Core/Applications/user_lib.c.obj
+
+Core/Applications/user_lib.i: Core/Applications/user_lib.c.i
+.PHONY : Core/Applications/user_lib.i
+
+# target to preprocess a source file
+Core/Applications/user_lib.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/user_lib.c.i
+.PHONY : Core/Applications/user_lib.c.i
+
+Core/Applications/user_lib.s: Core/Applications/user_lib.c.s
+.PHONY : Core/Applications/user_lib.s
+
+# target to generate assembly for a file
+Core/Applications/user_lib.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_Horse_H7.elf.dir\build.make CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/user_lib.c.s
+.PHONY : Core/Applications/user_lib.c.s
 
 Core/Applications/vofa.obj: Core/Applications/vofa.c.obj
 .PHONY : Core/Applications/vofa.obj
@@ -1405,6 +1477,12 @@ help:
 	@echo ... Core/Applications/Cpp/Main.obj
 	@echo ... Core/Applications/Cpp/Main.i
 	@echo ... Core/Applications/Cpp/Main.s
+	@echo ... Core/Applications/Cpp/Upper_Visual.obj
+	@echo ... Core/Applications/Cpp/Upper_Visual.i
+	@echo ... Core/Applications/Cpp/Upper_Visual.s
+	@echo ... Core/Applications/FDCAN_receive_dm.obj
+	@echo ... Core/Applications/FDCAN_receive_dm.i
+	@echo ... Core/Applications/FDCAN_receive_dm.s
 	@echo ... Core/Applications/UART_DMA.obj
 	@echo ... Core/Applications/UART_DMA.i
 	@echo ... Core/Applications/UART_DMA.s
@@ -1414,6 +1492,9 @@ help:
 	@echo ... Core/Applications/filter.obj
 	@echo ... Core/Applications/filter.i
 	@echo ... Core/Applications/filter.s
+	@echo ... Core/Applications/user_lib.obj
+	@echo ... Core/Applications/user_lib.i
+	@echo ... Core/Applications/user_lib.s
 	@echo ... Core/Applications/vofa.obj
 	@echo ... Core/Applications/vofa.i
 	@echo ... Core/Applications/vofa.s

@@ -51,7 +51,7 @@ void Vofa_Slider_Handler(uint8_t Num);
 void Vofa_Button_Handler(uint8_t Num);
 void Vofa_Key_Handler(uint8_t Num);
 void Vofa_Bar_Handler(uint8_t Num);
-
+void Upper_Transmit(UART_HandleTypeDef *huart, uint8_t num);
 
 #ifdef __cplusplus
 }

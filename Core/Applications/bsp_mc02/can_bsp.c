@@ -48,6 +48,59 @@ void can_filter_init(void)
 	HAL_FDCAN_ConfigFilter(&hfdcan1,&fdcan_filter);
 	HAL_FDCAN_ConfigGlobalFilter(&hfdcan1, FDCAN_REJECT, FDCAN_REJECT, FDCAN_FILTER_REMOTE, FDCAN_FILTER_REMOTE);
 	HAL_FDCAN_ConfigFifoWatermark(&hfdcan1, FDCAN_CFG_RX_FIFO0, 1);
+
+	fdcan_filter.IdType = FDCAN_STANDARD_ID;
+	fdcan_filter.FilterIndex = 0;
+	fdcan_filter.FilterType = FDCAN_FILTER_MASK;
+	fdcan_filter.FilterConfig = FDCAN_FILTER_TO_RXFIFO1;
+	fdcan_filter.FilterID1 = 0x00;
+	fdcan_filter.FilterID2 = 0x00;
+	HAL_FDCAN_ConfigFilter(&hfdcan1,&fdcan_filter);
+	HAL_FDCAN_ConfigGlobalFilter(&hfdcan1, FDCAN_REJECT, FDCAN_REJECT, FDCAN_FILTER_REMOTE, FDCAN_FILTER_REMOTE);
+	HAL_FDCAN_ConfigFifoWatermark(&hfdcan1, FDCAN_CFG_RX_FIFO1, 1);
+
+
+	fdcan_filter.IdType = FDCAN_STANDARD_ID;
+	fdcan_filter.FilterIndex = 0;
+	fdcan_filter.FilterType = FDCAN_FILTER_MASK;
+	fdcan_filter.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
+	fdcan_filter.FilterID1 = 0x00;
+	fdcan_filter.FilterID2 = 0x00;
+	HAL_FDCAN_ConfigFilter(&hfdcan2,&fdcan_filter);
+	HAL_FDCAN_ConfigGlobalFilter(&hfdcan2, FDCAN_REJECT, FDCAN_REJECT, FDCAN_FILTER_REMOTE, FDCAN_FILTER_REMOTE);
+	HAL_FDCAN_ConfigFifoWatermark(&hfdcan2, FDCAN_CFG_RX_FIFO0, 1);
+
+	fdcan_filter.IdType = FDCAN_STANDARD_ID;
+	fdcan_filter.FilterIndex = 0;
+	fdcan_filter.FilterType = FDCAN_FILTER_MASK;
+	fdcan_filter.FilterConfig = FDCAN_FILTER_TO_RXFIFO1;
+	fdcan_filter.FilterID1 = 0x00;
+	fdcan_filter.FilterID2 = 0x00;
+	HAL_FDCAN_ConfigFilter(&hfdcan2,&fdcan_filter);
+	HAL_FDCAN_ConfigGlobalFilter(&hfdcan2, FDCAN_REJECT, FDCAN_REJECT, FDCAN_FILTER_REMOTE, FDCAN_FILTER_REMOTE);
+	HAL_FDCAN_ConfigFifoWatermark(&hfdcan2, FDCAN_CFG_RX_FIFO1, 1);
+
+
+	fdcan_filter.IdType = FDCAN_STANDARD_ID;
+	fdcan_filter.FilterIndex = 0;
+	fdcan_filter.FilterType = FDCAN_FILTER_MASK;
+	fdcan_filter.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
+	fdcan_filter.FilterID1 = 0x00;
+	fdcan_filter.FilterID2 = 0x00;
+	HAL_FDCAN_ConfigFilter(&hfdcan3,&fdcan_filter);
+	HAL_FDCAN_ConfigGlobalFilter(&hfdcan3, FDCAN_REJECT, FDCAN_REJECT, FDCAN_FILTER_REMOTE, FDCAN_FILTER_REMOTE);
+	HAL_FDCAN_ConfigFifoWatermark(&hfdcan3, FDCAN_CFG_RX_FIFO0, 1);
+
+	fdcan_filter.IdType = FDCAN_STANDARD_ID;
+	fdcan_filter.FilterIndex = 0;
+	fdcan_filter.FilterType = FDCAN_FILTER_MASK;
+	fdcan_filter.FilterConfig = FDCAN_FILTER_TO_RXFIFO1;
+	fdcan_filter.FilterID1 = 0x00;
+	fdcan_filter.FilterID2 = 0x00;
+	HAL_FDCAN_ConfigFilter(&hfdcan3,&fdcan_filter);
+	HAL_FDCAN_ConfigGlobalFilter(&hfdcan3, FDCAN_REJECT, FDCAN_REJECT, FDCAN_FILTER_REMOTE, FDCAN_FILTER_REMOTE);
+	HAL_FDCAN_ConfigFifoWatermark(&hfdcan3, FDCAN_CFG_RX_FIFO1, 1);
+
 }
 /**
 ************************************************************************
@@ -90,7 +143,7 @@ uint8_t fdcanx_send_data(FDCAN_HandleTypeDef *hfdcan, uint16_t id, uint8_t *data
 uint8_t fdcanx_receive(FDCAN_HandleTypeDef *hfdcan, uint16_t *rec_id, uint8_t *buf)
 {
     FDCAN_RxHeaderTypeDef fdcan_RxHeader;
-    if(HAL_FDCAN_GetRxMessage(hfdcan,FDCAN_RX_FIFO0,&fdcan_RxHeader,buf)!=HAL_OK) return 0;//接收数据
+    if((HAL_FDCAN_GetRxMessage(hfdcan,FDCAN_RX_FIFO0,&fdcan_RxHeader,buf)!=HAL_OK) || (HAL_FDCAN_GetRxMessage(hfdcan,FDCAN_RX_FIFO1,&fdcan_RxHeader,buf)!=HAL_OK))return 0;//接收数据
     *rec_id = fdcan_RxHeader.Identifier;
     return fdcan_RxHeader.DataLength>>16;
 }
@@ -108,6 +161,25 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 {
   if((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) != RESET)
   {
+		if(hfdcan == &hfdcan1)
+		{
+			fdcan1_rx_callback();
+		}
+		if(hfdcan == &hfdcan2)
+		{
+			fdcan2_rx_callback();
+		}
+		if(hfdcan == &hfdcan3)
+		{
+			fdcan3_rx_callback();
+		}
+	}
+}
+
+void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
+{
+	if((RxFifo0ITs & FDCAN_IT_RX_FIFO1_NEW_MESSAGE) != RESET)
+	{
 		if(hfdcan == &hfdcan1)
 		{
 			fdcan1_rx_callback();

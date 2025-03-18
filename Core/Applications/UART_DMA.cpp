@@ -8,6 +8,7 @@
 #include "string.h"
 #include "vofa.h"
 #include "Cpp/IMU_N300WP.h"
+#include "Cpp/Upper_Visual.h"
 //#include "task.h"
 
 //_Visual test;
@@ -23,17 +24,8 @@ uint8_t buffer_receive_8[buffer_receive_length_8];
 uint8_t buffer_receive_9[buffer_receive_length_9];
 uint8_t buffer_receive_10[buffer_receive_length_10];
 
-// uint8_t buffer_receive_1[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000000")));
-// uint8_t buffer_receive_2[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000020")));
-// uint8_t buffer_receive_3[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000040")));
-// uint8_t buffer_receive_4[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000060")));
-// uint8_t buffer_receive_5[buffer_receive_1_length]__attribute__((section(".ARM.__at_0x24000080")));
-// uint8_t buffer_receive_6[buffer_receive_length_6]__attribute__((section(".ARM.__at_0x240000A0")));
-// uint8_t buffer_receive_7[buffer_receive_length_7]__attribute__((section(".ARM.__at_0x240000C0")));
-// uint8_t buffer_receive_8[buffer_receive_length_8]__attribute__((section(".ARM.__at_0x240000E0")));
-// uint8_t buffer_receive_9[buffer_receive_length_9]__attribute__((section(".ARM.__at_0x24000100")));;
-// uint8_t buffer_receive_10[buffer_receive_length_10]__attribute__((section(".ARM.__at_0x24000100")));
 IMU_N300WP IMU;
+Upper_data_receive Vdata_Rx;
 
 void IMU_Receive_Serve(uint8_t *buffer,uint8_t length, UART_HandleTypeDef *usart)
 {
@@ -147,16 +139,7 @@ void HAL_UART_ErrorCallback (UART_HandleTypeDef *huart)
 //UART1中断接收函数
 static void UART1_Receive_Serve(uint8_t *buffer, uint8_t length)
 {
-   // tempFloat[0] = 5;
-    //tempFloat[0] ++;
-    for(uint8_t i = 0; i < length; i++)
-    {
-
-
-        // data1.temp_data[i]=buffer[i];
-        // tempFloat[i] = data1.Upper_data[i];
-        tempFloat[i] = (float)buffer[i];
-    }
+    Vofa_UART_Receive(buffer,length);
 }
 //UART2中断接收函数
 static void UART2_Receive_Serve(uint8_t *buffer, uint8_t length)
@@ -189,10 +172,10 @@ static void UART6_Receive_Serve(uint8_t *buffer, uint8_t length)
 //UART7中断接收函数
 static void UART7_Receive_Serve(uint8_t *buffer, uint8_t length)
 {
-    if(buffer[0] == 1)
-    {
-        tempFloat[0] = 1;
-    }
+    // if(buffer[0] == 1)
+    // {
+    //     tempFloat[0] = 1;
+    // }
     //IMU_Receive_Serve(buffer,length);
     //HAL_UART_Transmit(&huart6,buffer,length,0xff);
 }

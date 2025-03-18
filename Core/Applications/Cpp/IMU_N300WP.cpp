@@ -5,9 +5,6 @@
 #include "IMU_N300WP.h"
 #include <math.h>
 
-
-
-
 bool IMU_N300WP::data_check(uint8_t* data)
 {
     if(data[0] == 0xFC && last_num == 0xFD)  //帧头帧尾校验

@@ -38,11 +38,7 @@ extern uint8_t buffer_receive_10[buffer_receive_length_10];//缓存数组全局�
 
 
 //extern _Visual Test
-union Visual
-{
-  float data[1];
-  uint8_t temp[8];
-};
+
 /**
   * @brief          初始化串口DMA接收
   * @param[in]      UART接口

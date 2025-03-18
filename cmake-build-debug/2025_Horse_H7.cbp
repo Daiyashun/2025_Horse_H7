@@ -134,6 +134,18 @@
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Main.h">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Upper_Visual.cpp">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Upper_Visual.h">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/FDCAN_receive_dm.cpp">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/FDCAN_receive_dm.h">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/UART_DMA.cpp">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
@@ -153,6 +165,12 @@
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/struct_typedef.h">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/user_lib.c">
+			<Option target="2025_Horse_H7.elf"/>
+		</Unit>
+		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/user_lib.h">
 			<Option target="2025_Horse_H7.elf"/>
 		</Unit>
 		<Unit filename="D:/study/RC_Codes/2025_Horse_H7/Core/Applications/vofa.c">

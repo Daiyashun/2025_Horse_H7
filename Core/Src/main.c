@@ -31,6 +31,7 @@
 #include "UART_DMA.h"
 #include "vofa.h"
 #include "Cpp/Main.h"
+#include "FDCAN_receive_dm.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

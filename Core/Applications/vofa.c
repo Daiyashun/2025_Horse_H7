@@ -53,14 +53,39 @@ void Vofa_Transmit(UART_HandleTypeDef *huart, uint8_t num)
     static uint8_t  tempData[LEN];
     //uint16_t len = num*4+4;
 
+    memcpy(tempData, (uint8_t *)tempFloat, LEN);
+    tempData[LEN-4] = 0x00;
+    tempData[LEN-3] = 0x00;
+    tempData[LEN-2] = 0x80;
+    tempData[LEN-1] = 0x7f;
+
+#if VOFA_USE_DMA
+    HAL_UART_Transmit_DMA(huart, (uint8_t *)tempData, LEN+4);
+#else
+    HAL_UART_Transmit(huart, (uint8_t *)tempData, len,0xff);
+#endif
+}
+void Upper_Transmit(UART_HandleTypeDef *huart, uint8_t num)
+{
+    static uint8_t  tempData[LEN];
+    //uint16_t len = num*4+4;
+    static uint8_t  tempData1[LEN];
 
     memcpy(tempData, (uint8_t *)tempFloat, LEN);
     tempData[LEN-4] = 0x00;
     tempData[LEN-3] = 0x00;
     tempData[LEN-2] = 0x80;
     tempData[LEN-1] = 0x7f;
+    for(int i = 4; i < LEN + 4; i++)
+    {
+        tempData1[i] = tempData[i-4];
+    }
+    tempData1[0] = 0xef;
+    tempData1[1] = 0xff;
+    tempData1[2] = 0xff;
+    tempData1[3] = 0xff;
 #if VOFA_USE_DMA
-    HAL_UART_Transmit_DMA(huart, (uint8_t *)tempData, LEN);
+    HAL_UART_Transmit_DMA(huart, (uint8_t *)tempData1, LEN+4);
 #else
     HAL_UART_Transmit(huart, (uint8_t *)tempData, len,0xff);
 #endif

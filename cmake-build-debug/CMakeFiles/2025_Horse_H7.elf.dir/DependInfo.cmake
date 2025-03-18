@@ -39,6 +39,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/bsp_mc02/can_bsp.c" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/bsp_mc02/can_bsp.c.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/bsp_mc02/can_bsp.c.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/filter.c" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/filter.c.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/filter.c.obj.d"
+  "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/user_lib.c" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/user_lib.c.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/user_lib.c.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/vofa.c" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/vofa.c.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/vofa.c.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Src/dma.c" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/dma.c.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/dma.c.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Src/fdcan.c" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/fdcan.c.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/fdcan.c.obj.d"
@@ -88,6 +89,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/IMU_N300WP.cpp" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/IMU_N300WP.cpp.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Leg_Control.cpp" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Main.cpp" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj.d"
+  "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/Cpp/Upper_Visual.cpp" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Upper_Visual.cpp.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Upper_Visual.cpp.obj.d"
+  "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/FDCAN_receive_dm.cpp" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/FDCAN_receive_dm.cpp.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/FDCAN_receive_dm.cpp.obj.d"
   "D:/study/RC_Codes/2025_Horse_H7/Core/Applications/UART_DMA.cpp" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj" "gcc" "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/UART_DMA.cpp.obj.d"
   )
 
