@@ -179,7 +179,7 @@ static void UART6_Receive_Serve(uint8_t *buffer, uint8_t length)
 //UART7中断接收函数
 static void UART7_Receive_Serve(uint8_t *buffer, uint8_t length)
 {
-
+    Vdata_Rx.Vdata_get(buffer,length);
 }
 //UART8中断接收函数
 static void UART8_Receive_Serve(uint8_t *buffer, uint8_t length)

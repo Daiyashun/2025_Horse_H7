@@ -29,7 +29,7 @@ public:
     float All_data[50];
     float Reactive_Force_Cal(float data1,float data2,float data3,float data4);
     void All_Data_get(void);
-    void All_Data_send(void);
+    void All_Data_send(UART_HandleTypeDef *huart);
 };
 
 #endif //UPPER_VISUAL_H

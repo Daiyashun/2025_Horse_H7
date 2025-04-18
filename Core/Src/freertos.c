@@ -152,7 +152,7 @@ __weak void UART_TX_task(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(10);
+    osDelay(1);
   }
   /* USER CODE END UART_TX_task */
 }

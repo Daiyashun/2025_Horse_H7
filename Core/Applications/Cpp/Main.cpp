@@ -38,3 +38,8 @@ void Main()
 
     }
 }
+
+void disable_all()
+{
+
+}

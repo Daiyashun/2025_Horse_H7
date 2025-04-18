@@ -34,7 +34,6 @@
 #include "FDCAN_receive_dm.h"
 /* USER CODE END Includes */
 
-#include "Cpp/Callback.h"
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 

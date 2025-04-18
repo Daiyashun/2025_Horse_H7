@@ -3,11 +3,29 @@
 //
 
 #include "Upper_Visual.h"
+#include "Main.h"
+#include <cstring>
 
 #include "vofa_setting.h"
 
 extern motor_t motor[12];
+void Stand()
+{
+    motor[0].send.pos = -0.1f;
+    motor[3].send.pos = 0.1f;
+    motor[6].send.pos = -0.1f;
+    motor[9].send.pos = 0.1f;
 
+    motor[1].send.pos = 0.9f;
+    motor[4].send.pos = 0.9f;
+    motor[7].send.pos = 0.9f;
+    motor[10].send.pos = 0.9f;
+
+    motor[2].send.pos = -1.35f;
+    motor[5].send.pos = -1.35f;
+    motor[8].send.pos = -1.35f;
+    motor[11].send.pos = -1.35f;
+}
 float Upper_data_receive::Vdata_transfer(uint8_t d1, uint8_t d2, uint8_t d3, uint8_t d4)
 {
     long long transition_32;
@@ -36,12 +54,12 @@ void Upper_data_receive::Vdata_get(uint8_t* data, uint8_t length)
 {
     for(int i = 0; i < length; i++)
     {
-        if((data[i]==0x7f) && (data[i-1] == 0x80) && (data[i-2] == 0x00) && (data[i-3] == 0x00))
+        if((data[i + 51]==0x7f) && (data[i + 50] == 0x80) && (data[i + 49] == 0x00) && (data[i + 48] == 0x00))
         {
             Visual_Receive_Flag = 0;
-            for(int i = 0; i < ((12 * 4) + 4) ; i++)
+            for(int cnt = 0; cnt < ((12 * 4) + 4) ; cnt++)
             {
-                Real_data[i] = data[i];
+                Real_data[cnt] = data[i + cnt];
             }
             int j = 0;
             int k = 0;
@@ -52,7 +70,6 @@ void Upper_data_receive::Vdata_get(uint8_t* data, uint8_t length)
 #else
                 Visual_motor_receive_tor[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
 #endif
-
                 j ++;
                 k += 4;
             }
@@ -63,12 +80,11 @@ void Upper_data_receive::Vdata_get(uint8_t* data, uint8_t length)
 
 void Upper_data_receive::Vdata_send()
 {
-
     if (Visual_Receive_Flag)
     {
 #if USE_DYF
 
-
+        Angle_transfer();
 #else
         for(int i = 0; i < 12; i++)
         {
@@ -77,7 +93,6 @@ void Upper_data_receive::Vdata_send()
 #endif
         }
     }
-
 }
 
 void Upper_data_receive::Angle_transfer()
@@ -87,49 +102,63 @@ void Upper_data_receive::Angle_transfer()
         switch (i)
         {
             case CAN_DM_M1_ID:
-
+                motor[i - 1].send.pos += MOTOR_147A_ANGLE_OFFSET;
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M2_ID:
+                motor[i - 1].send.pos += MOTOR_258B_ANGLE_OFFSET;
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M3_ID:
+                motor[i - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M4_ID:
-
+                motor[i - 1].send.pos += MOTOR_147A_ANGLE_OFFSET;
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M5_ID:
-
+                motor[i - 1].send.pos += MOTOR_258B_ANGLE_OFFSET;
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M6_ID:
-
+                motor[i - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M7_ID:
-
+                motor[i - 1].send.pos += MOTOR_147A_ANGLE_OFFSET;
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M8_ID:
-
+                motor[i - 1].send.pos += MOTOR_258B_ANGLE_OFFSET;
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M9_ID:
-
+                motor[i - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M10_ID:
-
+                motor[i - 1].send.pos += MOTOR_147A_ANGLE_OFFSET;
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M11_ID:
-
+                motor[i - 1].send.pos += MOTOR_258B_ANGLE_OFFSET;
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M12_ID:
-
+                motor[i - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             default:break;
@@ -144,51 +173,51 @@ void Upper_data_receive::Tor_transfer()
         switch (i)
         {
             case CAN_DM_M1_ID:
-
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M2_ID:
-
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M3_ID:
-
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M4_ID:
-
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M5_ID:
-
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M6_ID:
-
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M7_ID:
-
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M8_ID:
-
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M9_ID:
-
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M10_ID:
-
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M11_ID:
-
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M12_ID:
-
+                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             default:break;
@@ -205,7 +234,36 @@ float Upper_data_send::Reactive_Force_Cal(float data1, float data2, float data3,
 void Upper_data_send::All_Data_get()
 {
 #if USE_DYF
-
+    All_Data[0] = motor[3].receive.pos;
+    All_Data[1] = motor[3].receive.speed;
+    All_Data[2] = motor[4].receive.pos;
+    All_Data[3] = motor[4].receive.speed;
+    All_Data[4] = motor[5].receive.pos;
+    All_Data[5] = motor[5].receive.speed;
+    All_Data[6] = motor[0].receive.pos;
+    All_Data[7] = motor[0].receive.speed;
+    All_Data[8] = motor[1].receive.pos;
+    All_Data[9] = motor[1].receive.speed;
+    All_Data[10] = motor[2].receive.pos;
+    All_Data[11] = motor[2].receive.speed;
+    All_Data[12] = motor[9].receive.pos;
+    All_Data[13] = motor[9].receive.speed;
+    All_Data[14] = motor[10].receive.pos;
+    All_Data[15] = motor[10].receive.speed;
+    All_Data[16] = motor[11].receive.pos;
+    All_Data[17] = motor[11].receive.speed;
+    All_Data[18] = motor[6].receive.pos;
+    All_Data[19] = motor[6].receive.speed;
+    All_Data[20] = motor[7].receive.pos;
+    All_Data[21] = motor[7].receive.speed;
+    All_Data[22] = motor[8].receive.pos;
+    All_Data[23] = Visual_imu[];
+    All_Data[24] = motor[8].receive.speed;
+    All_Data[25] = motor[8].receive.speed;
+    All_Data[26] = motor[8].receive.speed;
+    All_Data[27] = motor[8].receive.speed;
+    All_Data[28] = motor[8].receive.speed;
+    All_Data[29] = motor[8].receive.speed;
 #else
     //首先是12个电机的参数，共36个
     for(int i = 0; i < 3; i++)
@@ -214,7 +272,7 @@ void Upper_data_send::All_Data_get()
         {
             for (int k = 0; k < 3; k++)
             {
-                All_data[i * 4 + j * 3 + k] = Visual_motor_send[i][j][k];
+                All_data[i * 4 * 3+ j * 3 + k] = Visual_motor_send[i][j][k];
             }
         }
     }
@@ -228,7 +286,7 @@ void Upper_data_send::All_Data_get()
     //最后是地面反作用力。共4个
     for(int i = 0; i < 4; i++)
     {
-        Reactive_Force[i] = Reactive_Force_Cal(motor[3 * i + 2].receive.toq, PI - motor[3 * i].receive.pos, motor[3 * i + 2].receive.pos,motor[3 * i + 1].receive.pos);
+        //Reactive_Force[i] = Reactive_Force_Cal(motor[3 * i + 2].receive.toq, motor[3 * i].receive.pos,PI -  motor[3 * i + 2].receive.pos,motor[3 * i + 1].receive.pos);
     }
     for(int i = 46; i < 50; i++)
     {
@@ -242,9 +300,53 @@ void Upper_data_send::All_Data_get()
 #endif
 }
 
-void Upper_data_send::All_Data_send()
+void Upper_data_send::All_Data_send(UART_HandleTypeDef *huart)
 {
+#if USE_DYF
+    static uint8_t  tempData[DATA_LENGTH_DYF];
+    static uint8_t  tempData1[DATA_LENGTH_DYF + 4];
+    memcpy(tempData, (uint8_t *)All_data, DATA_LENGTH_DYF);
+    tempData[DATA_LENGTH_DYF-4] = 0x00;
+    tempData[DATA_LENGTH_DYF-3] = 0x00;
+    tempData[DATA_LENGTH_DYF-2] = 0x80;
+    tempData[DATA_LENGTH_DYF-1] = 0x7f;
+    for(int i = 4; i < DATA_LENGTH_DYF + 4; i++)
+    {
+        tempData1[i] = tempData[i-4];
+    }
+    tempData1[0] = 0xef;
+    tempData1[1] = 0xff;
+    tempData1[2] = 0xff;
+    tempData1[3] = 0xff;
+#if VOFA_USE_DMA
+    HAL_UART_Transmit_DMA(huart, (uint8_t *)tempData1, DATA_LENGTH_DYF + 4);
+#else
+    HAL_UART_Transmit(huart, (uint8_t *)tempData, len,0xff);
+#endif
 
+#else
+    static uint8_t  tempData[DATA_LENGTH];
+    static uint8_t  tempData1[DATA_LENGTH + 4];
+    memcpy(tempData, (uint8_t *)All_data, DATA_LENGTH);
+    tempData[DATA_LENGTH-4] = 0x00;
+    tempData[DATA_LENGTH-3] = 0x00;
+    tempData[DATA_LENGTH-2] = 0x80;
+    tempData[DATA_LENGTH-1] = 0x7f;
+    for(int i = 4; i < DATA_LENGTH + 4; i++)
+    {
+        tempData1[i] = tempData[i-4];
+    }
+    tempData1[0] = 0xef;
+    tempData1[1] = 0xff;
+    tempData1[2] = 0xff;
+    tempData1[3] = 0xff;
+#if VOFA_USE_DMA
+    HAL_UART_Transmit_DMA(huart, (uint8_t *)tempData1, DATA_LENGTH + 4);
+#else
+    HAL_UART_Transmit(huart, (uint8_t *)tempData, len,0xff);
+#endif
+
+#endif
 }
 
 

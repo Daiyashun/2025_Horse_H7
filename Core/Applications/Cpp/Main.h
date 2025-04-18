@@ -21,6 +21,10 @@
 #define SEND_P_TEST 5
 #define SEND_D 1
 
+#define DATA_LENGTH_REAL   51
+#define DATA_LENGTH  DATA_LENGTH_REAL*4
+#define DATA_LENGTH_REAL_DYF 31
+#define DATA_LENGTH_DYF DATA_LENGTH_REAL_DYF*4
 /*-----------------------------------------------------------------------------*/
 
 #ifdef __cplusplus

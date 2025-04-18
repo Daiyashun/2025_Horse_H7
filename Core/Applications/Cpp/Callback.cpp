@@ -15,6 +15,7 @@ extern Upper_data_send Vdata_Tx;
 
 void TIM6_CALLBACK()
 {
+    Vdata_Rx.Vdata_send();
     mit_send_in_TIM();
 }
 
@@ -60,14 +61,13 @@ void fdcan1_rx_callback(void)
 
             default:break;
             }
+            Vdata_Tx.Visual_motor_send[0][i][0] = motor[i].receive.pos;
+            Vdata_Tx.Visual_motor_send[0][i][1] = motor[i].receive.speed;
+            Vdata_Tx.Visual_motor_send[0][i][2] = motor[i].receive.toq;
         }
-        Vdata_Tx.Visual_motor_send[0][i][0] = motor[i].receive.pos;
-        Vdata_Tx.Visual_motor_send[0][i][1] = motor[i].receive.speed;
-        Vdata_Tx.Visual_motor_send[0][i][2] = motor[i].receive.toq;
     }
-
-
 }
+
 uint8_t rx_data2[8] = {0};
 void fdcan2_rx_callback(void)
 {
@@ -110,10 +110,11 @@ void fdcan2_rx_callback(void)
 
             default:break;
             }
+            Vdata_Tx.Visual_motor_send[1][i - 4][0] = motor[i].receive.pos;
+            Vdata_Tx.Visual_motor_send[1][i - 4][1] = motor[i].receive.speed;
+            Vdata_Tx.Visual_motor_send[1][i - 4][2] = motor[i].receive.toq;
         }
-        Vdata_Tx.Visual_motor_send[1][i - 4][0] = motor[i].receive.pos;
-        Vdata_Tx.Visual_motor_send[1][i - 4][1] = motor[i].receive.speed;
-        Vdata_Tx.Visual_motor_send[1][i - 4][2] = motor[i].receive.toq;
+
     }
 
 }
@@ -160,12 +161,11 @@ void fdcan3_rx_callback(void)
 
             default:break;
             }
+            Vdata_Tx.Visual_motor_send[2][i - 8][0] = motor[i].receive.pos;
+            Vdata_Tx.Visual_motor_send[2][i - 8][1] = motor[i].receive.speed;
+            Vdata_Tx.Visual_motor_send[2][i - 8][2] = motor[i].receive.toq;
         }
-        Vdata_Tx.Visual_motor_send[2][i - 8][0] = motor[i].receive.pos;
-        Vdata_Tx.Visual_motor_send[2][i - 8][1] = motor[i].receive.speed;
-        Vdata_Tx.Visual_motor_send[2][i - 8][2] = motor[i].receive.toq;
     }
-
 }
 
 

@@ -102,4 +102,11 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Upper_Visual.cpp.obj: \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications\Cpp\IMU_N300WP.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications/UART_DMA.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/usart.h \
- D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/main.h
+ D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/main.h \
+ D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications\Cpp\Main.h \
+ d:\10_2021.10\arm-none-eabi\include\c++\10.3.1\cstring \
+ d:\10_2021.10\arm-none-eabi\include\string.h \
+ d:\10_2021.10\arm-none-eabi\include\sys\_locale.h \
+ d:\10_2021.10\arm-none-eabi\include\strings.h \
+ d:\10_2021.10\arm-none-eabi\include\sys\string.h \
+ D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications/vofa_setting.h

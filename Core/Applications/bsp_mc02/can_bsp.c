@@ -189,6 +189,7 @@ void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo1ITs)
 {
 	if((RxFifo1ITs & FDCAN_IT_RX_FIFO1_NEW_MESSAGE) != RESET)
 	{
+		RxLocation = 1;
 		if(hfdcan == &hfdcan1)
 		{
 			fdcan1_rx_callback();
@@ -221,7 +222,6 @@ __WEAK void fdcan2_rx_callback(void)
 {
 
 }
-
 
 __WEAK void fdcan3_rx_callback(void)
 {
