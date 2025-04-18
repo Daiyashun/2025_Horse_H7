@@ -69,7 +69,7 @@ void Upper_Transmit(UART_HandleTypeDef *huart, uint8_t num)
 {
     static uint8_t  tempData[LEN];
     //uint16_t len = num*4+4;
-    static uint8_t  tempData1[LEN];
+    static uint8_t  tempData1[LEN + 4];
 
     memcpy(tempData, (uint8_t *)tempFloat, LEN);
     tempData[LEN-4] = 0x00;

@@ -51,10 +51,10 @@
 /* USER CODE BEGIN Variables */
 extern motor_t motor[12];
 /* USER CODE END Variables */
-/* Definitions for defaultTask */
-osThreadId_t defaultTaskHandle;
-const osThreadAttr_t defaultTask_attributes = {
-  .name = "defaultTask",
+/* Definitions for Vofa_Receive */
+osThreadId_t Vofa_ReceiveHandle;
+const osThreadAttr_t Vofa_Receive_attributes = {
+  .name = "Vofa_Receive",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
@@ -62,14 +62,7 @@ const osThreadAttr_t defaultTask_attributes = {
 osThreadId_t UART_TXHandle;
 const osThreadAttr_t UART_TX_attributes = {
   .name = "UART_TX",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityLow,
-};
-/* Definitions for FDCAN */
-osThreadId_t FDCANHandle;
-const osThreadAttr_t FDCAN_attributes = {
-  .name = "FDCAN",
-  .stack_size = 128 * 4,
+  .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
 
@@ -78,9 +71,8 @@ const osThreadAttr_t FDCAN_attributes = {
 
 /* USER CODE END FunctionPrototypes */
 
-void StartDefaultTask(void *argument);
+void VofaReceiveTask(void *argument);
 void UART_TX_task(void *argument);
-void FDCAN_Task(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -111,14 +103,11 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* creation of defaultTask */
-  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+  /* creation of Vofa_Receive */
+  Vofa_ReceiveHandle = osThreadNew(VofaReceiveTask, NULL, &Vofa_Receive_attributes);
 
   /* creation of UART_TX */
   UART_TXHandle = osThreadNew(UART_TX_task, NULL, &UART_TX_attributes);
-
-  /* creation of FDCAN */
-  FDCANHandle = osThreadNew(FDCAN_Task, NULL, &FDCAN_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -130,22 +119,22 @@ void MX_FREERTOS_Init(void) {
 
 }
 
-/* USER CODE BEGIN Header_StartDefaultTask */
+/* USER CODE BEGIN Header_VofaReceiveTask */
 /**
-  * @brief  Function implementing the defaultTask thread.
+  * @brief  Function implementing the Vofa_Receive thread.
   * @param  argument: Not used
   * @retval None
   */
-/* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void *argument)
+/* USER CODE END Header_VofaReceiveTask */
+__weak void VofaReceiveTask(void *argument)
 {
-  /* USER CODE BEGIN StartDefaultTask */
+  /* USER CODE BEGIN VofaReceiveTask */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END StartDefaultTask */
+  /* USER CODE END VofaReceiveTask */
 }
 
 /* USER CODE BEGIN Header_UART_TX_task */
@@ -155,47 +144,17 @@ void StartDefaultTask(void *argument)
 * @retval None
 */
 /* USER CODE END Header_UART_TX_task */
-void UART_TX_task(void *argument)
+__weak void UART_TX_task(void *argument)
 {
   /* USER CODE BEGIN UART_TX_task */
-  // UART_DMA_Receive_init(&huart1, buffer_receive_1, buffer_receive_length_7);
-  // UART_DMA_Receive_init(&huart7, buffer_receive_7, buffer_receive_length_7);
-  UART_DMA_Receive_init(&huart10, buffer_receive_10, buffer_receive_length_10);
+
+
   /* Infinite loop */
   for(;;)
   {
-    // for(int i = 0; i < 50; i++)
-    // {
-    //   tempFloat[i] = 0.5 + i;
-    // }
-    Vofa_Transmit(&huart1,51);
-    //HAL_UART_Transmit_DMA(&huart1, (uint8_t *)tempFloat, 56 * 4);
     osDelay(10);
   }
   /* USER CODE END UART_TX_task */
-}
-
-/* USER CODE BEGIN Header_FDCAN_Task */
-/**
-* @brief Function implementing the FDCAN thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_FDCAN_Task */
-void FDCAN_Task(void *argument)
-{
-  /* USER CODE BEGIN FDCAN_Task */
-  //start_motor(&hfdcan1, 0X01);
-  can_bsp_init();
-  All_motor_enable();
-  motor_init();
-  /* Infinite loop */
-  for(;;)
-  {
-    mit_send_in_TIM();
-    osDelay(10);
-  }
-  /* USER CODE END FDCAN_Task */
 }
 
 /* Private application code --------------------------------------------------*/

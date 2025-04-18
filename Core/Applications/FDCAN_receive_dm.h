@@ -98,25 +98,25 @@ typedef enum
     CAN_DM_M8_ID = 0x08,
 
     CAN_DM_M9_ID = 0x09,
-    CAN_DM_M10_ID = 0x10,
-    CAN_DM_M11_ID = 0x11,
-    CAN_DM_M12_ID = 0x12,
+    CAN_DM_M10_ID = 0x0A,
+    CAN_DM_M11_ID = 0x0B,
+    CAN_DM_M12_ID = 0x0C,
 } can_msg_id_e;
 
 typedef enum
 {
-  MASTER_M1_ID = 0x01,
-  MASTER_M2_ID = 0x02,
-  MASTER_M3_ID = 0x03,
-  MASTER_M4_ID = 0x04,
-  MASTER_M5_ID = 0x05,
-  MASTER_M6_ID = 0x06,
-  MASTER_M7_ID = 0x07,
-  MASTER_M8_ID = 0x08,
-  MASTER_M9_ID = 0x09,
-  MASTER_M10_ID = 0x10,
-  MASTER_M11_ID = 0x11,
-  MASTER_M12_ID = 0x12,
+  MASTER_M1_ID = 0x11,
+  MASTER_M2_ID = 0x12,
+  MASTER_M3_ID = 0x13,
+  MASTER_M4_ID = 0x14,
+  MASTER_M5_ID = 0x15,
+  MASTER_M6_ID = 0x16,
+  MASTER_M7_ID = 0x17,
+  MASTER_M8_ID = 0x18,
+  MASTER_M9_ID = 0x19,
+  MASTER_M10_ID = 0x1A,
+  MASTER_M11_ID = 0x1B,
+  MASTER_M12_ID = 0x1C,
 } can_rec_id_e;
 /* CAN send and receive ID */
 
@@ -200,6 +200,8 @@ typedef struct
     DM_measure_t receive; //接收结构体
     first_order_filter_type_t first_order_control_pos;   //电机角度一阶低通滤波
 }motor_t;
+
+void PD_Send();
 #ifdef __cplusplus
 }
 #endif

@@ -22,6 +22,7 @@
 #include "main.h"
 #include "fdcan.h"
 #include "bsp_mc02/can_bsp.h"
+#include "Cpp/main.h"
 
 //#include "state_control.h"
 //#include "leg_control.h"
@@ -193,14 +194,26 @@ void set_zero_motor(FDCAN_HandleTypeDef *hfdcan,uint16_t id)
     fdcanx_send_data(hfdcan, id, DM_can_send_data, FDCAN_DLC_BYTES_8);   //·¢ËÍ
 }
 void mit_send_in_TIM(void) {
+#if SIMULATE_MODE
+    static int i = 0;
+    if (i >= 4) {
+        i = 0;
+    }
+    MIT_motor_CTRL(&hfdcan1, i + 0x01, motor[i].send.pos,motor[i].send.speed, 0, 0,0);
+    MIT_motor_CTRL(&hfdcan2, i + 0x05, motor[i + 4].send.pos,motor[i + 4].send.speed, 0, 0,0);
+    MIT_motor_CTRL(&hfdcan3, i + 0x09, motor[i + 8].send.pos,motor[i + 8].send.speed, 0, 0,0);
+    i++;
+#else
+    PD_Send();
     static int i = 0;
     if (i >= 4) {
         i = 0;
     }
     MIT_motor_CTRL(&hfdcan1, i + 0x01, motor[i].send.pos,motor[i].send.speed, motor[i].send.P, motor[i].send.D,motor[i].send.tor);
-    MIT_motor_CTRL(&hfdcan2, i + 0x05, motor[i].send.pos,motor[i].send.speed, motor[i].send.P, motor[i].send.D,motor[i].send.tor);
-    MIT_motor_CTRL(&hfdcan3, i + 0x09, motor[i].send.pos,motor[i].send.speed, motor[i].send.P, motor[i].send.D,motor[i].send.tor);
+    MIT_motor_CTRL(&hfdcan2, i + 0x05, motor[i + 4].send.pos,motor[i + 4].send.speed, motor[i + 4].send.P, motor[i + 4].send.D,motor[i + 4].send.tor);
+    MIT_motor_CTRL(&hfdcan3, i + 0x09, motor[i + 8].send.pos,motor[i + 8].send.speed, motor[i + 8].send.P, motor[i + 8].send.D,motor[i + 8].send.tor);
     i++;
+#endif
 }
 
 void All_motor_enable()
@@ -229,5 +242,29 @@ void motor_init()
         motor[i].send.D = 0;
         motor[i].send.tor = 0;
 
+    }
+}
+
+void PD_Send()
+{
+    for(int i = 0; i < 12; i++)
+    {
+#if USE_DYF
+        motor[i].send.D = SEND_D;
+        motor[i].send.tor = 0;
+        motor[i].send.speed = 0;
+
+    #if TEST_MODE
+        motor[i].send.P = SEND_P_TEST;
+    #else
+        motor[i].send.P = SEND_P;
+    #endif
+
+#else
+        motor[i].send.P = 0;
+        motor[i].send.D = 0;
+        motor[i].send.speed = 0;
+        motor[i].send.pos = 0;
+#endif
     }
 }

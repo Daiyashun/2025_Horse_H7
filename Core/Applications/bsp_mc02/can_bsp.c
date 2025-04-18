@@ -5,7 +5,7 @@
 #include "can_bsp.h"
 #include "fdcan.h"
 #include "vofa_setting.h"
-
+float RxLocation;
 /**
 ************************************************************************
 * @brief:      	can_bsp_init(void)
@@ -143,7 +143,14 @@ uint8_t fdcanx_send_data(FDCAN_HandleTypeDef *hfdcan, uint16_t id, uint8_t *data
 uint8_t fdcanx_receive(FDCAN_HandleTypeDef *hfdcan, uint16_t *rec_id, uint8_t *buf)
 {
     FDCAN_RxHeaderTypeDef fdcan_RxHeader;
-    if((HAL_FDCAN_GetRxMessage(hfdcan,FDCAN_RX_FIFO0,&fdcan_RxHeader,buf)!=HAL_OK) || (HAL_FDCAN_GetRxMessage(hfdcan,FDCAN_RX_FIFO1,&fdcan_RxHeader,buf)!=HAL_OK))return 0;//接收数据
+	if (RxLocation == 0)
+	{
+		if(HAL_FDCAN_GetRxMessage(hfdcan,FDCAN_RX_FIFO0,&fdcan_RxHeader,buf)!=HAL_OK)return 0;//接收数据
+	}
+    else
+    {
+    	if(HAL_FDCAN_GetRxMessage(hfdcan,FDCAN_RX_FIFO1,&fdcan_RxHeader,buf)!=HAL_OK)return 0;//接收数据
+    }
     *rec_id = fdcan_RxHeader.Identifier;
     return fdcan_RxHeader.DataLength>>16;
 }
@@ -157,10 +164,12 @@ uint8_t fdcanx_receive(FDCAN_HandleTypeDef *hfdcan, uint16_t *rec_id, uint8_t *b
 * @details:    	HAL库的FDCAN中断回调函数
 ************************************************************************
 **/
+
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 {
   if((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) != RESET)
   {
+  		RxLocation = 0;
 		if(hfdcan == &hfdcan1)
 		{
 			fdcan1_rx_callback();
@@ -176,9 +185,9 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 	}
 }
 
-void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
+void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo1ITs)
 {
-	if((RxFifo0ITs & FDCAN_IT_RX_FIFO1_NEW_MESSAGE) != RESET)
+	if((RxFifo1ITs & FDCAN_IT_RX_FIFO1_NEW_MESSAGE) != RESET)
 	{
 		if(hfdcan == &hfdcan1)
 		{
@@ -202,22 +211,19 @@ void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 * @details:    	供用户调用的接收弱函数
 ************************************************************************
 **/
-uint8_t rx_data1[8] = {0};
+
 __WEAK void fdcan1_rx_callback(void)
 {
-    uint16_t id;
-    fdcanx_receive(&hfdcan1, &id, rx_data1);
+
 }
-uint8_t rx_data2[8] = {0};
+
 __WEAK void fdcan2_rx_callback(void)
 {
-    uint16_t id;
-    fdcanx_receive(&hfdcan2, &id, rx_data2);
-}
-uint8_t rx_data3[8] = {0};
 
-void fdcan3_rx_callback(void)
+}
+
+
+__WEAK void fdcan3_rx_callback(void)
 {
-	uint16_t id;
-	fdcanx_receive(&hfdcan3, &id, rx_data3);
+
 }

@@ -1,7 +1,3 @@
-//
-// Created by 27713 on 25-2-20.
-//
-
 #include "Main.h"
 #include "main.h"
 #include "cmsis_os.h"
@@ -13,18 +9,21 @@
 #include "vofa_setting.h"
 #include "bsp_mc02/can_bsp.h"
 
-
 extern "C"
 void MX_FREERTOS_Init(void);
 void Usart_DMA_init();
 
-
 void Main()
 {
-   // HAL_Delay(1000)
-    Usart_DMA_init();
     HAL_TIM_Base_Start_IT(&htim6);                                //START_2ms_CYCLE
 
+    UART_DMA_Receive_init(&huart1, buffer_receive_1, buffer_receive_length_1);
+    UART_DMA_Receive_init(&huart7, buffer_receive_7, buffer_receive_length_7);
+    UART_DMA_Receive_init(&huart10, buffer_receive_10, buffer_receive_length_10);
+
+    can_bsp_init();
+    All_motor_enable();
+    motor_init();
     /* Init scheduler */
     osKernelInitialize();
 
@@ -38,15 +37,4 @@ void Main()
     {
 
     }
-}
-
-void Usart_DMA_init()
-{
-    __HAL_UART_CLEAR_IDLEFLAG(&huart10);
-    __HAL_UART_ENABLE_IT(&huart10,UART_IT_IDLE);
-    HAL_UART_Receive_DMA(&huart10,buffer_receive_10,100);
-
-    // __HAL_UART_CLEAR_IDLEFLAG(&huart1);
-    // __HAL_UART_ENABLE_IT(&huart1,UART_IT_IDLE);
-    // HAL_UART_Receive_DMA(&huart1,buffer_receive_1,100);
 }

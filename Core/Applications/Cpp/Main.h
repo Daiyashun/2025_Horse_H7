@@ -6,6 +6,20 @@
 #define MAIN_H
 
 /*---------------------------- 在以下空白处添加宏定义内容---------------------------*/
+#define USE_DYF 0
+
+#define SIMULATE_MODE 1
+#define TEST_MODE 0
+
+#define PI 3.1415926f
+#define MOTOR_147A_ANGLE_OFFSET 0.29f
+#define MOTOR_258B_ANGLE_OFFSET 1.15f
+#define MOTOR_369C_ANGLE_OFFSET 2.73f
+#define DIRECTION_CORRECTION -1.0f
+
+#define SEND_P 30
+#define SEND_P_TEST 5
+#define SEND_D 1
 
 /*-----------------------------------------------------------------------------*/
 

@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Leg_Control.cpp.obj.d"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj.d"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Rtos.cpp.obj"
+  "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Rtos.cpp.obj.d"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Upper_Visual.cpp.obj"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Upper_Visual.cpp.obj.d"
   "CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/FDCAN_receive_dm.cpp.obj"

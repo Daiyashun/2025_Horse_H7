@@ -9,18 +9,27 @@
 class Upper_data_receive
 {
 public:
-    motor_t Visual_motor_receive[12];
-    void Vdata_get(void);
-    void Vdata_transfer(void);
+    float Visual_motor_receive_tor[12];
+    float Visual_motor_receive_pos[12];
+    uint8_t Real_data[54];
+    bool Visual_Receive_Flag;
+    void Vdata_get(uint8_t* data, uint8_t length);
+    float Vdata_transfer(uint8_t d1, uint8_t d2, uint8_t d3, uint8_t d4);
+    void Vdata_send(void);
+    void Angle_transfer(void);
+    void Tor_transfer(void);
 };
 
 class Upper_data_send
 {
 public:
-    IMU_N300WP Visual_imu;
-    motor_t Visual_motor_send;
-    void Low_Data_get(void);
-    void Low_Data_send(void);
+    float Visual_imu[10];
+    float Visual_motor_send[3][4][3];     //3个FDCAN，每个FDCAN带四个电机，每个电机3个参数,共计36个参数
+    float Reactive_Force[4];
+    float All_data[50];
+    float Reactive_Force_Cal(float data1,float data2,float data3,float data4);
+    void All_Data_get(void);
+    void All_Data_send(void);
 };
 
 #endif //UPPER_VISUAL_H
