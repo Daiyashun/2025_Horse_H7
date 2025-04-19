@@ -174,7 +174,7 @@ void Upper_data_receive::Tor_transfer()
         switch (i)
         {
             case CAN_DM_M1_ID:
-                //asdqwertyfghvbnasdzxcqweasdzxcrtyfghmotor[i - 1].send.tor *= DIRECTION_CORRECTION;
+                //motor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M2_ID:

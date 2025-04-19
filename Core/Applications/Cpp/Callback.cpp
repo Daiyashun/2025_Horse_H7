@@ -32,10 +32,10 @@ void fdcan1_rx_callback(void)
             switch (id)
             {
             case MASTER_M1_ID:
-                motor[0].receive.pos *= DIRECTION_CORRECTION;
-                motor[0].receive.speed *= DIRECTION_CORRECTION;
-                motor[0].receive.toq *= DIRECTION_CORRECTION;
-                motor[0].receive.pos += MOTOR_147A_ANGLE_OFFSET;
+                // motor[0].receive.pos *= DIRECTION_CORRECTION;
+                // motor[0].receive.speed *= DIRECTION_CORRECTION;
+                // motor[0].receive.toq *= DIRECTION_CORRECTION;
+                motor[0].receive.pos -= MOTOR_147A_ANGLE_OFFSET;
                 break;
 
             case MASTER_M2_ID:
@@ -53,10 +53,10 @@ void fdcan1_rx_callback(void)
                 break;
 
             case MASTER_M4_ID:
-                motor[3].receive.pos *= DIRECTION_CORRECTION;
-                motor[3].receive.speed *= DIRECTION_CORRECTION;
-                motor[3].receive.toq *= DIRECTION_CORRECTION;
-                motor[3].receive.pos -= MOTOR_147A_ANGLE_OFFSET;
+                // motor[3].receive.pos *= DIRECTION_CORRECTION;
+                // motor[3].receive.speed *= DIRECTION_CORRECTION;
+                // motor[3].receive.toq *= DIRECTION_CORRECTION;
+                motor[3].receive.pos += MOTOR_147A_ANGLE_OFFSET;
                 break;
 
             default:break;
@@ -95,10 +95,10 @@ void fdcan2_rx_callback(void)
                 break;
 
             case MASTER_M7_ID:
-                // motor[6].receive.pos *= DIRECTION_CORRECTION;
-                // motor[6].receive.speed *= DIRECTION_CORRECTION;
-                // motor[6].receive.toq *= DIRECTION_CORRECTION;
-                motor[6].receive.pos += MOTOR_147A_ANGLE_OFFSET;
+                motor[6].receive.pos *= DIRECTION_CORRECTION;
+                motor[6].receive.speed *= DIRECTION_CORRECTION;
+                motor[6].receive.toq *= DIRECTION_CORRECTION;
+                motor[6].receive.pos -= MOTOR_147A_ANGLE_OFFSET;
                 break;
 
             case MASTER_M8_ID:
@@ -139,10 +139,10 @@ void fdcan3_rx_callback(void)
                 break;
 
             case MASTER_M10_ID:
-                // motor[9].receive.pos *= DIRECTION_CORRECTION;
-                // motor[9].receive.speed *= DIRECTION_CORRECTION;
-                // motor[9].receive.toq *= DIRECTION_CORRECTION;
-                motor[9].receive.pos -= MOTOR_147A_ANGLE_OFFSET;
+                motor[9].receive.pos *= DIRECTION_CORRECTION;
+                motor[9].receive.speed *= DIRECTION_CORRECTION;
+                motor[9].receive.toq *= DIRECTION_CORRECTION;
+                motor[9].receive.pos += MOTOR_147A_ANGLE_OFFSET;
                 break;
 
             case MASTER_M11_ID:
