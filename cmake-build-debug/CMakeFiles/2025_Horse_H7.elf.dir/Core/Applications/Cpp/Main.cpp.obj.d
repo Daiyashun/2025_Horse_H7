@@ -118,5 +118,6 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Main.cpp.obj: \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/usart.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications\Cpp\IMU_N300WP.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/tim.h \
+ D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications\Cpp\Upper_Visual.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications/vofa_setting.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications/bsp_mc02/can_bsp.h

@@ -60,7 +60,7 @@ void Vofa_Transmit(UART_HandleTypeDef *huart, uint8_t num)
     tempData[LEN-1] = 0x7f;
 
 #if VOFA_USE_DMA
-    HAL_UART_Transmit_DMA(huart, (uint8_t *)tempData, LEN+4);
+    HAL_UART_Transmit_DMA(huart, (uint8_t *)tempData, LEN);
 #else
     HAL_UART_Transmit(huart, (uint8_t *)tempData, len,0xff);
 #endif

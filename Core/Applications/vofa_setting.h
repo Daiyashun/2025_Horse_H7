@@ -16,8 +16,8 @@ extern "C" {
 
 /*#include "vofa.h"*/
 #define VOFA_USE_DMA 1//为1时vofa通过dma传输
-#define VOFA_SEND_NUM 51
-#define TEMP_FLOAT_NUM 63
+#define VOFA_SEND_NUM 75
+#define TEMP_FLOAT_NUM 75
 
 extern float VofaData[32];//需要赋给控件的变量extern过来
 //extern float tempFloat[TEMP_FLOAT_NUM];//发送数据暂存

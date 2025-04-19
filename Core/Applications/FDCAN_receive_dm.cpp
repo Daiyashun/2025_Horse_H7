@@ -21,6 +21,7 @@
 #include "FDCAN_receive_dm.h"
 #include "main.h"
 #include "fdcan.h"
+#include "vofa_setting.h"
 #include "bsp_mc02/can_bsp.h"
 #include "Cpp/main.h"
 
@@ -195,16 +196,27 @@ void set_zero_motor(FDCAN_HandleTypeDef *hfdcan,uint16_t id)
 }
 void mit_send_in_TIM(void) {
 #if SIMULATE_MODE
+    for (int j = 0; j < 12; j++)
+    {
+        tempFloat[j + 50] = motor[j].send.tor;
+    }
     static int i = 0;
     if (i >= 4) {
         i = 0;
     }
+
     MIT_motor_CTRL(&hfdcan1, i + 0x01, motor[i].send.pos,motor[i].send.speed, 0, 0,0);
     MIT_motor_CTRL(&hfdcan2, i + 0x05, motor[i + 4].send.pos,motor[i + 4].send.speed, 0, 0,0);
     MIT_motor_CTRL(&hfdcan3, i + 0x09, motor[i + 8].send.pos,motor[i + 8].send.speed, 0, 0,0);
     i++;
 #else
     PD_Send();
+    limit();
+    for (int j = 0; j < 12; j++)
+    {
+        tempFloat[j + 50] = motor[j].send.tor;
+    }
+
     static int i = 0;
     if (i >= 4) {
         i = 0;
@@ -266,5 +278,47 @@ void PD_Send()
         motor[i].send.speed = 0;
         motor[i].send.pos = 0;
 #endif
+    }
+}
+
+void limit(void)
+{
+    for(int i = 1; i < 13; i++)
+    {
+        switch (i)
+        {
+        case CAN_DM_M1_ID:
+        case CAN_DM_M4_ID:
+        case CAN_DM_M7_ID:
+        case CAN_DM_M10_ID:
+            if (fabs(motor[i - 1].receive.pos) > 0.5f)
+            {
+                motor[i - 1].send.tor = 0;
+            }
+            break;
+
+        case CAN_DM_M2_ID:
+        case CAN_DM_M5_ID:
+        case CAN_DM_M8_ID:
+        case CAN_DM_M11_ID:
+            if (fabs(motor[i - 1].receive.pos) > 1.2f)
+            {
+                motor[i - 1].send.tor = 0;
+            }
+            break;
+            break;
+
+        // case CAN_DM_M3_ID:
+        // case CAN_DM_M6_ID:
+        // case CAN_DM_M9_ID:
+        // case CAN_DM_M12_ID:
+        //     if (fabs(motor[i - 1].receive.pos) > 2.8f)
+        //     {
+        //         motor[i - 1].send.tor = 0;
+        //     }
+        //     break;
+
+        default:break;
+        }
     }
 }

@@ -93,17 +93,11 @@ void UART_DMA_Receive_init(UART_HandleTypeDef *usart, uint8_t *buffer, uint8_t l
   */
 void UART_DMA_Receive_IT(UART_HandleTypeDef *usart, DMA_HandleTypeDef *DMA, uint8_t *buffer, uint16_t length)
 {
-    // if(usart->ReceptionType == HAL_UART_RECEPTION_TOIDLE)
-    // {
-    //     HAL_UARTEx_ReceiveToIdle_DMA(usart, buffer, length);
-    // }
     if(usart->ReceptionType == HAL_UART_RECEPTION_STANDARD)
     {
-        //if(__HAL_UART_GET_FLAG(usart, UART_FLAG_IDLE) == 1)
-        {
-            __HAL_UART_CLEAR_IDLEFLAG(usart);
-            HAL_UART_DMAStop(usart);
-            uint16_t real_length = length - __HAL_DMA_GET_COUNTER(DMA);
+        __HAL_UART_CLEAR_IDLEFLAG(usart);
+        HAL_UART_DMAStop(usart);
+        uint8_t real_length = length - __HAL_DMA_GET_COUNTER(DMA);
 
             if(usart->Instance == USART1)     UART1_Receive_Serve(buffer, real_length);//选择解码程序
             //else if(usart == &huart2) UART2_Receive_Serve(buffer, real_length);//选择解码程序
@@ -111,7 +105,7 @@ void UART_DMA_Receive_IT(UART_HandleTypeDef *usart, DMA_HandleTypeDef *DMA, uint
             //else if(usart == &huart4) UART4_Receive_Serve(buffer, real_length);//选择解码程序
             //else if(usart == &huart5) UART5_Receive_Serve(buffer, real_length);//选择解码程序
             //else if(usart == &huart6) UART6_Receive_Serve(buffer, real_length);//选择解码程序
-            else if(usart->Instance == UART7) UART10_Receive_Serve(buffer, real_length);//选择解码程序
+            else if(usart->Instance == UART7) UART7_Receive_Serve(buffer, real_length);//选择解码程序
             //else if(usart == &huart8) UART8_Receive_Serve(buffer, real_length);//选择解码程序
             //else if(usart == &huart9) UART9_Receive_Serve(buffer, real_length);//选择解码程序
             else if(usart->Instance == USART10) UART10_Receive_Serve(buffer, real_length);//选择解码程序
@@ -119,7 +113,7 @@ void UART_DMA_Receive_IT(UART_HandleTypeDef *usart, DMA_HandleTypeDef *DMA, uint
             HAL_UART_Receive_DMA(usart, buffer, length);
         }
 
-    }
+
 }
 /**
   * @brief          串口异常的处理
@@ -201,15 +195,11 @@ static void UART10_Receive_Serve(uint8_t *buffer, uint8_t length)
     Vdata_Tx.Visual_imu[1] = IMU.Qx;
     Vdata_Tx.Visual_imu[2] = IMU.Qy;
     Vdata_Tx.Visual_imu[3] = IMU.Qz;
-    Vdata_Tx.Visual_imu[4] = IMU.RollSpeed;
+    Vdata_Tx.Visual_imu[4] = IMU.PitchSpeed;
     Vdata_Tx.Visual_imu[5] = IMU.PitchSpeed;
     Vdata_Tx.Visual_imu[6] = IMU.YawSpeed;
     Vdata_Tx.Visual_imu[7] = IMU.X_Accelerometer;
     Vdata_Tx.Visual_imu[8] = IMU.Y_Accelerometer;
-    Vdata_Tx.Visual_imu[9] = IMU.Z_Accelerometer;
+    Vdata_Tx.Visual_imu[9] = IMU.Z_Accelerometer + 9.8;
 }
 
-void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
-{
-   
-}

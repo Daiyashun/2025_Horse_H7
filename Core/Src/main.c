@@ -32,6 +32,7 @@
 #include "vofa.h"
 #include "Cpp/Main.h"
 #include "FDCAN_receive_dm.h"
+#include "Cpp/Callback.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

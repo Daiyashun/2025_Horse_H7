@@ -69,6 +69,7 @@ void Upper_data_receive::Vdata_get(uint8_t* data, uint8_t length)
                 Visual_motor_receive_pos[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
 #else
                 Visual_motor_receive_tor[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
+                tempFloat[j + 62] = Visual_motor_receive_tor[j];
 #endif
                 j ++;
                 k += 4;
@@ -89,9 +90,9 @@ void Upper_data_receive::Vdata_send()
         for(int i = 0; i < 12; i++)
         {
             motor[i].send.tor = Visual_motor_receive_tor[i];
-            Tor_transfer();
 #endif
         }
+        Tor_transfer();
     }
 }
 
@@ -173,51 +174,51 @@ void Upper_data_receive::Tor_transfer()
         switch (i)
         {
             case CAN_DM_M1_ID:
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                //asdqwertyfghvbnasdzxcqweasdzxcrtyfghmotor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M2_ID:
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M3_ID:
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M4_ID:
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                //motor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M5_ID:
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                //motor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M6_ID:
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                //motor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M7_ID:
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M8_ID:
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M9_ID:
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M10_ID:
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M11_ID:
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                //motor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M12_ID:
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                //motor[i - 1].send.tor *= DIRECTION_CORRECTION;
                 break;
 
             default:break;
@@ -272,11 +273,10 @@ void Upper_data_send::All_Data_get()
         {
             for (int k = 0; k < 3; k++)
             {
-                All_data[i * 4 * 3+ j * 3 + k] = Visual_motor_send[i][j][k];
+                All_data[i * 4 * 3 + j * 3 + k] = Visual_motor_send[i][j][k];
             }
         }
     }
-
     //其次是IMU的数据，共10个
     for(int i = 36; i < 46; i++)
     {
@@ -286,7 +286,7 @@ void Upper_data_send::All_Data_get()
     //最后是地面反作用力。共4个
     for(int i = 0; i < 4; i++)
     {
-        //Reactive_Force[i] = Reactive_Force_Cal(motor[3 * i + 2].receive.toq, motor[3 * i].receive.pos,PI -  motor[3 * i + 2].receive.pos,motor[3 * i + 1].receive.pos);
+        Reactive_Force[i] = -Reactive_Force_Cal(motor[3 * i + 2].receive.toq, motor[3 * i].receive.pos,PI -  motor[3 * i + 2].receive.pos,motor[3 * i + 1].receive.pos);
     }
     for(int i = 46; i < 50; i++)
     {

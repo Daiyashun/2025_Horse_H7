@@ -202,6 +202,7 @@ typedef struct
 }motor_t;
 
 void PD_Send();
+void limit(void);
 #ifdef __cplusplus
 }
 #endif

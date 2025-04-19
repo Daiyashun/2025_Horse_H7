@@ -100,5 +100,6 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/FDCAN_receive_dm.cpp.obj: \
  d:\10_2021.10\lib\gcc\arm-none-eabi\10.3.1\include\stdbool.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/fdcan.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/main.h \
+ D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications\vofa_setting.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications\bsp_mc02/can_bsp.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications\Cpp/main.h

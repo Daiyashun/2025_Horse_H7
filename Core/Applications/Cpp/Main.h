@@ -8,7 +8,7 @@
 /*---------------------------- 在以下空白处添加宏定义内容---------------------------*/
 #define USE_DYF 0
 
-#define SIMULATE_MODE 1
+#define SIMULATE_MODE 0
 #define TEST_MODE 0
 
 #define PI 3.1415926f
@@ -22,9 +22,9 @@
 #define SEND_D 1
 
 #define DATA_LENGTH_REAL   51
-#define DATA_LENGTH  DATA_LENGTH_REAL*4
+#define DATA_LENGTH  DATA_LENGTH_REAL * 4
 #define DATA_LENGTH_REAL_DYF 31
-#define DATA_LENGTH_DYF DATA_LENGTH_REAL_DYF*4
+#define DATA_LENGTH_DYF DATA_LENGTH_REAL_DYF * vbn4
 /*-----------------------------------------------------------------------------*/
 
 #ifdef __cplusplus
@@ -35,6 +35,7 @@ extern "C" {
 #include "stdint.h"
 
 void Main();
+void disable_all();
 /*---------------------------- C Scope End---------------------------*/
 #ifdef __cplusplus
 }
