@@ -204,7 +204,6 @@ void mit_send_in_TIM(void) {
     if (i >= 4) {
         i = 0;
     }
-
     MIT_motor_CTRL(&hfdcan1, i + 0x01, motor[i].send.pos,motor[i].send.speed, 0, 0,0);
     MIT_motor_CTRL(&hfdcan2, i + 0x05, motor[i + 4].send.pos,motor[i + 4].send.speed, 0, 0,0);
     MIT_motor_CTRL(&hfdcan3, i + 0x09, motor[i + 8].send.pos,motor[i + 8].send.speed, 0, 0,0);
@@ -301,22 +300,22 @@ void limit(void)
         case CAN_DM_M5_ID:
         case CAN_DM_M8_ID:
         case CAN_DM_M11_ID:
-            if (fabs(motor[i - 1].receive.pos) > 1.2f)
+            if (fabs(motor[i - 1].receive.pos) > 1.7f)
             {
                 motor[i - 1].send.tor = 0;
             }
             break;
             break;
 
-        // case CAN_DM_M3_ID:
-        // case CAN_DM_M6_ID:
-        // case CAN_DM_M9_ID:
-        // case CAN_DM_M12_ID:
-        //     if (fabs(motor[i - 1].receive.pos) > 2.8f)
-        //     {
-        //         motor[i - 1].send.tor = 0;
-        //     }
-        //     break;
+        case CAN_DM_M3_ID:
+        case CAN_DM_M6_ID:
+        case CAN_DM_M9_ID:
+        case CAN_DM_M12_ID:
+            if (fabs(motor[i - 1].receive.pos) < 0.4f)
+            {
+                motor[i - 1].send.tor = 0;
+            }
+            break;
 
         default:break;
         }

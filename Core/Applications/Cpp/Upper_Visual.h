@@ -10,6 +10,7 @@ class Upper_data_receive
 {
 public:
     float Visual_motor_receive_tor[12];
+    float Last_data[12];
     float Visual_motor_receive_pos[12];
     uint8_t Real_data[54];
     bool Visual_Receive_Flag;

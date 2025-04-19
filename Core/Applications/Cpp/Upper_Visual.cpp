@@ -7,7 +7,7 @@
 #include <cstring>
 
 #include "vofa_setting.h"
-
+float Receive_data[12];
 extern motor_t motor[12];
 void Stand()
 {
@@ -68,31 +68,46 @@ void Upper_data_receive::Vdata_get(uint8_t* data, uint8_t length)
 #if USE_DYF
                 Visual_motor_receive_pos[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
 #else
-                Visual_motor_receive_tor[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
-                tempFloat[j + 62] = Visual_motor_receive_tor[j];
+               Receive_data[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
+               //Visual_motor_receive_tor[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
+                tempFloat[j + 62] = Receive_data[j];
 #endif
                 j ++;
                 k += 4;
             }
             Visual_Receive_Flag = 1;
         }
+        // Receive_data[0] = 2.0f/10;//+
+        // Receive_data[1] = 1.5f/10;
+        // Receive_data[2] = 6.0f/10;
+        // Receive_data[3] = -2.0f/10;//-
+        // Receive_data[4] = 1.5f/10;
+        // Receive_data[5] = 6.0f/10;
+        // Receive_data[6] = 2.0f/10;//+
+        // Receive_data[7] = 2.0f/10;
+        // Receive_data[8] = 10.0f/10;
+        // Receive_data[9] = -2.0f/10;//-
+        // Receive_data[10] = 2.0/10;
+        // Receive_data[11] = 10.0f/10;
     }
 }
 
 void Upper_data_receive::Vdata_send()
 {
-    if (Visual_Receive_Flag)
+  //if (Visual_Receive_Flag)
     {
 #if USE_DYF
 
         Angle_transfer();
 #else
+
         for(int i = 0; i < 12; i++)
         {
-            motor[i].send.tor = Visual_motor_receive_tor[i];
-#endif
+            motor[i].send.tor = Receive_data[i];
+            // motor[i].send.tor = Visual_motor_receive_tor[i];
         }
         Tor_transfer();
+#endif
     }
 }
 

@@ -19,7 +19,7 @@ extern "C" {
 #define buffer_receive_length_4 50
 #define buffer_receive_length_5 50
 #define buffer_receive_length_6 50
-#define buffer_receive_length_7 150
+#define buffer_receive_length_7 100
 #define buffer_receive_length_8 50
 #define buffer_receive_length_9 50
 #define buffer_receive_length_10 100
