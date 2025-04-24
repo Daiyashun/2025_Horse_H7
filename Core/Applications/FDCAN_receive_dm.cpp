@@ -210,7 +210,7 @@ void mit_send_in_TIM(void) {
     i++;
 #else
     PD_Send();
-    limit();
+    //limit();
     for (int j = 0; j < 12; j++)
     {
         tempFloat[j + 50] = motor[j].send.tor;
@@ -220,9 +220,9 @@ void mit_send_in_TIM(void) {
     if (i >= 4) {
         i = 0;
     }
-    MIT_motor_CTRL(&hfdcan1, i + 0x01, motor[i].send.pos,motor[i].send.speed, motor[i].send.P, motor[i].send.D,motor[i].send.tor);
-    MIT_motor_CTRL(&hfdcan2, i + 0x05, motor[i + 4].send.pos,motor[i + 4].send.speed, motor[i + 4].send.P, motor[i + 4].send.D,motor[i + 4].send.tor);
-    MIT_motor_CTRL(&hfdcan3, i + 0x09, motor[i + 8].send.pos,motor[i + 8].send.speed, motor[i + 8].send.P, motor[i + 8].send.D,motor[i + 8].send.tor);
+    MIT_motor_CTRL(&hfdcan1, i + 0x01, 0,0, 0, 0,motor[i].send.tor);
+    MIT_motor_CTRL(&hfdcan2, i + 0x05, 0,0, 0, 0,motor[i + 4].send.tor);
+    MIT_motor_CTRL(&hfdcan3, i + 0x09, 0,0, 0, 0,motor[i + 8].send.tor);
     i++;
 #endif
 }
@@ -252,7 +252,6 @@ void motor_init()
         motor[i].send.P = 0;
         motor[i].send.D = 0;
         motor[i].send.tor = 0;
-
     }
 }
 

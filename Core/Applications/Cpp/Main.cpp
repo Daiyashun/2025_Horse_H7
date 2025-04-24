@@ -19,7 +19,7 @@ extern Upper_data_receive Vdata_Rx;
 extern Upper_data_send Vdata_Tx;
 void Main()
 {
-    HAL_TIM_Base_Start_IT(&htim6);                                //START_2ms_CYCLE
+    HAL_TIM_Base_Start_IT(&htim6);
     UART_DMA_Receive_init(&huart1, buffer_receive_1, buffer_receive_length_1);
     UART_DMA_Receive_init(&huart7, buffer_receive_7, buffer_receive_length_7);
     UART_DMA_Receive_init(&huart10, buffer_receive_10, buffer_receive_length_10);
@@ -27,6 +27,7 @@ void Main()
     Vdata_Rx.Visual_Receive_Flag = 0;
     disable_all();
     can_bsp_init();
+
     All_motor_enable();
     motor_init();
     /* Init scheduler */

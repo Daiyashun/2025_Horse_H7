@@ -82,6 +82,7 @@ void UART_DMA_Receive_init(UART_HandleTypeDef *usart, uint8_t *buffer, uint8_t l
 {
     __HAL_UART_ENABLE_IT(usart,UART_IT_IDLE);
     HAL_UART_Receive_DMA(usart,buffer,length);//打开DMA接收
+    //HAL_UARTEx_ReceiveToIdle_DMA(usart,buffer,length);
 }
 /**
   * @brief          串口DMA接收中断函数->放入《USER CODE BEGIN USARTX_IRQn 1》 中
@@ -99,20 +100,19 @@ void UART_DMA_Receive_IT(UART_HandleTypeDef *usart, DMA_HandleTypeDef *DMA, uint
         HAL_UART_DMAStop(usart);
         uint8_t real_length = length - __HAL_DMA_GET_COUNTER(DMA);
 
-            if(usart == &huart1)     UART1_Receive_Serve(buffer, real_length);//选择解码程序
-            //else if(usart == &huart2) UART2_Receive_Serve(buffer, real_length);//选择解码程序
-            //else if(usart == &huart3) UART3_Receive_Serve(buffer, real_length);//选择解码程序
-            //else if(usart == &huart4) UART4_Receive_Serve(buffer, real_length);//选择解码程序
-            //else if(usart == &huart5) UART5_Receive_Serve(buffer, real_length);//选择解码程序
-            //else if(usart == &huart6) UART6_Receive_Serve(buffer, real_length);//选择解码程序
-            else if(usart == &huart7) UART7_Receive_Serve(buffer, real_length);//选择解码程序
-            //else if(usart == &huart8) UART8_Receive_Serve(buffer, real_length);//选择解码程序
-            //else if(usart == &huart9) UART9_Receive_Serve(buffer, real_length);//选择解码程序
-            else if(usart == &huart10) UART10_Receive_Serve(buffer, real_length);//选择解码程序
-            memset(buffer,0,real_length);
-            HAL_UART_Receive_DMA(usart, buffer, length);
-        }
-
+        if(usart == &huart1)     UART1_Receive_Serve(buffer, real_length);//选择解码程序
+        //else if(usart == &huart2) UART2_Receive_Serve(buffer, real_length);//选择解码程序
+        //else if(usart == &huart3) UART3_Receive_Serve(buffer, real_length);//选择解码程序
+        //else if(usart == &huart4) UART4_Receive_Serve(buffer, real_length);//选择解码程序
+        //else if(usart == &huart5) UART5_Receive_Serve(buffer, real_length);//选择解码程序
+        //else if(usart == &huart6) UART6_Receive_Serve(buffer, real_length);//选择解码程序
+        else if(usart == &huart7) UART7_Receive_Serve(buffer, real_length);//选择解码程序
+        //else if(usart == &huart8) UART8_Receive_Serve(buffer, real_length);//选择解码程序
+        //else if(usart == &huart9) UART9_Receive_Serve(buffer, real_length);//选择解码程序
+        else if(usart == &huart10) UART10_Receive_Serve(buffer, real_length);//选择解码程序
+        memset(buffer,0,real_length);
+        HAL_UART_Receive_DMA(usart, buffer, length);
+    }
 
 }
 /**

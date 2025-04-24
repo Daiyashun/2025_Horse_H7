@@ -69,7 +69,7 @@ void Upper_data_receive::Vdata_get(uint8_t* data, uint8_t length)
                 Visual_motor_receive_pos[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
 #else
                Receive_data[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
-               //Visual_motor_receive_tor[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
+               Visual_motor_receive_tor[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
                 tempFloat[j + 62] = Receive_data[j];
 #endif
                 j ++;
@@ -94,7 +94,7 @@ void Upper_data_receive::Vdata_get(uint8_t* data, uint8_t length)
 
 void Upper_data_receive::Vdata_send()
 {
-  //if (Visual_Receive_Flag)
+  if (Visual_Receive_Flag)
     {
 #if USE_DYF
 
@@ -103,8 +103,8 @@ void Upper_data_receive::Vdata_send()
 
         for(int i = 0; i < 12; i++)
         {
-            motor[i].send.tor = Receive_data[i];
-            // motor[i].send.tor = Visual_motor_receive_tor[i];
+            // motor[i].send.tor = Receive_data[i]*0.1f;
+            motor[i].send.tor = Visual_motor_receive_tor[i]*0.5f;
         }
         Tor_transfer();
 #endif
@@ -184,61 +184,67 @@ void Upper_data_receive::Angle_transfer()
 
 void Upper_data_receive::Tor_transfer()
 {
-    for (int i = 1; i < 13; i++)
-    {
-        switch (i)
-        {
-            case CAN_DM_M1_ID:
-                //motor[i - 1].send.tor *= DIRECTION_CORRECTION;
-                break;
-
-            case CAN_DM_M2_ID:
-                motor[i - 1].send.tor *= DIRECTION_CORRECTION;
-                break;
-
-            case CAN_DM_M3_ID:
-                motor[i - 1].send.tor *= DIRECTION_CORRECTION;
-                break;
-
-            case CAN_DM_M4_ID:
-                //motor[i - 1].send.tor *= DIRECTION_CORRECTION;
-                break;
-
-            case CAN_DM_M5_ID:
-                //motor[i - 1].send.tor *= DIRECTION_CORRECTION;
-                break;
-
-            case CAN_DM_M6_ID:
-                //motor[i - 1].send.tor *= DIRECTION_CORRECTION;
-                break;
-
-            case CAN_DM_M7_ID:
-                motor[i - 1].send.tor *= DIRECTION_CORRECTION;
-                break;
-
-            case CAN_DM_M8_ID:
-                motor[i - 1].send.tor *= DIRECTION_CORRECTION;
-                break;
-
-            case CAN_DM_M9_ID:
-                motor[i - 1].send.tor *= DIRECTION_CORRECTION;
-                break;
-
-            case CAN_DM_M10_ID:
-                motor[i - 1].send.tor *= DIRECTION_CORRECTION;
-                break;
-
-            case CAN_DM_M11_ID:
-                //motor[i - 1].send.tor *= DIRECTION_CORRECTION;
-                break;
-
-            case CAN_DM_M12_ID:
-                //motor[i - 1].send.tor *= DIRECTION_CORRECTION;
-                break;
-
-            default:break;
-        }
-    }
+    // for (int i = 1; i < 13; i++)
+    // {
+    //     switch (i)
+    //     {
+    //         case CAN_DM_M1_ID:
+    //             //motor[CAN_DM_M1_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    //             break;
+    //
+    //         case CAN_DM_M2_ID:
+    //             motor[CAN_DM_M2_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    //             break;
+    //
+    //         case CAN_DM_M3_ID:
+    //             motor[CAN_DM_M3_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    //             break;
+    //
+    //         case CAN_DM_M4_ID:
+    //             //motor[CAN_DM_M4_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    //             break;
+    //
+    //         case CAN_DM_M5_ID:
+    //             //motor[CAN_DM_M5_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    //             break;
+    //
+    //         case CAN_DM_M6_ID:
+    //             //motor[CAN_DM_M6_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    //             break;
+    //
+    //         case CAN_DM_M7_ID:
+    //             motor[CAN_DM_M7_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    //             break;
+    //
+    //         case CAN_DM_M8_ID:
+    //             motor[CAN_DM_M8_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    //             break;
+    //
+    //         case CAN_DM_M9_ID:
+    //             //motor[CAN_DM_M9_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    //             break;
+    //
+    //         case CAN_DM_M10_ID:
+    //             motor[CAN_DM_M10_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    //             break;
+    //
+    //         case CAN_DM_M11_ID:
+    //             //motor[CAN_DM_M11_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    //             break;
+    //
+    //         case CAN_DM_M12_ID:
+    //             motor[CAN_DM_M12_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    //             break;
+    //
+    //         default:break;
+    //     }
+    // }
+    motor[CAN_DM_M2_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    motor[CAN_DM_M3_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    motor[CAN_DM_M7_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    motor[CAN_DM_M8_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    motor[CAN_DM_M10_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    motor[CAN_DM_M9_ID - 1].send.tor *= DIRECTION_CORRECTION;
 }
 
 
