@@ -26,14 +26,14 @@ extern "C" {
 /*DM Motor Default 参数*/
 #define P_MIN -12.5f
 #define P_MAX 12.5f
-#define V_MIN -30.0f
-#define V_MAX 30.0f
+#define V_MIN -45.0f
+#define V_MAX -V_MIN
 #define KP_MIN 0.0f
 #define KP_MAX 500.0f
 #define KD_MIN 0.0f
 #define KD_MAX 5.0f
-#define T_MIN -10.0f
-#define T_MAX 10.0f
+#define T_MIN -20.0f
+#define T_MAX 20.0f
 /* CAN send and receive ID */
 /*接收到的DM电机的参数结构体*/
 /*

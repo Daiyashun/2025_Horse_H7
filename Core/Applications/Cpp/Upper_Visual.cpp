@@ -104,7 +104,7 @@ void Upper_data_receive::Vdata_send()
         for(int i = 0; i < 12; i++)
         {
             // motor[i].send.tor = Receive_data[i]*0.1f;
-            motor[i].send.tor = Visual_motor_receive_tor[i]*0.5f;
+            motor[i].send.tor = Visual_motor_receive_tor[i];
         }
         Tor_transfer();
 #endif

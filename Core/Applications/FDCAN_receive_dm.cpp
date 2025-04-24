@@ -210,7 +210,7 @@ void mit_send_in_TIM(void) {
     i++;
 #else
     PD_Send();
-    //limit();
+    limit();
     for (int j = 0; j < 12; j++)
     {
         tempFloat[j + 50] = motor[j].send.tor;
@@ -275,6 +275,18 @@ void PD_Send()
         motor[i].send.D = 0;
         motor[i].send.speed = 0;
         motor[i].send.pos = 0;
+        if (fabs(motor[i].send.tor) > T_MAX)
+        {
+            if (motor[i].send.tor > 0)
+            {
+                motor[i].send.tor = T_MAX;
+            }
+            else
+            {
+                motor[i].send.tor = T_MIN;
+            }
+        }
+
 #endif
     }
 }
