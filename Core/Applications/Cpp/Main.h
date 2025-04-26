@@ -6,7 +6,7 @@
 #define MAIN_H
 
 /*---------------------------- 在以下空白处添加宏定义内容---------------------------*/
-#define USE_DYF 0
+#define USE_DYF 1
 
 #define SIMULATE_MODE 0
 #define TEST_MODE 0
@@ -17,14 +17,14 @@
 #define MOTOR_369C_ANGLE_OFFSET 2.73f
 #define DIRECTION_CORRECTION -1.0f
 
-#define SEND_P 30
+#define SEND_P 20
 #define SEND_P_TEST 5
 #define SEND_D 1
 
 #define DATA_LENGTH_REAL   51
 #define DATA_LENGTH  DATA_LENGTH_REAL * 4
-#define DATA_LENGTH_REAL_DYF 31
-#define DATA_LENGTH_DYF DATA_LENGTH_REAL_DYF * vbn4
+#define DATA_LENGTH_REAL_DYF 32
+#define DATA_LENGTH_DYF DATA_LENGTH_REAL_DYF * 4
 /*-----------------------------------------------------------------------------*/
 
 #ifdef __cplusplus

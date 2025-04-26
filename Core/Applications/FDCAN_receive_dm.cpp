@@ -220,9 +220,9 @@ void mit_send_in_TIM(void) {
     if (i >= 4) {
         i = 0;
     }
-    MIT_motor_CTRL(&hfdcan1, i + 0x01, 0,0, 0, 0,motor[i].send.tor);
-    MIT_motor_CTRL(&hfdcan2, i + 0x05, 0,0, 0, 0,motor[i + 4].send.tor);
-    MIT_motor_CTRL(&hfdcan3, i + 0x09, 0,0, 0, 0,motor[i + 8].send.tor);
+    MIT_motor_CTRL(&hfdcan1, i + 0x01, motor[i].send.pos,0, motor[i].send.P, motor[i].send.D,motor[i].send.tor);
+    MIT_motor_CTRL(&hfdcan2, i + 0x05, motor[i + 4].send.pos,0, motor[i + 4].send.P, motor[i + 4].send.D,motor[i + 4].send.tor);
+    MIT_motor_CTRL(&hfdcan3, i + 0x09, motor[i + 8].send.pos,0, motor[i + 8].send.P, motor[i + 8].send.D,motor[i + 8].send.tor);
     i++;
 #endif
 }
@@ -267,7 +267,14 @@ void PD_Send()
     #if TEST_MODE
         motor[i].send.P = SEND_P_TEST;
     #else
-        motor[i].send.P = SEND_P;
+        if (VofaSlider[0] == 1)
+        {
+            motor[i].send.P = SEND_P;
+        }
+        else
+        {
+            motor[i].send.P = 5;
+        }
     #endif
 
 #else
@@ -311,7 +318,7 @@ void limit(void)
         case CAN_DM_M5_ID:
         case CAN_DM_M8_ID:
         case CAN_DM_M11_ID:
-            if (fabs(motor[i - 1].receive.pos) > 1.7f)
+            if (fabs(motor[i - 1].receive.pos) > 2.5f)
             {
                 motor[i - 1].send.tor = 0;
             }

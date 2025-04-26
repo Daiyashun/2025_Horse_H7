@@ -11,10 +11,10 @@ float Receive_data[12];
 extern motor_t motor[12];
 void Stand()
 {
-    motor[0].send.pos = -0.1f;
-    motor[3].send.pos = 0.1f;
-    motor[6].send.pos = -0.1f;
-    motor[9].send.pos = 0.1f;
+    motor[0].send.pos = -0.2f;
+    motor[3].send.pos = 0.2f;
+    motor[6].send.pos = -0.2f;
+    motor[9].send.pos = 0.2f;
 
     motor[1].send.pos = 0.9f;
     motor[4].send.pos = 0.9f;
@@ -67,6 +67,7 @@ void Upper_data_receive::Vdata_get(uint8_t* data, uint8_t length)
             {
 #if USE_DYF
                 Visual_motor_receive_pos[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
+                tempFloat[j + 62] = Visual_motor_receive_pos[j];
 #else
                Receive_data[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
                Visual_motor_receive_tor[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
@@ -78,37 +79,74 @@ void Upper_data_receive::Vdata_get(uint8_t* data, uint8_t length)
             Visual_Receive_Flag = 1;
         }
         // Receive_data[0] = 2.0f/10;//+
-        // Receive_data[1] = 1.5f/10;
+        // Receive_data[1] = 1.5f;
         // Receive_data[2] = 6.0f/10;
         // Receive_data[3] = -2.0f/10;//-
-        // Receive_data[4] = 1.5f/10;
+        // Receive_data[4] = 1.5f;
         // Receive_data[5] = 6.0f/10;
         // Receive_data[6] = 2.0f/10;//+
-        // Receive_data[7] = 2.0f/10;
+        // Receive_data[7] = 2.0f;
         // Receive_data[8] = 10.0f/10;
         // Receive_data[9] = -2.0f/10;//-
-        // Receive_data[10] = 2.0/10;
+        // Receive_data[10] = 2.0f;
         // Receive_data[11] = 10.0f/10;
     }
 }
 
 void Upper_data_receive::Vdata_send()
 {
+    if (VofaSlider[1] == 1)
+    {
+        Stand();
+        if (Visual_Receive_Flag)
+        {
+
+        }
+        else
+        {
+            Angle_transfer();
+        }
+    }
+    else
+    {
+        for (int i = 0; i < 12; i++)
+        {
+            motor[i].send.pos = 0;
+        }
+    }
+
   if (Visual_Receive_Flag)
     {
 #if USE_DYF
-
+        motor[3].send.pos = Visual_motor_receive_pos[0];
+        motor[4].send.pos = Visual_motor_receive_pos[1];
+        motor[5].send.pos = Visual_motor_receive_pos[2];
+        motor[0].send.pos = Visual_motor_receive_pos[3];
+        motor[1].send.pos = Visual_motor_receive_pos[4];
+        motor[2].send.pos = Visual_motor_receive_pos[5];
+        motor[9].send.pos = Visual_motor_receive_pos[6];
+        motor[10].send.pos = Visual_motor_receive_pos[7];
+        motor[11].send.pos = Visual_motor_receive_pos[8];
+        motor[6].send.pos = Visual_motor_receive_pos[9];
+        motor[7].send.pos = Visual_motor_receive_pos[10];
+        motor[8].send.pos = Visual_motor_receive_pos[11];
         Angle_transfer();
 #else
 
         for(int i = 0; i < 12; i++)
         {
-            // motor[i].send.tor = Receive_data[i]*0.1f;
+            //motor[i].send.tor = Receive_data[i];
             motor[i].send.tor = Visual_motor_receive_tor[i];
         }
         Tor_transfer();
 #endif
+
     }
+#if USE_DYF
+
+#else
+    Tor_transfer();
+#endif
 }
 
 void Upper_data_receive::Angle_transfer()
@@ -118,63 +156,63 @@ void Upper_data_receive::Angle_transfer()
         switch (i)
         {
             case CAN_DM_M1_ID:
-                motor[i - 1].send.pos += MOTOR_147A_ANGLE_OFFSET;
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M1_ID - 1].send.pos += MOTOR_147A_ANGLE_OFFSET;
+                //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M2_ID:
-                motor[i - 1].send.pos += MOTOR_258B_ANGLE_OFFSET;
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M2_ID - 1].send.pos -= MOTOR_258B_ANGLE_OFFSET;
+                motor[CAN_DM_M2_ID - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M3_ID:
-                motor[i - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M3_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                motor[CAN_DM_M3_ID - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M4_ID:
-                motor[i - 1].send.pos += MOTOR_147A_ANGLE_OFFSET;
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M4_ID - 1].send.pos -= MOTOR_147A_ANGLE_OFFSET;
+                //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M5_ID:
-                motor[i - 1].send.pos += MOTOR_258B_ANGLE_OFFSET;
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M5_ID - 1].send.pos -= MOTOR_258B_ANGLE_OFFSET;
+                //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M6_ID:
-                motor[i - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M6_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M7_ID:
-                motor[i - 1].send.pos += MOTOR_147A_ANGLE_OFFSET;
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M7_ID - 1].send.pos += MOTOR_147A_ANGLE_OFFSET;
+                motor[CAN_DM_M7_ID - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M8_ID:
-                motor[i - 1].send.pos += MOTOR_258B_ANGLE_OFFSET;
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M8_ID - 1].send.pos -= MOTOR_258B_ANGLE_OFFSET;
+                motor[CAN_DM_M8_ID - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M9_ID:
-                motor[i - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M9_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                motor[CAN_DM_M9_ID - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M10_ID:
-                motor[i - 1].send.pos += MOTOR_147A_ANGLE_OFFSET;
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M10_ID - 1].send.pos -= MOTOR_147A_ANGLE_OFFSET;
+                motor[CAN_DM_M10_ID - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M11_ID:
-                motor[i - 1].send.pos += MOTOR_258B_ANGLE_OFFSET;
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M11_ID - 1].send.pos -= MOTOR_258B_ANGLE_OFFSET;
+                //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             case CAN_DM_M12_ID:
-                motor[i - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
-                motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M12_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 break;
 
             default:break;
@@ -245,6 +283,11 @@ void Upper_data_receive::Tor_transfer()
     motor[CAN_DM_M8_ID - 1].send.tor *= DIRECTION_CORRECTION;
     motor[CAN_DM_M10_ID - 1].send.tor *= DIRECTION_CORRECTION;
     motor[CAN_DM_M9_ID - 1].send.tor *= DIRECTION_CORRECTION;
+
+    // motor[CAN_DM_M2_ID - 1].send.tor *= 2;
+    // motor[CAN_DM_M5_ID - 1].send.tor *= 2;
+    // motor[CAN_DM_M8_ID - 1].send.tor *= 2;
+    // motor[CAN_DM_M11_ID - 1].send.tor *= 2;
 }
 
 
@@ -256,36 +299,38 @@ float Upper_data_send::Reactive_Force_Cal(float data1, float data2, float data3,
 void Upper_data_send::All_Data_get()
 {
 #if USE_DYF
-    All_Data[0] = motor[3].receive.pos;
-    All_Data[1] = motor[3].receive.speed;
-    All_Data[2] = motor[4].receive.pos;
-    All_Data[3] = motor[4].receive.speed;
-    All_Data[4] = motor[5].receive.pos;
-    All_Data[5] = motor[5].receive.speed;
-    All_Data[6] = motor[0].receive.pos;
-    All_Data[7] = motor[0].receive.speed;
-    All_Data[8] = motor[1].receive.pos;
-    All_Data[9] = motor[1].receive.speed;
-    All_Data[10] = motor[2].receive.pos;
-    All_Data[11] = motor[2].receive.speed;
-    All_Data[12] = motor[9].receive.pos;
-    All_Data[13] = motor[9].receive.speed;
-    All_Data[14] = motor[10].receive.pos;
-    All_Data[15] = motor[10].receive.speed;
-    All_Data[16] = motor[11].receive.pos;
-    All_Data[17] = motor[11].receive.speed;
-    All_Data[18] = motor[6].receive.pos;
-    All_Data[19] = motor[6].receive.speed;
-    All_Data[20] = motor[7].receive.pos;
-    All_Data[21] = motor[7].receive.speed;
-    All_Data[22] = motor[8].receive.pos;
-    All_Data[23] = Visual_imu[];
-    All_Data[24] = motor[8].receive.speed;
-    All_Data[25] = motor[8].receive.speed;
-    All_Data[26] = motor[8].receive.speed;
-    All_Data[27] = motor[8].receive.speed;
-    All_Data[28] = motor[8].receive.speed;
-    All_Data[29] = motor[8].receive.speed;
+    All_data[0] = motor[3].receive.pos;
+    All_data[1] = motor[4].receive.pos;
+    All_data[2] = motor[5].receive.pos;
+    All_data[3] = motor[0].receive.pos;
+    All_data[4] = motor[1].receive.pos;
+    All_data[5] = motor[2].receive.pos;
+    All_data[6] = motor[9].receive.pos;
+    All_data[7] = motor[10].receive.pos;
+    All_data[8] = motor[11].receive.pos;
+    All_data[9] = motor[6].receive.pos;
+    All_data[10] = motor[7].receive.pos;
+    All_data[11] = motor[8].receive.pos;
+    All_data[12] = motor[3].receive.speed;
+    All_data[13] = motor[4].receive.speed;
+    All_data[14] = motor[5].receive.speed;
+    All_data[15] = motor[0].receive.speed;
+    All_data[16] = motor[1].receive.speed;
+    All_data[17] = motor[2].receive.speed;
+    All_data[18] = motor[9].receive.speed;
+    All_data[19] = motor[10].receive.speed;
+    All_data[20] = motor[11].receive.speed;
+    All_data[21] = motor[6].receive.speed;
+    All_data[22] = motor[7].receive.speed;
+    All_data[23] = motor[8].receive.speed;
+
+    All_data[24] = Visual_imu[1];
+    All_data[25] = Visual_imu[2];
+    All_data[26] = Visual_imu[3];
+    All_data[27] = Visual_imu[0];
+    All_data[28] = Visual_imu[4];
+    All_data[29] = Visual_imu[5];
+    All_data[30] = Visual_imu[6];
 #else
     //首先是12个电机的参数，共36个
     for(int i = 0; i < 3; i++)
@@ -313,12 +358,12 @@ void Upper_data_send::All_Data_get()
     {
         All_data[i] = Reactive_Force[i - 46];
     }
-
+#endif
     for (int i = 0; i < 50; i++)
     {
         tempFloat[i] = All_data[i];
     }
-#endif
+
 }
 
 void Upper_data_send::All_Data_send(UART_HandleTypeDef *huart)

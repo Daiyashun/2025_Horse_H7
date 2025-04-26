@@ -200,6 +200,6 @@ static void UART10_Receive_Serve(uint8_t *buffer, uint8_t length)
     Vdata_Tx.Visual_imu[6] = IMU.YawSpeed;
     Vdata_Tx.Visual_imu[7] = IMU.X_Accelerometer;
     Vdata_Tx.Visual_imu[8] = IMU.Y_Accelerometer;
-    Vdata_Tx.Visual_imu[9] = IMU.Z_Accelerometer + 9.8;
+    Vdata_Tx.Visual_imu[9] = IMU.Z_Accelerometer + 9.81;
 }
 
