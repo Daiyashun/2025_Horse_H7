@@ -43,7 +43,7 @@ void IMU_N300WP::data_get(uint8_t* data)
     }
     if(imu_flag == 1)
     {
-        for(int i = 0; i < 56; i++)
+        for(int i = 0; i < 64; i++)
         {
             RX_IMU[i] = data[i];
         }

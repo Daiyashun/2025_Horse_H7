@@ -24,12 +24,14 @@
 #include "vofa_setting.h"
 #include "bsp_mc02/can_bsp.h"
 #include "Cpp/main.h"
+#include "Cpp/Upper_Visual.h"
 
 //#include "state_control.h"
 //#include "leg_control.h"
 
 motor_t motor[12];
-
+extern Upper_data_receive Vdata_Rx;
+extern Upper_data_send Vdata_Tx;
 //DM_measure_t DM_Motor_measure[8];//电机数据结构体定义
 /**
   * @brief          float转int 带限幅
@@ -196,6 +198,8 @@ void set_zero_motor(FDCAN_HandleTypeDef *hfdcan,uint16_t id)
 }
 void mit_send_in_TIM(void) {
 #if SIMULATE_MODE
+    limit();
+    PD_Send();
     for (int j = 0; j < 12; j++)
     {
         tempFloat[j + 50] = motor[j].send.tor;
@@ -204,13 +208,13 @@ void mit_send_in_TIM(void) {
     if (i >= 4) {
         i = 0;
     }
-    MIT_motor_CTRL(&hfdcan1, i + 0x01, motor[i].send.pos,motor[i].send.speed, 0, 0,0);
-    MIT_motor_CTRL(&hfdcan2, i + 0x05, motor[i + 4].send.pos,motor[i + 4].send.speed, 0, 0,0);
-    MIT_motor_CTRL(&hfdcan3, i + 0x09, motor[i + 8].send.pos,motor[i + 8].send.speed, 0, 0,0);
+    MIT_motor_CTRL(&hfdcan1, i + 0x01, 0,0, 0, 0,0);
+    MIT_motor_CTRL(&hfdcan2, i + 0x05, 0,0, 0, 0,0);
+    MIT_motor_CTRL(&hfdcan3, i + 0x09, 0,0, 0, 0,0);
     i++;
 #else
     PD_Send();
-    limit();
+    //limit();
     for (int j = 0; j < 12; j++)
     {
         tempFloat[j + 50] = motor[j].send.tor;

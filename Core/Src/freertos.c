@@ -63,7 +63,7 @@ osThreadId_t UART_TXHandle;
 const osThreadAttr_t UART_TX_attributes = {
   .name = "UART_TX",
   .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityNormal,
 };
 
 /* Private function prototypes -----------------------------------------------*/
