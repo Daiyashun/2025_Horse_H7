@@ -224,9 +224,17 @@ void mit_send_in_TIM(void) {
     if (i >= 4) {
         i = 0;
     }
+
+#if USE_DYF
+
+    MIT_motor_CTRL(&hfdcan1, i + 0x01, motor[i].send.pos,0, motor[i].send.P, motor[i].send.D,0);
+    MIT_motor_CTRL(&hfdcan2, i + 0x05, motor[i + 4].send.pos,0, motor[i + 4].send.P, motor[i + 4].send.D,0);
+    MIT_motor_CTRL(&hfdcan3, i + 0x09, motor[i + 8].send.pos,0, motor[i + 8].send.P, motor[i + 8].send.D,0);
+#else
     MIT_motor_CTRL(&hfdcan1, i + 0x01, motor[i].send.pos,0, motor[i].send.P, motor[i].send.D,motor[i].send.tor);
     MIT_motor_CTRL(&hfdcan2, i + 0x05, motor[i + 4].send.pos,0, motor[i + 4].send.P, motor[i + 4].send.D,motor[i + 4].send.tor);
     MIT_motor_CTRL(&hfdcan3, i + 0x09, motor[i + 8].send.pos,0, motor[i + 8].send.P, motor[i + 8].send.D,motor[i + 8].send.tor);
+#endif
     i++;
 #endif
 }
@@ -274,6 +282,8 @@ void PD_Send()
         if (VofaSlider[0] == 1)
         {
             motor[i].send.P = SEND_P;
+            motor[8].send.P = 40;
+            motor[11].send.P = 40;
         }
         else
         {
@@ -315,6 +325,8 @@ void limit(void)
             if (fabs(motor[i - 1].receive.pos) > 0.5f)
             {
                 motor[i - 1].send.tor = 0;
+                motor[i - 1].send.P = 0;
+                motor[i - 1].send.D = 0;
             }
             break;
 
@@ -325,6 +337,8 @@ void limit(void)
             if (fabs(motor[i - 1].receive.pos) > 2.5f)
             {
                 motor[i - 1].send.tor = 0;
+                motor[i - 1].send.P = 0;
+                motor[i - 1].send.D = 0;
             }
             break;
             break;
@@ -336,6 +350,8 @@ void limit(void)
             if (fabs(motor[i - 1].receive.pos) < 0.4f)
             {
                 motor[i - 1].send.tor = 0;
+                motor[i - 1].send.P = 0;
+                motor[i - 1].send.D = 0;
             }
             break;
 

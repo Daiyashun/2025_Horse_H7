@@ -17,6 +17,7 @@ void Usart_DMA_init();
 
 extern Upper_data_receive Vdata_Rx;
 extern Upper_data_send Vdata_Tx;
+extern IMU_N300WP IMU;
 void Main()
 {
     HAL_TIM_Base_Start_IT(&htim6);
@@ -25,6 +26,7 @@ void Main()
     UART_DMA_Receive_init(&huart10, buffer_receive_10, buffer_receive_length_10);
 
     Vdata_Rx.Visual_Receive_Flag = 0;
+    IMU.check_flag = 0;
     disable_all();
     can_bsp_init();
 

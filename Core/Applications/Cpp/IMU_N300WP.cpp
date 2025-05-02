@@ -27,6 +27,16 @@ void IMU_N300WP::data_get(uint8_t* data)
             RX_AHRS[i] = data[i];
         }
         RollSpeed = data_trans(RX_AHRS[7],RX_AHRS[8],RX_AHRS[9],RX_AHRS[10]);
+        if (fabs(RollSpeed) < 10)
+        {
+            check_flag = 1;
+            last_RollSpeed = RollSpeed;
+        }
+        else
+        {
+            check_flag = 0;
+            RollSpeed = last_RollSpeed;
+        }
         PitchSpeed = data_trans(RX_AHRS[11],RX_AHRS[12],RX_AHRS[13],RX_AHRS[14]);
         YawSpeed = data_trans(RX_AHRS[15],RX_AHRS[16],RX_AHRS[17],RX_AHRS[18]);
         Roll = data_trans(RX_AHRS[19],RX_AHRS[20],RX_AHRS[21],RX_AHRS[22]);

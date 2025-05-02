@@ -46,6 +46,7 @@ public:
     float last_Qz;            //四元数
     bool imu_flag;          //IMU数据接收标志位
     bool ahrs_flag;         //AHRS数据接收标志位
+    bool check_flag;
     bool data_check(uint8_t *data);      //接收数组有效性判断函数
     float data_trans(uint8_t d1, uint8_t d2, uint8_t d3, uint8_t d4);
     void data_get(uint8_t *data);       //数据接收与转化

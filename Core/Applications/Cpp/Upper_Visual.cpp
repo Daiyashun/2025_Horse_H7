@@ -69,7 +69,7 @@ void Upper_data_receive::Vdata_get(uint8_t* data, uint8_t length)
                 Visual_motor_receive_pos[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
                 tempFloat[j + 62] = Visual_motor_receive_pos[j];
 #else
-               //Receive_data[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
+               Receive_data[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
                Visual_motor_receive_tor[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
                 tempFloat[j + 62] = Visual_motor_receive_tor[j];
 #endif
@@ -327,6 +327,11 @@ void Upper_data_send::All_Data_get()
     All_data[28] = Visual_imu[4];
     All_data[29] = Visual_imu[5];
     All_data[30] = Visual_imu[6];
+
+    for (int i = 31; i < 43; i++)
+    {
+        All_data[i] = motor[i - 31].receive.state;
+    }
 #else
     //首先是12个电机的参数，共36个
     for(int i = 0; i < 3; i++)

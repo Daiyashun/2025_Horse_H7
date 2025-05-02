@@ -5,6 +5,7 @@
 #include "Cpp/Upper_Visual.h"
 Upper_data_receive Vdata_Rx;
 Upper_data_send Vdata_Tx;
+extern IMU_N300WP IMU;
 #ifdef __cplusplus
 extern "C" {
 #endif
