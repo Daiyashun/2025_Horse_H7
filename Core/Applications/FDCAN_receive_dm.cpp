@@ -282,8 +282,8 @@ void PD_Send()
         if (VofaSlider[0] == 1)
         {
             motor[i].send.P = SEND_P;
-            motor[8].send.P = 40;
-            motor[11].send.P = 40;
+            motor[8].send.P = 42;
+            motor[11].send.P = 42;
         }
         else
         {
