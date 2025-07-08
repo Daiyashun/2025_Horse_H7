@@ -63,6 +63,9 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/freertos.c.obj: \
  D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_tim_ex.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart_ex.h \
+ D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd.h \
+ D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_ll_usb.h \
+ D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd_ex.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2/cmsis_os.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2/cmsis_os2.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/fdcan.h \

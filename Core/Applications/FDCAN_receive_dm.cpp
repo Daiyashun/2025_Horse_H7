@@ -214,7 +214,7 @@ void mit_send_in_TIM(void) {
     i++;
 #else
     PD_Send();
-    //limit();
+    limit();
     for (int j = 0; j < 12; j++)
     {
         tempFloat[j + 50] = motor[j].send.tor;
@@ -226,7 +226,6 @@ void mit_send_in_TIM(void) {
     }
 
 #if USE_DYF
-
     MIT_motor_CTRL(&hfdcan1, i + 0x01, motor[i].send.pos,0, motor[i].send.P, motor[i].send.D,0);
     MIT_motor_CTRL(&hfdcan2, i + 0x05, motor[i + 4].send.pos,0, motor[i + 4].send.P, motor[i + 4].send.D,0);
     MIT_motor_CTRL(&hfdcan3, i + 0x09, motor[i + 8].send.pos,0, motor[i + 8].send.P, motor[i + 8].send.D,0);
@@ -282,8 +281,10 @@ void PD_Send()
         if (VofaSlider[0] == 1)
         {
             motor[i].send.P = SEND_P;
-            motor[8].send.P = 42;
-            motor[11].send.P = 42;
+            if (i == 1 || i == 4 || i == 7 || i == 10)
+            {
+                motor[i].send.P = SEND_P_DT;
+            }
         }
         else
         {
@@ -324,9 +325,15 @@ void limit(void)
         case CAN_DM_M10_ID:
             if (fabs(motor[i - 1].receive.pos) > 0.5f)
             {
-                motor[i - 1].send.tor = 0;
-                motor[i - 1].send.P = 0;
-                motor[i - 1].send.D = 0;
+                if (motor[i - 1].send.pos > 0)
+                {
+                    motor[i - 1].send.pos = 0.5f;
+                }
+                else
+                {
+                    motor[i - 1].send.pos = -0.5f;
+                }
+
             }
             break;
 
@@ -334,11 +341,22 @@ void limit(void)
         case CAN_DM_M5_ID:
         case CAN_DM_M8_ID:
         case CAN_DM_M11_ID:
-            if (fabs(motor[i - 1].receive.pos) > 2.5f)
+            if (fabs(motor[i - 1].receive.pos) > 2.4f)
             {
-                motor[i - 1].send.tor = 0;
-                motor[i - 1].send.P = 0;
-                motor[i - 1].send.D = 0;
+                if (motor[i - 1].send.pos > 0)
+                {
+                    motor[i - 1].send.pos -= 2.5f;
+                }
+                else
+                {
+                    motor[i - 1].send.pos = -2.5f;
+                }
+                motor[i - 1].send.pos -= MOTOR_147A_ANGLE_OFFSET;
+                if (i == CAN_DM_M2_ID || i == CAN_DM_M8_ID)
+                {
+                    motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                }
+                motor[i - 1].send.P = 40;
             }
             break;
             break;
@@ -347,12 +365,17 @@ void limit(void)
         case CAN_DM_M6_ID:
         case CAN_DM_M9_ID:
         case CAN_DM_M12_ID:
-            if (fabs(motor[i - 1].receive.pos) < 0.4f)
+            if (fabs(motor[i - 1].receive.pos) < 1.05f )
             {
-                motor[i - 1].send.tor = 0;
-                motor[i - 1].send.P = 0;
-                motor[i - 1].send.D = 0;
+                motor[i - 1].send.pos = -1.05f;
+                motor[i - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                if (i == CAN_DM_M3_ID || i == CAN_DM_M9_ID)
+                {
+                    motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                }
+                motor[i - 1].send.P = 40;
             }
+
             break;
 
         default:break;

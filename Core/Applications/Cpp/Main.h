@@ -1,6 +1,4 @@
-//
-// Created by 27713 on 25-2-20.
-//
+
 
 #ifndef MAIN_H
 #define MAIN_H
@@ -17,7 +15,8 @@
 #define MOTOR_369C_ANGLE_OFFSET 2.73f
 #define DIRECTION_CORRECTION -1.0f
 
-#define SEND_P 35
+#define SEND_P 22
+#define SEND_P_DT 40
 #define SEND_P_TEST 5
 #define SEND_D 1
 

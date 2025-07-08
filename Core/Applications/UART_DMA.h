@@ -25,14 +25,14 @@ extern "C" {
 #define buffer_receive_length_10 100
 
 extern uint8_t buffer_receive_1[buffer_receive_length_1];//缓存数组全局定义
-// extern uint8_t buffer_receive_2[buffer_receive_1_length];//缓存数组全局定义
-// extern uint8_t buffer_receive_3[buffer_receive_1_length];//缓存数组全局定义
-// extern uint8_t buffer_receive_4[buffer_receive_1_length];//缓存数组全局定义
-// extern uint8_t buffer_receive_5[buffer_receive_1_length];//缓存数组全局定义
-// extern uint8_t buffer_receive_6[buffer_receive_length_6];//缓存数组全局定义
+extern uint8_t buffer_receive_2[buffer_receive_length_2];//缓存数组全局定义
+extern uint8_t buffer_receive_3[buffer_receive_length_3];//缓存数组全局定义
+extern uint8_t buffer_receive_4[buffer_receive_length_4];//缓存数组全局定义
+extern uint8_t buffer_receive_5[buffer_receive_length_5];//缓存数组全局定义
+extern uint8_t buffer_receive_6[buffer_receive_length_6];//缓存数组全局定义
 extern uint8_t buffer_receive_7[buffer_receive_length_7];//缓存数组全局定义
-// extern uint8_t buffer_receive_8[buffer_receive_length_8];//缓存数组全局定义
-// extern uint8_t buffer_receive_9[buffer_receive_length_9];//缓存数组全局定义
+extern uint8_t buffer_receive_8[buffer_receive_length_8];//缓存数组全局定义
+extern uint8_t buffer_receive_9[buffer_receive_length_9];//缓存数组全局定义
 extern uint8_t buffer_receive_10[buffer_receive_length_10];//缓存数组全局定义
 
 /**

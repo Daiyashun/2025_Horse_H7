@@ -1,6 +1,4 @@
-//
-// Created by 27713 on 25-3-6.
-//
+
 
 #include "can_bsp.h"
 #include "fdcan.h"

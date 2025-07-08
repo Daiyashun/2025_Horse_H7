@@ -9,12 +9,13 @@
 #include "Upper_Visual.h"
 #include "vofa_setting.h"
 #include "bsp_mc02/can_bsp.h"
+#include "Sbus_Handler.h"
 
 extern "C"
 void MX_FREERTOS_Init(void);
 void Usart_DMA_init();
 
-
+SBUS RadioMaster;
 extern Upper_data_receive Vdata_Rx;
 extern Upper_data_send Vdata_Tx;
 extern IMU_N300WP IMU;
@@ -24,6 +25,7 @@ void Main()
     UART_DMA_Receive_init(&huart1, buffer_receive_1, buffer_receive_length_1);
     UART_DMA_Receive_init(&huart7, buffer_receive_7, buffer_receive_length_7);
     UART_DMA_Receive_init(&huart10, buffer_receive_10, buffer_receive_length_10);
+    RadioMaster.Sbus_Uart_Receive_init(&huart5);
 
     Vdata_Rx.Visual_Receive_Flag = 0;
     IMU.check_flag = 0;
@@ -32,6 +34,7 @@ void Main()
 
     All_motor_enable();
     motor_init();
+
     /* Init scheduler */
     osKernelInitialize();
 

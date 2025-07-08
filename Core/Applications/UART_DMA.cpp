@@ -1,32 +1,28 @@
-//
-// Created by zcy on 2024/3/25.
-//
-
 #include "main.h"
 #include "usart.h"
 #include "UART_DMA.h"
 #include "string.h"
 #include "vofa.h"
 #include "Cpp/IMU_N300WP.h"
+#include "Cpp/Sbus_Handler.h"
 #include "Cpp/Upper_Visual.h"
-//#include "task.h"
 
-//_Visual test;
 /*缓存数组预定义*/
 uint8_t buffer_receive_1[buffer_receive_length_1];
-// uint8_t buffer_receive_2[buffer_receive_1_length];
-// uint8_t buffer_receive_3[buffer_receive_1_length];
-// uint8_t buffer_receive_4[buffer_receive_1_length];
-// uint8_t buffer_receive_5[buffer_receive_1_length];
-// uint8_t buffer_receive_6[buffer_receive_length_6];
+uint8_t buffer_receive_2[buffer_receive_length_2];
+uint8_t buffer_receive_3[buffer_receive_length_3];
+uint8_t buffer_receive_4[buffer_receive_length_4];
+uint8_t buffer_receive_5[buffer_receive_length_5];
+uint8_t buffer_receive_6[buffer_receive_length_6];
 uint8_t buffer_receive_7[buffer_receive_length_7];
-// uint8_t buffer_receive_8[buffer_receive_length_8];
-// uint8_t buffer_receive_9[buffer_receive_length_9];
+uint8_t buffer_receive_8[buffer_receive_length_8];
+uint8_t buffer_receive_9[buffer_receive_length_9];
 uint8_t buffer_receive_10[buffer_receive_length_10];
 
 IMU_N300WP IMU;
 extern Upper_data_receive Vdata_Rx;
 extern Upper_data_send Vdata_Tx;
+extern SBUS RadioMaster;
 /**
   * @brief          UART1-6中断接收服务函数
   * @param[in]      接收数组
@@ -37,7 +33,7 @@ static void UART1_Receive_Serve(uint8_t *buffer, uint8_t length);
 // static void UART2_Receive_Serve(uint8_t *buffer, uint8_t length);
 // static void UART3_Receive_Serve(uint8_t *buffer, uint8_t length);
 // static void UART4_Receive_Serve(uint8_t *buffer, uint8_t length);
-// static void UART5_Receive_Serve(uint8_t *buffer, uint8_t length);
+static void UART5_Receive_Serve(uint8_t *buffer, uint8_t length);
 // static void UART6_Receive_Serve(uint8_t *buffer, uint8_t length);
 static void UART7_Receive_Serve(uint8_t *buffer, uint8_t length);
 // static void UART8_Receive_Serve(uint8_t *buffer, uint8_t length);
@@ -82,7 +78,6 @@ void UART_DMA_Receive_init(UART_HandleTypeDef *usart, uint8_t *buffer, uint8_t l
 {
     __HAL_UART_ENABLE_IT(usart,UART_IT_IDLE);
     HAL_UART_Receive_DMA(usart,buffer,length);//打开DMA接收
-    //HAL_UARTEx_ReceiveToIdle_DMA(usart,buffer,length);
 }
 /**
   * @brief          串口DMA接收中断函数->放入《USER CODE BEGIN USARTX_IRQn 1》 中
@@ -104,7 +99,7 @@ void UART_DMA_Receive_IT(UART_HandleTypeDef *usart, DMA_HandleTypeDef *DMA, uint
         //else if(usart == &huart2) UART2_Receive_Serve(buffer, real_length);//选择解码程序
         //else if(usart == &huart3) UART3_Receive_Serve(buffer, real_length);//选择解码程序
         //else if(usart == &huart4) UART4_Receive_Serve(buffer, real_length);//选择解码程序
-        //else if(usart == &huart5) UART5_Receive_Serve(buffer, real_length);//选择解码程序
+        else if(usart == &huart5) UART5_Receive_Serve(buffer, real_length);//选择解码程序
         //else if(usart == &huart6) UART6_Receive_Serve(buffer, real_length);//选择解码程序
         else if(usart == &huart7) UART7_Receive_Serve(buffer, real_length);//选择解码程序
         //else if(usart == &huart8) UART8_Receive_Serve(buffer, real_length);//选择解码程序
@@ -161,7 +156,7 @@ static void UART4_Receive_Serve(uint8_t *buffer, uint8_t length)
 //UART5中断接收函数
 static void UART5_Receive_Serve(uint8_t *buffer, uint8_t length)
 {
-    //sbus_handler(buffer, length);
+    RadioMaster.Sbus_Uart_Receive_Handler(&huart5,buffer);
 }
 //UART6中断接收函数
 static void UART6_Receive_Serve(uint8_t *buffer, uint8_t length)

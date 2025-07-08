@@ -97,6 +97,9 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Rtos.cpp.obj: \
  D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_tim_ex.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart_ex.h \
+ D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd.h \
+ D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_ll_usb.h \
+ D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd_ex.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications/vofa.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/main.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/tim.h \

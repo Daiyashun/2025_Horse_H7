@@ -11,6 +11,21 @@ float Receive_data[12];
 extern motor_t motor[12];
 void Stand()
 {
+    // motor[0].send.pos = -0.2f;
+    // motor[3].send.pos = 0.2f;
+    // motor[6].send.pos = -0.2f;
+    // motor[9].send.pos = 0.2f;
+    //
+    // motor[1].send.pos = 0.9f;
+    // motor[4].send.pos = 0.9f;
+    // motor[7].send.pos = 0.9f;
+    // motor[10].send.pos = 0.9f;
+    //
+    // motor[2].send.pos = -1.35f;
+    // motor[5].send.pos = -1.35f;
+    // motor[8].send.pos = -1.35f;
+    // motor[11].send.pos = -1.35f;
+
     motor[0].send.pos = -0.2f;
     motor[3].send.pos = 0.2f;
     motor[6].send.pos = -0.2f;
@@ -21,10 +36,10 @@ void Stand()
     motor[7].send.pos = 0.9f;
     motor[10].send.pos = 0.9f;
 
-    motor[2].send.pos = -1.35f;
-    motor[5].send.pos = -1.35f;
-    motor[8].send.pos = -1.35f;
-    motor[11].send.pos = -1.35f;
+    motor[2].send.pos = -0.2f;
+    motor[5].send.pos = -0.2f;
+    motor[8].send.pos = -0.2f;
+    motor[11].send.pos = -0.2f;
 }
 float Upper_data_receive::Vdata_transfer(uint8_t d1, uint8_t d2, uint8_t d3, uint8_t d4)
 {
@@ -218,67 +233,67 @@ void Upper_data_receive::Angle_transfer()
 
 void Upper_data_receive::Tor_transfer()
 {
-    // for (int i = 1; i < 13; i++)
-    // {
-    //     switch (i)
-    //     {
-    //         case CAN_DM_M1_ID:
-    //             //motor[CAN_DM_M1_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    //             break;
-    //
-    //         case CAN_DM_M2_ID:
-    //             motor[CAN_DM_M2_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    //             break;
-    //
-    //         case CAN_DM_M3_ID:
-    //             motor[CAN_DM_M3_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    //             break;
-    //
-    //         case CAN_DM_M4_ID:
-    //             //motor[CAN_DM_M4_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    //             break;
-    //
-    //         case CAN_DM_M5_ID:
-    //             //motor[CAN_DM_M5_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    //             break;
-    //
-    //         case CAN_DM_M6_ID:
-    //             //motor[CAN_DM_M6_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    //             break;
-    //
-    //         case CAN_DM_M7_ID:
-    //             motor[CAN_DM_M7_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    //             break;
-    //
-    //         case CAN_DM_M8_ID:
-    //             motor[CAN_DM_M8_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    //             break;
-    //
-    //         case CAN_DM_M9_ID:
-    //             //motor[CAN_DM_M9_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    //             break;
-    //
-    //         case CAN_DM_M10_ID:
-    //             motor[CAN_DM_M10_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    //             break;
-    //
-    //         case CAN_DM_M11_ID:
-    //             //motor[CAN_DM_M11_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    //             break;
-    //
-    //         case CAN_DM_M12_ID:
-    //             motor[CAN_DM_M12_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    //             break;
-    //
-    //         default:break;
-    //     }
-    // }
-    motor[CAN_DM_M2_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    motor[CAN_DM_M3_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    motor[CAN_DM_M7_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    motor[CAN_DM_M8_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    motor[CAN_DM_M10_ID - 1].send.tor *= DIRECTION_CORRECTION;
-    motor[CAN_DM_M9_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    for (int i = 1; i < 13; i++)
+    {
+        switch (i)
+        {
+            case CAN_DM_M1_ID:
+                //motor[CAN_DM_M1_ID - 1].send.tor *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M2_ID:
+                motor[CAN_DM_M2_ID - 1].send.tor *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M3_ID:
+                motor[CAN_DM_M3_ID - 1].send.tor *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M4_ID:
+                //motor[CAN_DM_M4_ID - 1].send.tor *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M5_ID:
+                //motor[CAN_DM_M5_ID - 1].send.tor *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M6_ID:
+                //motor[CAN_DM_M6_ID - 1].send.tor *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M7_ID:
+                motor[CAN_DM_M7_ID - 1].send.tor *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M8_ID:
+                motor[CAN_DM_M8_ID - 1].send.tor *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M9_ID:
+                motor[CAN_DM_M9_ID - 1].send.tor *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M10_ID:
+                motor[CAN_DM_M10_ID - 1].send.tor *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M11_ID:
+                //motor[CAN_DM_M11_ID - 1].send.tor *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M12_ID:
+                //motor[CAN_DM_M12_ID - 1].send.tor *= DIRECTION_CORRECTION;
+                break;
+
+            default:break;
+        }
+    }
+    // motor[CAN_DM_M2_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    // motor[CAN_DM_M3_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    // motor[CAN_DM_M7_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    // motor[CAN_DM_M8_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    // motor[CAN_DM_M10_ID - 1].send.tor *= DIRECTION_CORRECTION;
+    // motor[CAN_DM_M9_ID - 1].send.tor *= DIRECTION_CORRECTION;
 
     // motor[CAN_DM_M2_ID - 1].send.tor *= 2;
     // motor[CAN_DM_M5_ID - 1].send.tor *= 2;
@@ -330,8 +345,15 @@ void Upper_data_send::All_Data_get()
 
     for (int i = 31; i < 43; i++)
     {
-        All_data[i] = motor[i - 31].receive.state;
+        All_data[i] = motor[i - 31].receive.T_coil;
     }
+    All_data[43] = fabsf(motor[6].receive.pos);
+    All_data[44] = PI - fabsf(motor[8].receive.pos);
+    All_data[45] = fabsf(motor[7].receive.pos);
+    All_data[46] = motor[8].receive.toq;
+    // All_data[47] = motor[9].receive.pos;
+    // All_data[48] = PI - motor[11].receive.pos;
+    // All_data[49] = motor[10].receive.pos;
 #else
     //首先是12个电机的参数，共36个
     for(int i = 0; i < 3; i++)
