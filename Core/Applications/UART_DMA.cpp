@@ -89,7 +89,8 @@ void UART_DMA_Receive_init(UART_HandleTypeDef *usart, uint8_t *buffer, uint8_t l
   */
 void UART_DMA_Receive_IT(UART_HandleTypeDef *usart, DMA_HandleTypeDef *DMA, uint8_t *buffer, uint16_t length)
 {
-    if(usart->ReceptionType == HAL_UART_RECEPTION_STANDARD)
+    if(usart->ReceptionType == HAL_UART_RECEPTION_STANDARD||(__HAL_UART_GET_FLAG(usart, UART_FLAG_IDLE) &&
+      __HAL_UART_GET_IT_SOURCE(usart, UART_IT_IDLE)))
     {
         __HAL_UART_CLEAR_IDLEFLAG(usart);
         HAL_UART_DMAStop(usart);

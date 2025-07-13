@@ -53,9 +53,6 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/main.c.obj: \
  D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_tim_ex.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart_ex.h \
- D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd.h \
- D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_ll_usb.h \
- D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd_ex.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2/cmsis_os.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Middlewares\Third_Party\FreeRTOS\Source\include/FreeRTOS.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/FreeRTOSConfig.h \
@@ -74,30 +71,6 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Src/main.c.obj: \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/memorymap.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/tim.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/usart.h \
- D:\Robocon\Codes\2025\2025_Horse_H7\USB_DEVICE\App/usb_device.h \
- D:\Robocon\Codes\2025\2025_Horse_H7\Middlewares\ST\STM32_USB_Device_Library\Core\Inc/usbd_def.h \
- D:\Robocon\Codes\2025\2025_Horse_H7\USB_DEVICE\Target/usbd_conf.h \
- d:\10_2021.10\arm-none-eabi\include\stdio.h \
- d:\10_2021.10\lib\gcc\arm-none-eabi\10.3.1\include\stdarg.h \
- d:\10_2021.10\arm-none-eabi\include\sys\types.h \
- d:\10_2021.10\arm-none-eabi\include\machine\endian.h \
- d:\10_2021.10\arm-none-eabi\include\machine\_endian.h \
- d:\10_2021.10\arm-none-eabi\include\sys\select.h \
- d:\10_2021.10\arm-none-eabi\include\sys\_sigset.h \
- d:\10_2021.10\arm-none-eabi\include\sys\_timeval.h \
- d:\10_2021.10\arm-none-eabi\include\sys\timespec.h \
- d:\10_2021.10\arm-none-eabi\include\sys\_timespec.h \
- d:\10_2021.10\arm-none-eabi\include\sys\_pthreadtypes.h \
- d:\10_2021.10\arm-none-eabi\include\sys\sched.h \
- d:\10_2021.10\arm-none-eabi\include\machine\types.h \
- d:\10_2021.10\arm-none-eabi\include\sys\stdio.h \
- d:\10_2021.10\arm-none-eabi\include\stdlib.h \
- d:\10_2021.10\arm-none-eabi\include\machine\stdlib.h \
- d:\10_2021.10\arm-none-eabi\include\alloca.h \
- d:\10_2021.10\arm-none-eabi\include\string.h \
- d:\10_2021.10\arm-none-eabi\include\sys\_locale.h \
- d:\10_2021.10\arm-none-eabi\include\strings.h \
- d:\10_2021.10\arm-none-eabi\include\sys\string.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Inc/gpio.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications/UART_DMA.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications/vofa.h \

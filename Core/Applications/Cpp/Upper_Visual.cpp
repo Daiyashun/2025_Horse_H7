@@ -1,14 +1,14 @@
-//
-// Created by 27713 on 25-3-15.
-//
+
 
 #include "Upper_Visual.h"
 #include "Main.h"
 #include <cstring>
 
+#include "Sbus_Handler.h"
 #include "vofa_setting.h"
 float Receive_data[12];
 extern motor_t motor[12];
+extern SBUS RadioMaster;
 void Stand()
 {
     // motor[0].send.pos = -0.2f;
@@ -342,18 +342,16 @@ void Upper_data_send::All_Data_get()
     All_data[28] = Visual_imu[4];
     All_data[29] = Visual_imu[5];
     All_data[30] = Visual_imu[6];
+    All_data[31] = RadioMaster.Sbus_Data_Velocity_ForwardBackward;
+    All_data[32] = RadioMaster.Sbus_Data_Velocity_RightLeft;
+    All_data[33] = RadioMaster.Sbus_Data_Turn_Yaw;
+    All_data[34] = RadioMaster.Sbus_Data_WalkMode;
 
-    for (int i = 31; i < 43; i++)
+    for (int i = 35; i < 47; i++)
     {
         All_data[i] = motor[i - 31].receive.T_coil;
     }
-    All_data[43] = fabsf(motor[6].receive.pos);
-    All_data[44] = PI - fabsf(motor[8].receive.pos);
-    All_data[45] = fabsf(motor[7].receive.pos);
-    All_data[46] = motor[8].receive.toq;
-    // All_data[47] = motor[9].receive.pos;
-    // All_data[48] = PI - motor[11].receive.pos;
-    // All_data[49] = motor[10].receive.pos;
+
 #else
     //首先是12个电机的参数，共36个
     for(int i = 0; i < 3; i++)
@@ -382,7 +380,7 @@ void Upper_data_send::All_Data_get()
         All_data[i] = Reactive_Force[i - 46];
     }
 #endif
-    for (int i = 0; i < 50; i++)
+    for (int i = 0; i < 46; i++)
     {
         tempFloat[i] = All_data[i];
     }

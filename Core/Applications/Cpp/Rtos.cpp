@@ -39,7 +39,7 @@ void VofaReceiveTask(void *argument)
         /* Infinite loop */
         for(;;)
         {
-            Vofa_to_Motor();
+            //Vofa_to_Motor();
             osDelay(1);
         }
         /* USER CODE END VofaReceiveTask */
@@ -60,8 +60,9 @@ void UART_TX_task(void *argument)
     for(;;)
     {
         Vdata_Tx.All_Data_get();
-        Vofa_Transmit(&huart1,51);
+
         Vdata_Tx.All_Data_send(&huart7);
+        Vofa_Transmit(&huart1,51);
         osDelay(1);
     }
     /* USER CODE END UART_TX_task */

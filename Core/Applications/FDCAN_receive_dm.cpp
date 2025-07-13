@@ -24,6 +24,7 @@
 #include "vofa_setting.h"
 #include "bsp_mc02/can_bsp.h"
 #include "Cpp/main.h"
+#include "Cpp/Sbus_Handler.h"
 #include "Cpp/Upper_Visual.h"
 
 //#include "state_control.h"
@@ -32,6 +33,7 @@
 motor_t motor[12];
 extern Upper_data_receive Vdata_Rx;
 extern Upper_data_send Vdata_Tx;
+extern SBUS RadioMaster;
 //DM_measure_t DM_Motor_measure[8];//电机数据结构体定义
 /**
   * @brief          float转int 带限幅
@@ -215,10 +217,10 @@ void mit_send_in_TIM(void) {
 #else
     PD_Send();
     limit();
-    for (int j = 0; j < 12; j++)
-    {
-        tempFloat[j + 50] = motor[j].send.tor;
-    }
+    // for (int j = 0; j < 12; j++)
+    // {
+    //     tempFloat[j + 50] = motor[j].send.tor;
+    // }
 
     static int i = 0;
     if (i >= 4) {
@@ -268,49 +270,62 @@ void motor_init()
 
 void PD_Send()
 {
-    for(int i = 0; i < 12; i++)
+    if (RadioMaster.Sbus_Data_WorkMode == SBUS_WorkMoode_Paralysis)
     {
+        for (int i = 0; i < 12; i++)
+        {
+            motor[i].send.P = 0;
+            motor[i].send.D = 0;
+            motor[i].send.tor = 0;
+        }
+    }
+    else
+    {
+        for(int i = 0; i < 12; i++)
+        {
 #if USE_DYF
-        motor[i].send.D = SEND_D;
-        motor[i].send.tor = 0;
-        motor[i].send.speed = 0;
+            motor[i].send.D = SEND_D;
+            motor[i].send.tor = 0;
+            motor[i].send.speed = 0;
 
-    #if TEST_MODE
-        motor[i].send.P = SEND_P_TEST;
-    #else
-        if (VofaSlider[0] == 1)
-        {
-            motor[i].send.P = SEND_P;
-            if (i == 1 || i == 4 || i == 7 || i == 10)
-            {
-                motor[i].send.P = SEND_P_DT;
-            }
-        }
-        else
-        {
-            motor[i].send.P = 5;
-        }
-    #endif
-
+#if TEST_MODE
+            motor[i].send.P = SEND_P_TEST;
 #else
-        motor[i].send.P = 0;
-        motor[i].send.D = 0;
-        motor[i].send.speed = 0;
-        motor[i].send.pos = 0;
-        if (fabs(motor[i].send.tor) > T_MAX)
-        {
-            if (motor[i].send.tor > 0)
+            if (VofaSlider[0] == 1)
             {
-                motor[i].send.tor = T_MAX;
+                motor[i].send.P = SEND_P;
+                if (i == 1 || i == 4 || i == 7 || i == 10)
+                {
+                    motor[i].send.P = SEND_P_DT;
+                }
             }
             else
             {
-                motor[i].send.tor = T_MIN;
+                motor[i].send.P = 5;
             }
-        }
+#endif
+
+#else
+            motor[i].send.P = 0;
+            motor[i].send.D = 0;
+            motor[i].send.speed = 0;
+            motor[i].send.pos = 0;
+            if (fabs(motor[i].send.tor) > T_MAX)
+            {
+                if (motor[i].send.tor > 0)
+                {
+                    motor[i].send.tor = T_MAX;
+                }
+                else
+                {
+                    motor[i].send.tor = T_MIN;
+                }
+            }
 
 #endif
+        }
     }
+
 }
 
 void limit(void)

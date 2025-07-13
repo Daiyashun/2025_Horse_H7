@@ -23,9 +23,11 @@ void Main()
 {
     HAL_TIM_Base_Start_IT(&htim6);
     UART_DMA_Receive_init(&huart1, buffer_receive_1, buffer_receive_length_1);
+    //UART_DMA_Receive_init(&huart5, buffer_receive_5, buffer_receive_length_5);
     UART_DMA_Receive_init(&huart7, buffer_receive_7, buffer_receive_length_7);
     UART_DMA_Receive_init(&huart10, buffer_receive_10, buffer_receive_length_10);
     RadioMaster.Sbus_Uart_Receive_init(&huart5);
+    RadioMaster.Sbus_Data_Init();
 
     Vdata_Rx.Visual_Receive_Flag = 0;
     IMU.check_flag = 0;

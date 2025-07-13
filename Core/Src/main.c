@@ -24,7 +24,6 @@
 #include "memorymap.h"
 #include "tim.h"
 #include "usart.h"
-#include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -111,7 +110,6 @@ int main(void)
   MX_TIM2_Init();
   MX_UART5_Init();
   /* USER CODE BEGIN 2 */
-  MX_USB_DEVICE_Init();
   Main();
   /* USER CODE END 2 */
 

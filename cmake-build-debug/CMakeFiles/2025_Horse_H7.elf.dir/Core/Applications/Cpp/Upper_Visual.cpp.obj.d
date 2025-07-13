@@ -97,9 +97,6 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Upper_Visual.cpp.obj: \
  D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_tim_ex.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_uart_ex.h \
- D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd.h \
- D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_ll_usb.h \
- D:\Robocon\Codes\2025\2025_Horse_H7\Drivers\STM32H7xx_HAL_Driver\Inc/stm32h7xx_hal_pcd_ex.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications/user_lib.h \
  d:\10_2021.10\lib\gcc\arm-none-eabi\10.3.1\include\stdbool.h \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications\Cpp\IMU_N300WP.h \
@@ -112,4 +109,6 @@ CMakeFiles/2025_Horse_H7.elf.dir/Core/Applications/Cpp/Upper_Visual.cpp.obj: \
  d:\10_2021.10\arm-none-eabi\include\sys\_locale.h \
  d:\10_2021.10\arm-none-eabi\include\strings.h \
  d:\10_2021.10\arm-none-eabi\include\sys\string.h \
+ D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications\Cpp\Sbus_Handler.h \
+ d:\10_2021.10\arm-none-eabi\include\c++\10.3.1\cstdint \
  D:\Robocon\Codes\2025\2025_Horse_H7\Core\Applications/vofa_setting.h

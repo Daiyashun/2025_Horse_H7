@@ -10,9 +10,9 @@
 #define TEST_MODE 0
 
 #define PI 3.1415926f
-#define MOTOR_147A_ANGLE_OFFSET 0.29f
-#define MOTOR_258B_ANGLE_OFFSET 1.15f
-#define MOTOR_369C_ANGLE_OFFSET 2.73f
+#define MOTOR_147A_ANGLE_OFFSET 0.4673f
+#define MOTOR_258B_ANGLE_OFFSET 1.14557f
+#define MOTOR_369C_ANGLE_OFFSET 2.7529f
 #define DIRECTION_CORRECTION -1.0f
 
 #define SEND_P 22
@@ -22,7 +22,7 @@
 
 #define DATA_LENGTH_REAL   51
 #define DATA_LENGTH  DATA_LENGTH_REAL * 4
-#define DATA_LENGTH_REAL_DYF 32
+#define DATA_LENGTH_REAL_DYF 36
 #define DATA_LENGTH_DYF DATA_LENGTH_REAL_DYF * 4
 /*-----------------------------------------------------------------------------*/
 
