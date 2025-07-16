@@ -46,6 +46,8 @@ void fdcan1_rx_callback(void)
                 break;
 
             case MASTER_M3_ID:
+                motor[2].receive.pos /= REDUCTION_RATION;
+                motor[2].receive.speed /= REDUCTION_RATION;
                 motor[2].receive.pos *= DIRECTION_CORRECTION;
                 motor[2].receive.speed *= DIRECTION_CORRECTION;
                 motor[2].receive.toq *= DIRECTION_CORRECTION;
@@ -88,6 +90,8 @@ void fdcan2_rx_callback(void)
                 break;
 
             case MASTER_M6_ID:
+                motor[5].receive.pos /= REDUCTION_RATION;
+                motor[5].receive.speed /= REDUCTION_RATION;
                 // motor[5].receive.pos *= DIRECTION_CORRECTION;
                 // motor[5].receive.speed *= DIRECTION_CORRECTION;
                 // motor[5].receive.toq *= DIRECTION_CORRECTION;
@@ -132,6 +136,8 @@ void fdcan3_rx_callback(void)
             switch (id)
             {
             case MASTER_M9_ID:
+                motor[8].receive.pos /= REDUCTION_RATION;
+                motor[8].receive.speed /= REDUCTION_RATION;
                 motor[8].receive.pos *= DIRECTION_CORRECTION;
                 motor[8].receive.speed *= DIRECTION_CORRECTION;
                 motor[8].receive.toq *= DIRECTION_CORRECTION;
@@ -153,6 +159,8 @@ void fdcan3_rx_callback(void)
                 break;
 
             case MASTER_M12_ID:
+                motor[11].receive.pos /= REDUCTION_RATION;
+                motor[11].receive.speed /= REDUCTION_RATION;
                 //motor[11].receive.pos *= DIRECTION_CORRECTION;
                 // motor[11].receive.speed *= DIRECTION_CORRECTION;
                 // motor[11].receive.toq *= DIRECTION_CORRECTION;

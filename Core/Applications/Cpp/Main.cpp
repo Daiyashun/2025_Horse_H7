@@ -34,7 +34,7 @@ void Main()
     disable_all();
     can_bsp_init();
 
-    All_motor_enable();
+   All_motor_enable();
     motor_init();
 
     /* Init scheduler */

@@ -284,24 +284,24 @@ void PD_Send()
         for(int i = 0; i < 12; i++)
         {
 #if USE_DYF
-            motor[i].send.D = SEND_D;
+            motor[i].send.D = 1;
             motor[i].send.tor = 0;
             motor[i].send.speed = 0;
 
 #if TEST_MODE
             motor[i].send.P = SEND_P_TEST;
 #else
-            if (VofaSlider[0] == 1)
+            if (RadioMaster.Sbus_Data_WorkMode == SBUS_WorkMoode_Stand)
             {
-                motor[i].send.P = SEND_P;
+                motor[i].send.P = 0;
                 if (i == 1 || i == 4 || i == 7 || i == 10)
                 {
-                    motor[i].send.P = SEND_P_DT;
+                    motor[i].send.P = 0;
                 }
             }
             else
             {
-                motor[i].send.P = 5;
+                motor[i].send.P = 0;
             }
 #endif
 
@@ -371,7 +371,6 @@ void limit(void)
                 {
                     motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 }
-                motor[i - 1].send.P = 40;
             }
             break;
             break;
@@ -388,7 +387,7 @@ void limit(void)
                 {
                     motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 }
-                motor[i - 1].send.P = 40;
+                motor[i - 1].send.pos *= REDUCTION_RATION;
             }
 
             break;

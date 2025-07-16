@@ -179,6 +179,7 @@ void Upper_data_receive::Angle_transfer()
             case CAN_DM_M3_ID:
                 motor[CAN_DM_M3_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
                 motor[CAN_DM_M3_ID - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M3_ID - 1].send.pos *= REDUCTION_RATION;
                 break;
 
             case CAN_DM_M4_ID:
@@ -194,6 +195,7 @@ void Upper_data_receive::Angle_transfer()
             case CAN_DM_M6_ID:
                 motor[CAN_DM_M6_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
                 //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M6_ID - 1].send.pos *= REDUCTION_RATION;
                 break;
 
             case CAN_DM_M7_ID:
@@ -209,6 +211,7 @@ void Upper_data_receive::Angle_transfer()
             case CAN_DM_M9_ID:
                 motor[CAN_DM_M9_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
                 motor[CAN_DM_M9_ID - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M9_ID - 1].send.pos *= REDUCTION_RATION;
                 break;
 
             case CAN_DM_M10_ID:
@@ -224,6 +227,7 @@ void Upper_data_receive::Angle_transfer()
             case CAN_DM_M12_ID:
                 motor[CAN_DM_M12_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
                 //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M12_ID - 1].send.pos *= REDUCTION_RATION;
                 break;
 
             default:break;
@@ -349,7 +353,7 @@ void Upper_data_send::All_Data_get()
 
     for (int i = 35; i < 47; i++)
     {
-        All_data[i] = motor[i - 31].receive.T_coil;
+        All_data[i] = motor[i - 35].receive.T_coil;
     }
 
 #else

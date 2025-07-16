@@ -18,9 +18,9 @@ void Vofa_to_Motor()
     {
         if (VofaButton[i] == 1)
         {
-            set_zero_motor(&hfdcan1,i);
-            set_zero_motor(&hfdcan2,i);
-            set_zero_motor(&hfdcan3,i);
+            set_zero_motor(&hfdcan1,i + 1);
+            set_zero_motor(&hfdcan2,i + 1);
+            set_zero_motor(&hfdcan3,i + 1);
         }
     }
     for (int i = 8; i < 12; i++)
@@ -39,7 +39,7 @@ void VofaReceiveTask(void *argument)
         /* Infinite loop */
         for(;;)
         {
-            //Vofa_to_Motor();
+            Vofa_to_Motor();
             osDelay(1);
         }
         /* USER CODE END VofaReceiveTask */
@@ -60,7 +60,6 @@ void UART_TX_task(void *argument)
     for(;;)
     {
         Vdata_Tx.All_Data_get();
-
         Vdata_Tx.All_Data_send(&huart7);
         Vofa_Transmit(&huart1,51);
         osDelay(1);

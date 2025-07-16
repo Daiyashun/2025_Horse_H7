@@ -117,6 +117,8 @@ void SBUS::Sbus_Data_Init()
     //Sbus_Data_Turn_Yaw = 0.0f;
     Sbus_Data_Turn_Yaw_Max = 3.14f;
     Sbus_Data_Turn_Yaw_Min = -3.14f;
+
+    Sbus_Data_WorkMode = SBUS_WorkMoode_Paralysis;
 }
 
 
