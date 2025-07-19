@@ -1,31 +1,15 @@
-
-
 #include "Upper_Visual.h"
 #include "Main.h"
 #include <cstring>
-
 #include "Sbus_Handler.h"
 #include "vofa_setting.h"
+
 float Receive_data[12];
 extern motor_t motor[12];
 extern SBUS RadioMaster;
+
 void Stand()
 {
-    // motor[0].send.pos = -0.2f;
-    // motor[3].send.pos = 0.2f;
-    // motor[6].send.pos = -0.2f;
-    // motor[9].send.pos = 0.2f;
-    //
-    // motor[1].send.pos = 0.9f;
-    // motor[4].send.pos = 0.9f;
-    // motor[7].send.pos = 0.9f;
-    // motor[10].send.pos = 0.9f;
-    //
-    // motor[2].send.pos = -1.35f;
-    // motor[5].send.pos = -1.35f;
-    // motor[8].send.pos = -1.35f;
-    // motor[11].send.pos = -1.35f;
-
     motor[0].send.pos = -0.2f;
     motor[3].send.pos = 0.2f;
     motor[6].send.pos = -0.2f;
@@ -36,11 +20,82 @@ void Stand()
     motor[7].send.pos = 0.9f;
     motor[10].send.pos = 0.9f;
 
-    motor[2].send.pos = -0.2f;
-    motor[5].send.pos = -0.2f;
-    motor[8].send.pos = -0.2f;
-    motor[11].send.pos = -0.2f;
+    motor[2].send.pos = -1.35f;
+    motor[5].send.pos = -1.35f;
+    motor[8].send.pos = -1.35f;
+    motor[11].send.pos = -1.35f;
+
+    // motor[0].send.pos = -0.2f;
+    // motor[3].send.pos = 0.2f;
+    // motor[6].send.pos = -0.2f;
+    // motor[9].send.pos = 0.2f;
+    //
+    // motor[1].send.pos = 0.9f;
+    // motor[4].send.pos = 0.9f;
+    // motor[7].send.pos = 0.9f;
+    // motor[10].send.pos = 0.9f;
+    //
+    // motor[2].send.pos = -0.2f;
+    // motor[5].send.pos = -0.2f;
+    // motor[8].send.pos = -0.2f;
+    // motor[11].send.pos = -0.2f;
 }
+
+void Jump_Front_Ready()
+{
+    motor[0].send.pos = -0.0f;
+    motor[3].send.pos = 0.0f;
+    motor[6].send.pos = -0.0f;
+    motor[9].send.pos = 0.0f;
+
+    motor[1].send.pos = 1.1f + 0.8f;
+    motor[4].send.pos = 1.1f + 0.8f;
+    motor[7].send.pos = 1.1f + 0.8f;
+    motor[10].send.pos = 1.1f + 0.8f;
+
+    motor[2].send.pos = -2.65f;
+    motor[5].send.pos = -2.65f;
+    motor[8].send.pos = -2.65f;
+    motor[11].send.pos = -2.65f;
+
+}
+
+void Jump_Front()
+{
+    motor[0].send.pos = -0.0f;
+    motor[3].send.pos = 0.0f;
+    motor[6].send.pos = -0.0f;
+    motor[9].send.pos = 0.0f;
+
+    motor[1].send.pos = 0.4f;
+    motor[4].send.pos = 0.4f;
+    motor[7].send.pos = 0.4f;
+    motor[10].send.pos = 0.4f;
+
+    motor[2].send.pos = -0.95f;
+    motor[5].send.pos = -0.95f;
+    motor[8].send.pos = -0.95f;
+    motor[11].send.pos = -0.95f;
+}
+
+void Jump_Front_Over()
+{
+    motor[0].send.pos = -0.4f;
+    motor[3].send.pos = 0.4f;
+    motor[6].send.pos = -0.4f;
+    motor[9].send.pos = 0.4f;
+
+    motor[1].send.pos = 1.1f;
+    motor[4].send.pos = 1.1f;
+    motor[7].send.pos = 1.1f;
+    motor[10].send.pos = 1.1f;
+
+    motor[2].send.pos = -2.75f;
+    motor[5].send.pos = -2.75f;
+    motor[8].send.pos = -2.75f;
+    motor[11].send.pos = -2.75f;
+}
+
 float Upper_data_receive::Vdata_transfer(uint8_t d1, uint8_t d2, uint8_t d3, uint8_t d4)
 {
     long long transition_32;
@@ -112,7 +167,10 @@ void Upper_data_receive::Vdata_send()
 {
     if (VofaSlider[1] == 1)
     {
-        Stand();
+        // Stand();
+        Jump_Front_Ready();
+        //Jump_Front();
+        //Jump_Front_Over();
         if (Visual_Receive_Flag)
         {
 
@@ -351,6 +409,11 @@ void Upper_data_send::All_Data_get()
     All_data[33] = RadioMaster.Sbus_Data_Turn_Yaw;
     All_data[34] = RadioMaster.Sbus_Data_WalkMode;
 
+    // All_data[31] = 0;
+    // All_data[32] = 0;
+    // All_data[33] = 0;
+    // All_data[34] = 0;
+
     for (int i = 35; i < 47; i++)
     {
         All_data[i] = motor[i - 35].receive.T_coil;
@@ -384,7 +447,7 @@ void Upper_data_send::All_Data_get()
         All_data[i] = Reactive_Force[i - 46];
     }
 #endif
-    for (int i = 0; i < 46; i++)
+    for (int i = 0; i < 48; i++)
     {
         tempFloat[i] = All_data[i];
     }

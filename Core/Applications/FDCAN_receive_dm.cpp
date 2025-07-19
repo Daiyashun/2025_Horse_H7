@@ -216,7 +216,7 @@ void mit_send_in_TIM(void) {
     i++;
 #else
     PD_Send();
-    limit();
+    //limit();
     // for (int j = 0; j < 12; j++)
     // {
     //     tempFloat[j + 50] = motor[j].send.tor;
@@ -270,61 +270,109 @@ void motor_init()
 
 void PD_Send()
 {
-    if (RadioMaster.Sbus_Data_WorkMode == SBUS_WorkMoode_Paralysis)
+    switch (RadioMaster.Sbus_Data_WorkMode)
     {
-        for (int i = 0; i < 12; i++)
-        {
-            motor[i].send.P = 0;
-            motor[i].send.D = 0;
-            motor[i].send.tor = 0;
-        }
-    }
-    else
-    {
-        for(int i = 0; i < 12; i++)
-        {
-#if USE_DYF
-            motor[i].send.D = 1;
-            motor[i].send.tor = 0;
-            motor[i].send.speed = 0;
-
-#if TEST_MODE
-            motor[i].send.P = SEND_P_TEST;
-#else
-            if (RadioMaster.Sbus_Data_WorkMode == SBUS_WorkMoode_Stand)
+        case SBUS_WorkMoode_Paralysis:
+            for (int i = 0; i < 12; i++)
             {
                 motor[i].send.P = 0;
+                motor[i].send.D = 0;
+                motor[i].send.tor = 0;
+            }
+            break;
+
+        case SBUS_WorkMoode_Stand:
+            for (int i = 0; i < 12; i++)
+            {
+                motor[i].send.P = SEND_P_TEST;
+                motor[i].send.D = SEND_D;
+                motor[i].send.tor = 0;
+            }
+            break;
+
+        case SBUS_WorkMoode_Walk:
+            for (int i = 0; i < 12; i++)
+            {
+                motor[i].send.P = SEND_P;
+                motor[i].send.D = SEND_D;
+                motor[i].send.tor = 0;
                 if (i == 1 || i == 4 || i == 7 || i == 10)
                 {
-                    motor[i].send.P = 0;
+                    motor[i].send.P = SEND_P_DT;
                 }
             }
-            else
+            break;
+
+        default:
+            for (int i = 0; i < 12; i++)
             {
                 motor[i].send.P = 0;
+                motor[i].send.D = 0;
+                motor[i].send.tor = 0;
             }
-#endif
-
-#else
-            motor[i].send.P = 0;
-            motor[i].send.D = 0;
-            motor[i].send.speed = 0;
-            motor[i].send.pos = 0;
-            if (fabs(motor[i].send.tor) > T_MAX)
-            {
-                if (motor[i].send.tor > 0)
-                {
-                    motor[i].send.tor = T_MAX;
-                }
-                else
-                {
-                    motor[i].send.tor = T_MIN;
-                }
-            }
-
-#endif
-        }
+            break;
     }
+//     for (int i = 0; i < 12; i++)
+//     {
+//         motor[i].send.P = 0;
+//         motor[i].send.D = 0;
+//         motor[i].send.tor = 0;
+//     }
+//     if (RadioMaster.Sbus_Data_WorkMode == SBUS_WorkMoode_Paralysis)
+//     {
+//         for (int i = 0; i < 12; i++)
+//         {
+//             motor[i].send.P = 0;
+//             motor[i].send.D = 0;
+//             motor[i].send.tor = 0;
+//         }
+//     }
+//     else
+//     {
+//         for(int i = 0; i < 12; i++)
+//         {
+// #if USE_DYF
+//             motor[i].send.D = 1;
+//             motor[i].send.tor = 0;
+//             motor[i].send.speed = 0;
+//
+// #if TEST_MODE
+//             motor[i].send.P = SEND_P_TEST;
+// #else
+//             if (RadioMaster.Sbus_Data_WorkMode == SBUS_WorkMoode_Walk)
+//             {
+//                 motor[i].send.P = SEND_P;
+//                 if (i == 1 || i == 4 || i == 7 || i == 10)
+//                 {
+//                     motor[i].send.P = SEND_P_DT;
+//                 }
+//             }
+//             else
+//             {
+//                 motor[i].send.P = SEND_P_TEST;
+//             }
+// #endif
+//
+// #else
+//             motor[i].send.P = 0;
+//             motor[i].send.D = 0;
+//             motor[i].send.speed = 0;
+//             motor[i].send.pos = 0;
+//             if (fabs(motor[i].send.tor) > T_MAX)
+//             {
+//                 if (motor[i].send.tor > 0)
+//                 {
+//                     motor[i].send.tor = T_MAX;
+//                 }
+//                 else
+//                 {
+//                     motor[i].send.tor = T_MIN;
+//                 }
+//             }
+//
+// #endif
+//         }
+//     }
 
 }
 
@@ -379,9 +427,9 @@ void limit(void)
         case CAN_DM_M6_ID:
         case CAN_DM_M9_ID:
         case CAN_DM_M12_ID:
-            if (fabs(motor[i - 1].receive.pos) < 1.05f )
+            if (fabs(motor[i - 1].receive.pos) < 0.81f )
             {
-                motor[i - 1].send.pos = -1.05f;
+                motor[i - 1].send.pos = -0.81f;
                 motor[i - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
                 if (i == CAN_DM_M3_ID || i == CAN_DM_M9_ID)
                 {

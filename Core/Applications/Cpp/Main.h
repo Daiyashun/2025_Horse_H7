@@ -16,8 +16,8 @@
 #define DIRECTION_CORRECTION -1.0f
 #define REDUCTION_RATION -2.0f
 
-#define SEND_P 22
-#define SEND_P_DT 40
+#define SEND_P 25
+#define SEND_P_DT 25
 #define SEND_P_TEST 5
 #define SEND_D 1
 

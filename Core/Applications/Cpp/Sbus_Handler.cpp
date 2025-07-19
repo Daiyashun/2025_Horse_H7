@@ -164,6 +164,25 @@ float SBUS::Sbus_Data_WalkModeChoose(float Sbus_Channel)
     }
 }
 
+bool SBUS::Sbus_Data_JumpModeChoose(float Sbus_Channel)
+{
+    if (Sbus_Channel < 1000)
+    {
+        return SBUS_Jump_Disable_Flag;
+    }
+        return SBUS_Jump_Enable_Flag;
+}
+
+bool SBUS::Sbus_Data_Jump(float Sbus_Channel)
+{
+    if (Sbus_Channel > 1000)
+    {
+        return SBUS_Jump_Start_Flag;
+    }
+    return false;
+}
+
+
 /**
  * @brief  遥控器数据更新
  * @param  none
@@ -176,4 +195,16 @@ void SBUS::Sbus_Data_Update(void)
     Sbus_Data_Turn_Yaw = Sbus_Data_Transform(SBUS_TURNYAW__LeftHand_Y,Sbus_Data_Turn_Yaw_Min,Sbus_Data_Turn_Yaw_Max);
     Sbus_Data_WorkMode = Sbus_Data_WorkModeChoose(SBUS_WorkModeChoose_SB);
     Sbus_Data_WalkMode = Sbus_Data_WalkModeChoose(SBUS_WalkMoodeChoose_SA);
+
+    Sbus_JumpMode_flag = Sbus_Data_JumpModeChoose(SBUS_Jump_ENABLE_FLAG_SE);
+    if (Sbus_JumpMode_flag)
+    {
+        Sbus_JumpStart_flag = Sbus_Data_Jump(SBUS_Jump_START_FLAG_SF);
+    }
+    else
+    {
+        Sbus_JumpStart_flag = false;
+    }
+    tempFloat[48] = Sbus_JumpMode_flag;
+    tempFloat[49] = Sbus_JumpStart_flag;
 }

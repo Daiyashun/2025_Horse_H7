@@ -24,8 +24,10 @@ public:
     float Sbus_Data_Turn_Yaw_Max;
     float Sbus_Data_Turn_Yaw_Min;
 
-    float Sbus_Data_WorkMode;
+    int Sbus_Data_WorkMode;
     float Sbus_Data_WalkMode;
+    bool Sbus_JumpMode_flag;
+    bool Sbus_JumpStart_flag;
 
 #define SBUS_CHANNEL_MAX 1810
 #define SBUS_CHANNEL_MIN 172
@@ -35,12 +37,17 @@ public:
 #define SBUS_WorkMoode_Walk 1000
 #define SBUS_WalkMoode_Walk 0
 #define SBUS_WalkMoode_Grovel 100
+#define SBUS_Jump_Enable_Flag 1
+#define SBUS_Jump_Disable_Flag 0
+#define SBUS_Jump_Start_Flag 1
 
 #define SBUS_FORWARDandBACK_RightHand_Y Sbus_Channel[2 - 1]
 #define SBUS_LEFTandRIGHT_RightHand_X Sbus_Channel[1 - 1]
 #define SBUS_TURNYAW__LeftHand_Y Sbus_Channel[4 - 1]
 #define SBUS_WalkMoodeChoose_SA Sbus_Channel[5 - 1]
 #define SBUS_WorkModeChoose_SB Sbus_Channel[6 - 1]
+#define SBUS_Jump_ENABLE_FLAG_SE Sbus_Channel[9 - 1]
+#define SBUS_Jump_START_FLAG_SF Sbus_Channel[10 - 1]
 
     void Sbus_Uart_Receive_init(UART_HandleTypeDef *huart);
     void Sbus_Uart_Receive_Handler(UART_HandleTypeDef* huart,uint8_t buffer[25]);
@@ -52,6 +59,9 @@ public:
     float Sbus_Data_Transform(uint16_t SBUS_channel, float min, float max);
     float Sbus_Data_WorkModeChoose(float Sbus_Channel);
     float Sbus_Data_WalkModeChoose(float Sbus_Channel);
+    bool Sbus_Data_JumpModeChoose(float Sbus_Channel);
+    bool Sbus_Data_Jump(float Sbus_Channel);
+
     void Sbus_Data_Update(void);
 };
 
