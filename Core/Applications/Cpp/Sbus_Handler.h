@@ -26,8 +26,8 @@ public:
 
     int Sbus_Data_WorkMode;
     float Sbus_Data_WalkMode;
-    bool Sbus_JumpMode_flag;
-    bool Sbus_JumpStart_flag;
+    bool Sbus_JumpMode_Flag;
+    bool Sbus_JumpStart_Flag;
 
 #define SBUS_CHANNEL_MAX 1810
 #define SBUS_CHANNEL_MIN 172

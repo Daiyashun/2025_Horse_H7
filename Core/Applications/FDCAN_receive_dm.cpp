@@ -300,6 +300,10 @@ void PD_Send()
                 {
                     motor[i].send.P = SEND_P_DT;
                 }
+                // else if (RadioMaster.Sbus_JumpStart_Flag)
+                // {
+                //     motor[i].send.P = SEND_P_JUMP;
+                // }
             }
             break;
 

@@ -18,6 +18,7 @@
 
 #define SEND_P 25
 #define SEND_P_DT 25
+#define SEND_P_JUMP 50
 #define SEND_P_TEST 5
 #define SEND_D 1
 

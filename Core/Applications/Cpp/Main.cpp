@@ -5,6 +5,7 @@
 #include "FDCAN_receive_dm.h"
 #include "UART_DMA.h"
 #include "IMU_N300WP.h"
+#include "Leg_Control.h"
 #include "tim.h"
 #include "Upper_Visual.h"
 #include "vofa_setting.h"
@@ -19,6 +20,8 @@ SBUS RadioMaster;
 extern Upper_data_receive Vdata_Rx;
 extern Upper_data_send Vdata_Tx;
 extern IMU_N300WP IMU;
+extern Jump_Character Jump_Front;
+
 void Main()
 {
     HAL_TIM_Base_Start_IT(&htim6);
@@ -28,6 +31,8 @@ void Main()
     UART_DMA_Receive_init(&huart10, buffer_receive_10, buffer_receive_length_10);
     RadioMaster.Sbus_Uart_Receive_init(&huart5);
     RadioMaster.Sbus_Data_Init();
+    Jump_Front.Jump_Init();
+
 
     Vdata_Rx.Visual_Receive_Flag = 0;
     IMU.check_flag = 0;

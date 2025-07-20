@@ -6,12 +6,16 @@
 #include "Main.h"
 #include "fdcan.h"
 #include "FDCAN_receive_dm.h"
+#include "Leg_Control.h"
+#include "Sbus_Handler.h"
 #include "Upper_Visual.h"
 #include "bsp_mc02/can_bsp.h"
 
 extern motor_t motor[12];
 extern Upper_data_receive Vdata_Rx;
 extern Upper_data_send Vdata_Tx;
+extern SBUS RadioMaster;
+extern Jump_Character Jump_Front;
 
 void TIM6_CALLBACK()
 {

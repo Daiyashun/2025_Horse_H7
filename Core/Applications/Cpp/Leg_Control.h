@@ -93,46 +93,69 @@ public:
     void Init();
 };
 
-Single_Foot_Measure::Single_Foot_Measure(float Height, float Length, float Basic_Height, float x, float y, float z)
+class Jump_Character
 {
-    sfm_x = x;
-    sfm_y = y;
-    sfm_z = z;
-    sfm_Height = Height;
-    sfm_Length = Length;
-    sfm_Basic_Height = Basic_Height;
-}
+public:
+    int Jump_Tim_Cnt;
+    float Jump_Motor_Pos[12];
+    int Jump_Motor_P;
+    bool Jumping_Flag;
 
-Time_Counter_Measure::Time_Counter_Measure(float cnt, float cycle, float cycle_max, float cycle_min)
-{
-    tcm_cnt = cnt;
-    tcm_cycle = cycle;
-    tcm_cycle_max = cycle_max;
-    tcm_cycle_min = cycle_min;
-}
+#define Tim_Cnt_Ready_For_Jump 50
+#define Tim_Cnt_Start_Jump 250 + 100
+#define Tim_Cnt_Jumping 351 + 100
+#define Tim_Cnt_Jump_Over 1000
 
-Step_Basic_Measure::Step_Basic_Measure(float Length, float Length_Max, float Length_Min, float Height, float Height_Max, float Height_Min, float Basic_Height, float Basic_Height_Max, float Basic_Height_Min)
-{
-    sbm_Length = Length;
-    sbm_Length_Max = Length_Max;
-    sbm_Length_Min = Length_Min;
-    sbm_Height = Height;
-    sbm_Height_Max = Height_Max;
-    sbm_Height_Min = Height_Min;
-    sbm_Basic_Height = Basic_Height;
-    sbm_Basic_Height_Max = Basic_Height_Max;
-    sbm_Basic_Height_Min = Basic_Height_Min;
-}
+    void Jump_Init();
+    void Jump_Front_Ready();
+    void Jump_Front();
+    void Jump_Front_Over();
+    void Jump_Angle_Trans();
+    void Jump();
 
-Step_Bios_Measure::Step_Bios_Measure(float turn, float turn_max, float turn_min, float pitch, float pitch_max, float pitch_min, float roll, float roll_max, float roll_min)
-{
-    sbm_turn = turn;
-    sbm_turn_max = turn_max;
-    sbm_turn_min = turn_min;
-    sbm_pitch = pitch;
-    sbm_pitch_max = pitch_max;
-    sbm_pitch_min = pitch_min;
-    sbm_roll = roll;
-    sbm_roll_max = roll_max;
-    sbm_roll_min = roll_min;
-}
+
+};
+
+// Single_Foot_Measure::Single_Foot_Measure(float Height, float Length, float Basic_Height, float x, float y, float z)
+// {
+//     sfm_x = x;
+//     sfm_y = y;
+//     sfm_z = z;
+//     sfm_Height = Height;
+//     sfm_Length = Length;
+//     sfm_Basic_Height = Basic_Height;
+// }
+//
+// Time_Counter_Measure::Time_Counter_Measure(float cnt, float cycle, float cycle_max, float cycle_min)
+// {
+//     tcm_cnt = cnt;
+//     tcm_cycle = cycle;
+//     tcm_cycle_max = cycle_max;
+//     tcm_cycle_min = cycle_min;
+// }
+//
+// Step_Basic_Measure::Step_Basic_Measure(float Length, float Length_Max, float Length_Min, float Height, float Height_Max, float Height_Min, float Basic_Height, float Basic_Height_Max, float Basic_Height_Min)
+// {
+//     sbm_Length = Length;
+//     sbm_Length_Max = Length_Max;
+//     sbm_Length_Min = Length_Min;
+//     sbm_Height = Height;
+//     sbm_Height_Max = Height_Max;
+//     sbm_Height_Min = Height_Min;
+//     sbm_Basic_Height = Basic_Height;
+//     sbm_Basic_Height_Max = Basic_Height_Max;
+//     sbm_Basic_Height_Min = Basic_Height_Min;
+// }
+//
+// Step_Bios_Measure::Step_Bios_Measure(float turn, float turn_max, float turn_min, float pitch, float pitch_max, float pitch_min, float roll, float roll_max, float roll_min)
+// {
+//     sbm_turn = turn;
+//     sbm_turn_max = turn_max;
+//     sbm_turn_min = turn_min;
+//     sbm_pitch = pitch;
+//     sbm_pitch_max = pitch_max;
+//     sbm_pitch_min = pitch_min;
+//     sbm_roll = roll;
+//     sbm_roll_max = roll_max;
+//     sbm_roll_min = roll_min;
+// }

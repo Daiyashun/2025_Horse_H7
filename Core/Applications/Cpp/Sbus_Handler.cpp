@@ -1,9 +1,11 @@
 #include "Sbus_Handler.h"
+
+#include "FDCAN_receive_dm.h"
 #include "usart.h"
 #include "user_lib.h"
 #include "vofa_setting.h"
 extern SBUS RadioMaster;
-
+extern motor_t motor[12];
 
 void SBUS::Sbus_Uart_Receive_init(UART_HandleTypeDef* huart)
 {
@@ -196,15 +198,14 @@ void SBUS::Sbus_Data_Update(void)
     Sbus_Data_WorkMode = Sbus_Data_WorkModeChoose(SBUS_WorkModeChoose_SB);
     Sbus_Data_WalkMode = Sbus_Data_WalkModeChoose(SBUS_WalkMoodeChoose_SA);
 
-    Sbus_JumpMode_flag = Sbus_Data_JumpModeChoose(SBUS_Jump_ENABLE_FLAG_SE);
-    if (Sbus_JumpMode_flag)
+    Sbus_JumpMode_Flag = Sbus_Data_JumpModeChoose(SBUS_Jump_ENABLE_FLAG_SE);
+    if (Sbus_JumpMode_Flag)
     {
-        Sbus_JumpStart_flag = Sbus_Data_Jump(SBUS_Jump_START_FLAG_SF);
+        Sbus_JumpStart_Flag = Sbus_Data_Jump(SBUS_Jump_START_FLAG_SF);
     }
     else
     {
-        Sbus_JumpStart_flag = false;
+        Sbus_JumpStart_Flag = false;
     }
-    tempFloat[48] = Sbus_JumpMode_flag;
-    tempFloat[49] = Sbus_JumpStart_flag;
+
 }
