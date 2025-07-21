@@ -28,76 +28,7 @@ void Stand()
     motor[8].send.pos = -1.35f;
     motor[11].send.pos = -1.35f;
 
-    // motor[0].send.pos = -0.2f;
-    // motor[3].send.pos = 0.2f;
-    // motor[6].send.pos = -0.2f;
-    // motor[9].send.pos = 0.2f;
-    //
-    // motor[1].send.pos = 0.9f;
-    // motor[4].send.pos = 0.9f;
-    // motor[7].send.pos = 0.9f;
-    // motor[10].send.pos = 0.9f;
-    //
-    // motor[2].send.pos = -0.2f;
-    // motor[5].send.pos = -0.2f;
-    // motor[8].send.pos = -0.2f;
-    // motor[11].send.pos = -0.2f;
 }
-
-// void Jump_Front_Ready()
-// {
-//     motor[0].send.pos = -0.0f;
-//     motor[3].send.pos = 0.0f;
-//     motor[6].send.pos = -0.0f;
-//     motor[9].send.pos = 0.0f;
-//
-//     motor[1].send.pos = 1.1f + 0.8f;
-//     motor[4].send.pos = 1.1f + 0.8f;
-//     motor[7].send.pos = 1.1f + 0.8f;
-//     motor[10].send.pos = 1.1f + 0.8f;
-//
-//     motor[2].send.pos = -2.65f;
-//     motor[5].send.pos = -2.65f;
-//     motor[8].send.pos = -2.65f;
-//     motor[11].send.pos = -2.65f;
-//
-// }
-//
-// void Jump_Front()
-// {
-//     motor[0].send.pos = -0.0f;
-//     motor[3].send.pos = 0.0f;
-//     motor[6].send.pos = -0.0f;
-//     motor[9].send.pos = 0.0f;
-//
-//     motor[1].send.pos = 0.4f;
-//     motor[4].send.pos = 0.4f;
-//     motor[7].send.pos = 0.4f;
-//     motor[10].send.pos = 0.4f;
-//
-//     motor[2].send.pos = -0.95f;
-//     motor[5].send.pos = -0.95f;
-//     motor[8].send.pos = -0.95f;
-//     motor[11].send.pos = -0.95f;
-// }
-//
-// void Jump_Front_Over()
-// {
-//     motor[0].send.pos = -0.4f;
-//     motor[3].send.pos = 0.4f;
-//     motor[6].send.pos = -0.4f;
-//     motor[9].send.pos = 0.4f;
-//
-//     motor[1].send.pos = 1.1f;
-//     motor[4].send.pos = 1.1f;
-//     motor[7].send.pos = 1.1f;
-//     motor[10].send.pos = 1.1f;
-//
-//     motor[2].send.pos = -2.75f;
-//     motor[5].send.pos = -2.75f;
-//     motor[8].send.pos = -2.75f;
-//     motor[11].send.pos = -2.75f;
-// }
 
 float Upper_data_receive::Vdata_transfer(uint8_t d1, uint8_t d2, uint8_t d3, uint8_t d4)
 {
@@ -190,7 +121,7 @@ void Upper_data_receive::Vdata_send()
     //     }
     // }
 
-  if (Visual_Receive_Flag)
+  if (Visual_Receive_Flag && RadioMaster.Sbus_Data_Visual_Enable_Flag)
     {
 #if USE_DYF
         motor[3].send.pos = Visual_motor_receive_pos[0];
@@ -218,7 +149,7 @@ void Upper_data_receive::Vdata_send()
 #endif
     }
 
-    if (RadioMaster.Sbus_JumpStart_Flag)
+    if (RadioMaster.Sbus_JumpStart_Flag && !RadioMaster.Sbus_Data_Visual_Enable_Flag)
     {
         Jump_Front.Jumping_Flag = true;
     }

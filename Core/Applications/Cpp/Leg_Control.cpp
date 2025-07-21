@@ -57,7 +57,6 @@ void Jump_Character::Jump()
                 Jump_Tim_Cnt++;
                 break;
         }
-        //Jump_Tim_Cnt++;
 
     }
     tempFloat[48] = Jumping_Flag;

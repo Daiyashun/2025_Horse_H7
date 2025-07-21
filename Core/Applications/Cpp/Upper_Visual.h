@@ -13,6 +13,7 @@ public:
     float Last_data[12];
     float Visual_motor_receive_pos[12];
     uint8_t Real_data[54];
+    bool Visual_Enable_Flag;
     bool Visual_Receive_Flag;
     void Vdata_get(uint8_t* data, uint8_t length);
     float Vdata_transfer(uint8_t d1, uint8_t d2, uint8_t d3, uint8_t d4);

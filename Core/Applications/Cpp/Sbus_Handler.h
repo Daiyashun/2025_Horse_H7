@@ -24,6 +24,8 @@ public:
     float Sbus_Data_Turn_Yaw_Max;
     float Sbus_Data_Turn_Yaw_Min;
 
+    bool Sbus_Data_Visual_Enable_Flag;
+
     int Sbus_Data_WorkMode;
     float Sbus_Data_WalkMode;
     bool Sbus_JumpMode_Flag;
@@ -31,6 +33,9 @@ public:
 
 #define SBUS_CHANNEL_MAX 1810
 #define SBUS_CHANNEL_MIN 172
+
+#define SBUS_Visual_Enable 1
+#define SBUS_Visual_Disable 0
 
 #define SBUS_WorkMoode_Paralysis 0
 #define SBUS_WorkMoode_Stand 100
@@ -46,6 +51,7 @@ public:
 #define SBUS_TURNYAW__LeftHand_Y Sbus_Channel[4 - 1]
 #define SBUS_WalkMoodeChoose_SA Sbus_Channel[5 - 1]
 #define SBUS_WorkModeChoose_SB Sbus_Channel[6 - 1]
+#define SBUS_Viusal_ENABLE_SD Sbus_Channel[8 - 1]
 #define SBUS_Jump_ENABLE_FLAG_SE Sbus_Channel[9 - 1]
 #define SBUS_Jump_START_FLAG_SF Sbus_Channel[10 - 1]
 
@@ -59,6 +65,7 @@ public:
     float Sbus_Data_Transform(uint16_t SBUS_channel, float min, float max);
     float Sbus_Data_WorkModeChoose(float Sbus_Channel);
     float Sbus_Data_WalkModeChoose(float Sbus_Channel);
+    bool Sbus_Data_Visual_Enable(float Sbus_Channel);
     bool Sbus_Data_JumpModeChoose(float Sbus_Channel);
     bool Sbus_Data_Jump(float Sbus_Channel);
 
