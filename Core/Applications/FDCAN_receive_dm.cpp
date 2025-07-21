@@ -439,7 +439,7 @@ void limit(void)
                 {
                     motor[i - 1].send.pos *= DIRECTION_CORRECTION;
                 }
-                motor[i - 1].send.pos *= REDUCTION_RATION;
+                motor[i - 1].send.pos *= GEAR_RATIO;
             }
 
             break;

@@ -9,6 +9,7 @@
 Step_Character step;
 Single_Foot_Measure leg[4];
 Jump_Character Jump_Front;
+
 extern motor_t motor[12];
 
 // void Step_Character::Init()
@@ -82,7 +83,7 @@ void Jump_Character::Jump_Angle_Trans()
             case CAN_DM_M3_ID:
                 motor[CAN_DM_M3_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
                 motor[CAN_DM_M3_ID - 1].send.pos *= DIRECTION_CORRECTION;
-                motor[CAN_DM_M3_ID - 1].send.pos *= REDUCTION_RATION;
+                motor[CAN_DM_M3_ID - 1].send.pos *= GEAR_RATIO;
                 break;
 
             case CAN_DM_M4_ID:
@@ -98,7 +99,7 @@ void Jump_Character::Jump_Angle_Trans()
             case CAN_DM_M6_ID:
                 motor[CAN_DM_M6_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
                 //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
-                motor[CAN_DM_M6_ID - 1].send.pos *= REDUCTION_RATION;
+                motor[CAN_DM_M6_ID - 1].send.pos *= GEAR_RATIO;
                 break;
 
             case CAN_DM_M7_ID:
@@ -114,7 +115,7 @@ void Jump_Character::Jump_Angle_Trans()
             case CAN_DM_M9_ID:
                 motor[CAN_DM_M9_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
                 motor[CAN_DM_M9_ID - 1].send.pos *= DIRECTION_CORRECTION;
-                motor[CAN_DM_M9_ID - 1].send.pos *= REDUCTION_RATION;
+                motor[CAN_DM_M9_ID - 1].send.pos *= GEAR_RATIO;
                 break;
 
             case CAN_DM_M10_ID:
@@ -130,7 +131,7 @@ void Jump_Character::Jump_Angle_Trans()
             case CAN_DM_M12_ID:
                 motor[CAN_DM_M12_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
                 //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
-                motor[CAN_DM_M12_ID - 1].send.pos *= REDUCTION_RATION;
+                motor[CAN_DM_M12_ID - 1].send.pos *= GEAR_RATIO;
                 break;
 
             default:break;
@@ -147,56 +148,143 @@ void Jump_Character::Jump_Init()
 
 void Jump_Character::Jump_Front_Ready()
 {
-    motor[0].send.pos = -0.0f;
-    motor[3].send.pos = 0.0f;
-    motor[6].send.pos = -0.0f;
-    motor[9].send.pos = 0.0f;
+    // 定义电机位置配置
+    const float positions[3] = {-0.0f, 1.1f + 0.8f, -2.65f};
+    const int motorGroups[3][4] = {
+        {0, 3, 6, 9},  // 第一组髋关节电机
+        {1, 4, 7, 10}, // 第二组大腿电机
+        {2, 5, 8, 11}  // 第三组小腿电机
+    };
 
-    motor[1].send.pos = 1.1f + 0.8f;
-    motor[4].send.pos = 1.1f + 0.8f;
-    motor[7].send.pos = 1.1f + 0.8f;
-    motor[10].send.pos = 1.1f + 0.8f;
-
-    motor[2].send.pos = -2.65f;
-    motor[5].send.pos = -2.65f;
-    motor[8].send.pos = -2.65f;
-    motor[11].send.pos = -2.65f;
+    // 使用循环设置电机位置
+    for (int group = 0; group < 3; group++) {
+        for (int i = 0; i < 4; i++) {
+            int motorIndex = motorGroups[group][i];
+            if (group == 0)
+            {
+                if (i % 2 == 0)
+                {
+                    motor[motorIndex].send.pos = positions[group];
+                }
+                else
+                {
+                    motor[motorIndex].send.pos = -positions[group];
+                }
+            }
+            else
+            {
+                motor[motorIndex].send.pos = positions[group];
+            }
+        }
+    }
+    // motor[0].send.pos = -0.0f;
+    // motor[3].send.pos = 0.0f;
+    // motor[6].send.pos = -0.0f;
+    // motor[9].send.pos = 0.0f;
+    //
+    // motor[1].send.pos = 1.1f + 0.8f;
+    // motor[4].send.pos = 1.1f + 0.8f;
+    // motor[7].send.pos = 1.1f + 0.8f;
+    // motor[10].send.pos = 1.1f + 0.8f;
+    //
+    // motor[2].send.pos = -2.65f;
+    // motor[5].send.pos = -2.65f;
+    // motor[8].send.pos = -2.65f;
+    // motor[11].send.pos = -2.65f;
 }
 
 void Jump_Character::Jump_Front()
 {
-    motor[0].send.pos = -0.0f;
-    motor[3].send.pos = 0.0f;
-    motor[6].send.pos = -0.0f;
-    motor[9].send.pos = 0.0f;
+    // 定义电机位置配置
+    const float positions[3] = {-0.0f, 0.4f, -0.95f};
+    const int motorGroups[3][4] = {
+        {0, 3, 6, 9},  // 第一组髋关节电机
+        {1, 4, 7, 10}, // 第二组大腿电机
+        {2, 5, 8, 11}  // 第三组小腿电机
+    };
 
-    motor[1].send.pos = 0.4f;
-    motor[4].send.pos = 0.4f;
-    motor[7].send.pos = 0.4f;
-    motor[10].send.pos = 0.4f;
-
-    motor[2].send.pos = -0.95f;
-    motor[5].send.pos = -0.95f;
-    motor[8].send.pos = -0.95f;
-    motor[11].send.pos = -0.95f;
+    // 使用循环设置电机位置
+    for (int group = 0; group < 3; group++) {
+        for (int i = 0; i < 4; i++) {
+            int motorIndex = motorGroups[group][i];
+            if (group == 0)
+            {
+                if (i % 2 == 0)
+                {
+                    motor[motorIndex].send.pos = positions[group];
+                }
+                else
+                {
+                    motor[motorIndex].send.pos = -positions[group];
+                }
+            }
+            else
+            {
+                motor[motorIndex].send.pos = positions[group];
+            }
+        }
+    }
+    // motor[0].send.pos = -0.0f;
+    // motor[3].send.pos = 0.0f;
+    // motor[6].send.pos = -0.0f;
+    // motor[9].send.pos = 0.0f;
+    //
+    // motor[1].send.pos = 0.4f;
+    // motor[4].send.pos = 0.4f;
+    // motor[7].send.pos = 0.4f;
+    // motor[10].send.pos = 0.4f;
+    //
+    // motor[2].send.pos = -0.95f;
+    // motor[5].send.pos = -0.95f;
+    // motor[8].send.pos = -0.95f;
+    // motor[11].send.pos = -0.95f;
 }
 
 void Jump_Character::Jump_Front_Over()
 {
-    motor[0].send.pos = -0.4f;
-    motor[3].send.pos = 0.4f;
-    motor[6].send.pos = -0.4f;
-    motor[9].send.pos = 0.4f;
+    // 定义电机位置配置
+    const float positions[3] = {-0.4f, 1.1f, -2.75f};
+    const int motorGroups[3][4] = {
+        {0, 3, 6, 9},  // 第一组髋关节电机
+        {1, 4, 7, 10}, // 第二组大腿电机
+        {2, 5, 8, 11}  // 第三组小腿电机
+    };
 
-    motor[1].send.pos = 1.1f;
-    motor[4].send.pos = 1.1f;
-    motor[7].send.pos = 1.1f;
-    motor[10].send.pos = 1.1f;
-
-    motor[2].send.pos = -2.75f;
-    motor[5].send.pos = -2.75f;
-    motor[8].send.pos = -2.75f;
-    motor[11].send.pos = -2.75f;
+    // 使用循环设置电机位置
+    for (int group = 0; group < 3; group++) {
+        for (int i = 0; i < 4; i++) {
+            int motorIndex = motorGroups[group][i];
+            if (group == 0)
+            {
+                if (i % 2 == 0)
+                {
+                    motor[motorIndex].send.pos = positions[group];
+                }
+                else
+                {
+                    motor[motorIndex].send.pos = -positions[group];
+                }
+            }
+            else
+            {
+                motor[motorIndex].send.pos = positions[group];
+            }
+        }
+    }
+    // motor[0].send.pos = -0.4f;
+    // motor[3].send.pos = 0.4f;
+    // motor[6].send.pos = -0.4f;
+    // motor[9].send.pos = 0.4f;
+    //
+    // motor[1].send.pos = 1.1f;
+    // motor[4].send.pos = 1.1f;
+    // motor[7].send.pos = 1.1f;
+    // motor[10].send.pos = 1.1f;
+    //
+    // motor[2].send.pos = -2.75f;
+    // motor[5].send.pos = -2.75f;
+    // motor[8].send.pos = -2.75f;
+    // motor[11].send.pos = -2.75f;
 }
 
 

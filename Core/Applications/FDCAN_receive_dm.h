@@ -201,6 +201,12 @@ typedef struct
     first_order_filter_type_t first_order_control_pos;   //电机角度一阶低通滤波
 }motor_t;
 
+// 定义电机配置结构
+typedef struct {
+  int id;
+  float position;
+}MotorConfig;
+
 void PD_Send();
 void limit(void);
 #ifdef __cplusplus
