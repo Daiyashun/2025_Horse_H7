@@ -103,7 +103,7 @@ public:
 
 #define Tim_Cnt_Ready_For_Jump 50
 #define Tim_Cnt_Start_Jump 250 + 100
-#define Tim_Cnt_Jumping 351 + 100
+#define Tim_Cnt_Jumping 351 + 150
 #define Tim_Cnt_Jump_Over 1000
 
     void Jump_Init();

@@ -110,13 +110,13 @@ void SBUS::Sbus_OriginData_Trans(uint8_t buffer[23])
  */
 void SBUS::Sbus_Data_Init()
 {
-    //Sbus_Data_Velocity_ForwardBackward = 0.0f;
-    Sbus_Data_Velocity_ForwardBackward_Max = 1.0f;
-    Sbus_Data_Velocity_ForwardBackward_Min = -1.0f;
-    //Sbus_Data_Velocity_RightLeft = 0.0f;
+    Sbus_Data_Velocity_ForwardBackward = 0.0f;
+    Sbus_Data_Velocity_ForwardBackward_Max = 0.75f;
+    Sbus_Data_Velocity_ForwardBackward_Min = -0.75f;
+    Sbus_Data_Velocity_RightLeft = 0.0f;
     Sbus_Data_Velocity_RightLeft_Max = 1.0f;
     Sbus_Data_Velocity_RightLeft_Min =-1.0f;
-    //Sbus_Data_Turn_Yaw = 0.0f;
+    Sbus_Data_Turn_Yaw = 0.0f;
     Sbus_Data_Turn_Yaw_Max = 3.14f;
     Sbus_Data_Turn_Yaw_Min = -3.14f;
 
@@ -135,7 +135,7 @@ void SBUS::Sbus_Data_Init()
 float SBUS::Sbus_Data_Transform(uint16_t SBUS_channel, float min, float max)
 {
     return (fp32_constrain(SBUS_channel, SBUS_CHANNEL_MIN, SBUS_CHANNEL_MAX) - SBUS_CHANNEL_MIN)
-               / (SBUS_CHANNEL_MAX - SBUS_CHANNEL_MIN) * (max - min) + min;
+               / (SBUS_CHANNEL_MAX - SBUS_CHANNEL_MIN) * (max - min) + min ;
 }
 
 float SBUS::Sbus_Data_WorkModeChoose(float Sbus_Channel)
@@ -144,27 +144,16 @@ float SBUS::Sbus_Data_WorkModeChoose(float Sbus_Channel)
     {
         return SBUS_WorkMoode_Walk;
     }
-    else if (Sbus_Channel < 1000)
+    if (Sbus_Channel < 1000)
     {
         return SBUS_WorkMoode_Stand;
     }
-    else
-    {
+
         return SBUS_WorkMoode_Paralysis;
-    }
+
 }
 
-float SBUS::Sbus_Data_WalkModeChoose(float Sbus_Channel)
-{
-    if (Sbus_Channel < 1000)
-    {
-        return SBUS_WalkMoode_Grovel;
-    }
-    else
-    {
-        return SBUS_WalkMoode_Walk;
-    }
-}
+
 
 bool SBUS::Sbus_Data_JumpModeChoose(float Sbus_Channel)
 {
@@ -193,6 +182,19 @@ bool SBUS::Sbus_Data_Visual_Enable(float Sbus_Channel)
     return SBUS_Visual_Disable;
 }
 
+int SBUS::Sbus_Visual_Walk_Mode_Choose(float Sbus_Channel)
+{
+    if (Sbus_Channel < 500)
+    {
+        return SBUS_Visual_WalkObstacle_Flag;
+    }
+    if (Sbus_Channel < 1000)
+    {
+        return SBUS_Visual_Walk_Flag;
+    }
+        return SBUS_Visual_WalkGrovel_Flag;
+}
+
 
 
 /**
@@ -202,12 +204,12 @@ bool SBUS::Sbus_Data_Visual_Enable(float Sbus_Channel)
  */
 void SBUS::Sbus_Data_Update(void)
 {
-    Sbus_Data_Velocity_ForwardBackward = Sbus_Data_Transform(SBUS_FORWARDandBACK_RightHand_Y,Sbus_Data_Velocity_ForwardBackward_Min,Sbus_Data_Velocity_ForwardBackward_Max);
-    Sbus_Data_Velocity_RightLeft = Sbus_Data_Transform(SBUS_LEFTandRIGHT_RightHand_X,Sbus_Data_Velocity_RightLeft_Min,Sbus_Data_Velocity_RightLeft_Max);
-    Sbus_Data_Turn_Yaw = Sbus_Data_Transform(SBUS_TURNYAW__LeftHand_Y,Sbus_Data_Turn_Yaw_Min,Sbus_Data_Turn_Yaw_Max);
+    Sbus_Data_Velocity_ForwardBackward = 0.25 + Sbus_Data_Transform(SBUS_FORWARDandBACK_RightHand_Y,Sbus_Data_Velocity_ForwardBackward_Min,Sbus_Data_Velocity_ForwardBackward_Max);
+    Sbus_Data_Velocity_RightLeft = Sbus_Data_Transform(SBUS_LEFTandRIGHT_RightHand_X,Sbus_Data_Velocity_RightLeft_Max,Sbus_Data_Velocity_RightLeft_Min);
+    Sbus_Data_Turn_Yaw = Sbus_Data_Transform(SBUS_TURNYAW__LeftHand_Y,Sbus_Data_Turn_Yaw_Max,Sbus_Data_Turn_Yaw_Min);
     Sbus_Data_WorkMode = Sbus_Data_WorkModeChoose(SBUS_WorkModeChoose_SB);
-    Sbus_Data_WalkMode = Sbus_Data_WalkModeChoose(SBUS_WalkMoodeChoose_SA);
     Sbus_Data_Visual_Enable_Flag = Sbus_Data_Visual_Enable(SBUS_Viusal_ENABLE_SD);
+    Sbus_Visual_Walk_Mode_Change_Flag = Sbus_Visual_Walk_Mode_Choose(SBUS_Visual_WalkMode_Choose_SC);
 
     Sbus_JumpMode_Flag = Sbus_Data_JumpModeChoose(SBUS_Jump_ENABLE_FLAG_SE);
     if (Sbus_JumpMode_Flag)

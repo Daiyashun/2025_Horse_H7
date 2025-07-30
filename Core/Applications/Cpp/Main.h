@@ -16,15 +16,16 @@
 #define DIRECTION_CORRECTION -1.0f
 #define GEAR_RATIO -2.0f
 
-#define SEND_P 25
-#define SEND_P_DT 25
+#define SEND_P 22
+#define SEND_P_DT 10
 #define SEND_P_JUMP 50
 #define SEND_P_TEST 5
 #define SEND_D 1
+#define SEND_D_XT 0.5
 
 #define DATA_LENGTH_REAL   51
 #define DATA_LENGTH  DATA_LENGTH_REAL * 4
-#define DATA_LENGTH_REAL_DYF 36
+#define DATA_LENGTH_REAL_DYF 37
 #define DATA_LENGTH_DYF DATA_LENGTH_REAL_DYF * 4
 /*-----------------------------------------------------------------------------*/
 

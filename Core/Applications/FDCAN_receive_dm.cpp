@@ -215,7 +215,7 @@ void mit_send_in_TIM(void) {
     MIT_motor_CTRL(&hfdcan3, i + 0x09, 0,0, 0, 0,0);
     i++;
 #else
-    PD_Send();
+    //PD_Send();
     //limit();
     // for (int j = 0; j < 12; j++)
     // {
@@ -270,7 +270,9 @@ void motor_init()
 
 void PD_Send()
 {
-    switch (RadioMaster.Sbus_Data_WorkMode)
+    if (RadioMaster.Sbus_JumpStart_Flag||RadioMaster.Sbus_Data_Visual_Enable_Flag)
+    {
+        switch (RadioMaster.Sbus_Data_WorkMode)
     {
         case SBUS_WorkMoode_Paralysis:
             for (int i = 0; i < 12; i++)
@@ -296,14 +298,15 @@ void PD_Send()
                 motor[i].send.P = SEND_P;
                 motor[i].send.D = SEND_D;
                 motor[i].send.tor = 0;
-                if (i == 1 || i == 4 || i == 7 || i == 10)
+                if (i == 2 || i == 5 || i == 8 || i == 11)
                 {
-                    motor[i].send.P = SEND_P_DT;
+                    motor[i].send.P = 12;
+                    //motor[i].send.D = SEND_D_XT;
                 }
-                // else if (RadioMaster.Sbus_JumpStart_Flag)
-                // {
-                //     motor[i].send.P = SEND_P_JUMP;
-                // }
+                else if (RadioMaster.Sbus_JumpStart_Flag)
+                {
+                    motor[i].send.P = SEND_P_JUMP;
+                }
             }
             break;
 
@@ -378,6 +381,83 @@ void PD_Send()
 //         }
 //     }
 
+    }
+
+}
+
+void Angle_transfer()
+{
+    for (int i = 1; i < 13; i++)
+    {
+        switch (i)
+        {
+            case CAN_DM_M1_ID:
+                motor[CAN_DM_M1_ID - 1].send.pos += MOTOR_147A_ANGLE_OFFSET;
+                //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M2_ID:
+                motor[CAN_DM_M2_ID - 1].send.pos -= MOTOR_258B_ANGLE_OFFSET;
+                motor[CAN_DM_M2_ID - 1].send.pos *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M3_ID:
+                motor[CAN_DM_M3_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                motor[CAN_DM_M3_ID - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M3_ID - 1].send.pos *= GEAR_RATIO;
+                break;
+
+            case CAN_DM_M4_ID:
+                motor[CAN_DM_M4_ID - 1].send.pos -= MOTOR_147A_ANGLE_OFFSET;
+                //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M5_ID:
+                motor[CAN_DM_M5_ID - 1].send.pos -= MOTOR_258B_ANGLE_OFFSET;
+                //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M6_ID:
+                motor[CAN_DM_M6_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M6_ID - 1].send.pos *= GEAR_RATIO;
+                break;
+
+            case CAN_DM_M7_ID:
+                motor[CAN_DM_M7_ID - 1].send.pos += MOTOR_147A_ANGLE_OFFSET;
+                motor[CAN_DM_M7_ID - 1].send.pos *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M8_ID:
+                motor[CAN_DM_M8_ID - 1].send.pos -= MOTOR_258B_ANGLE_OFFSET;
+                motor[CAN_DM_M8_ID - 1].send.pos *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M9_ID:
+                motor[CAN_DM_M9_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                motor[CAN_DM_M9_ID - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M9_ID - 1].send.pos *= GEAR_RATIO;
+                break;
+
+            case CAN_DM_M10_ID:
+                motor[CAN_DM_M10_ID - 1].send.pos -= MOTOR_147A_ANGLE_OFFSET;
+                motor[CAN_DM_M10_ID - 1].send.pos *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M11_ID:
+                motor[CAN_DM_M11_ID - 1].send.pos -= MOTOR_258B_ANGLE_OFFSET;
+                //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                break;
+
+            case CAN_DM_M12_ID:
+                motor[CAN_DM_M12_ID - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
+                //motor[i - 1].send.pos *= DIRECTION_CORRECTION;
+                motor[CAN_DM_M12_ID - 1].send.pos *= GEAR_RATIO;
+                break;
+
+            default:break;
+        }
+    }
 }
 
 void limit(void)
@@ -400,7 +480,7 @@ void limit(void)
                 {
                     motor[i - 1].send.pos = -0.5f;
                 }
-
+                Angle_transfer();
             }
             break;
 
@@ -412,19 +492,14 @@ void limit(void)
             {
                 if (motor[i - 1].send.pos > 0)
                 {
-                    motor[i - 1].send.pos -= 2.5f;
+                    motor[i - 1].send.pos -= 2.4f;
                 }
                 else
                 {
-                    motor[i - 1].send.pos = -2.5f;
+                    motor[i - 1].send.pos = -2.4f;
                 }
-                motor[i - 1].send.pos -= MOTOR_147A_ANGLE_OFFSET;
-                if (i == CAN_DM_M2_ID || i == CAN_DM_M8_ID)
-                {
-                    motor[i - 1].send.pos *= DIRECTION_CORRECTION;
-                }
+                Angle_transfer();
             }
-            break;
             break;
 
         case CAN_DM_M3_ID:
@@ -434,12 +509,7 @@ void limit(void)
             if (fabs(motor[i - 1].receive.pos) < 0.81f )
             {
                 motor[i - 1].send.pos = -0.81f;
-                motor[i - 1].send.pos += MOTOR_369C_ANGLE_OFFSET;
-                if (i == CAN_DM_M3_ID || i == CAN_DM_M9_ID)
-                {
-                    motor[i - 1].send.pos *= DIRECTION_CORRECTION;
-                }
-                motor[i - 1].send.pos *= GEAR_RATIO;
+                Angle_transfer();
             }
 
             break;

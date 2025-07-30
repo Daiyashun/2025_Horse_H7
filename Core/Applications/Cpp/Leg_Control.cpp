@@ -48,7 +48,7 @@ void Jump_Character::Jump()
                 break;
 
             case Tim_Cnt_Jump_Over:
-                Jump_Front_Ready();
+                Jump_Front_Over();
                 Jump_Angle_Trans();
                 Jump_Tim_Cnt = 0;
                 Jumping_Flag = false;
@@ -60,8 +60,6 @@ void Jump_Character::Jump()
         }
 
     }
-    tempFloat[48] = Jumping_Flag;
-    tempFloat[49] = Jump_Tim_Cnt;
 }
 
 void Jump_Character::Jump_Angle_Trans()
@@ -182,10 +180,10 @@ void Jump_Character::Jump_Front_Ready()
     // motor[6].send.pos = -0.0f;
     // motor[9].send.pos = 0.0f;
     //
-    // motor[1].send.pos = 1.1f + 0.8f;
-    // motor[4].send.pos = 1.1f + 0.8f;
-    // motor[7].send.pos = 1.1f + 0.8f;
-    // motor[10].send.pos = 1.1f + 0.8f;
+    // motor[1].send.pos = 1.1f + 1.0f;
+    // motor[4].send.pos = 1.1f + 1.0f;
+    // motor[7].send.pos = 1.1f + 1.0f;
+    // motor[10].send.pos = 1.1f + 1.0f;
     //
     // motor[2].send.pos = -2.65f;
     // motor[5].send.pos = -2.65f;
@@ -196,7 +194,7 @@ void Jump_Character::Jump_Front_Ready()
 void Jump_Character::Jump_Front()
 {
     // 定义电机位置配置
-    const float positions[3] = {-0.0f, 0.4f, -0.95f};
+    const float positions[3] = {0.1f, 0.4f + 1.15f, -0.7f};
     const int motorGroups[3][4] = {
         {0, 3, 6, 9},  // 第一组髋关节电机
         {1, 4, 7, 10}, // 第二组大腿电机

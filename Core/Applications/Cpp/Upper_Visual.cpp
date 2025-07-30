@@ -71,6 +71,10 @@ void Upper_data_receive::Vdata_get(uint8_t* data, uint8_t length)
 #if USE_DYF
                 Visual_motor_receive_pos[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
                 tempFloat[j + 62] = Visual_motor_receive_pos[j];
+                if (!RadioMaster.Sbus_Data_Visual_Enable_Flag)
+                {
+                    Visual_motor_receive_pos[j] = 0;
+                }
 #else
                Receive_data[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
                Visual_motor_receive_tor[j] = Vdata_transfer(Real_data[k],Real_data[k + 1],Real_data[k + 2],Real_data[k + 3]);
@@ -96,6 +100,17 @@ void Upper_data_receive::Vdata_get(uint8_t* data, uint8_t length)
     }
 }
 
+bool Upper_data_receive::Motor_Check()
+{
+    for (int i = 0; i < 12; i++)
+    {
+        if (motor[i].receive.state != 1)
+            return false;
+    }
+    return true;
+}
+
+
 void Upper_data_receive::Vdata_send()
 {
     // if (VofaSlider[1] == 1)
@@ -119,50 +134,59 @@ void Upper_data_receive::Vdata_send()
     //         motor[i].send.pos = 0;
     //     }
     // }
-
-  if (Visual_Receive_Flag && RadioMaster.Sbus_Data_Visual_Enable_Flag)
+    if (Motor_Check())
     {
+        if (Visual_Receive_Flag && RadioMaster.Sbus_Data_Visual_Enable_Flag)
+        {
 #if USE_DYF
-        const int motorMapping[12] = {3, 4, 5, 0, 1, 2, 9, 10, 11, 6, 7, 8};
-        for (int i = 0; i < 12; i++) {
-            int motorIndex = motorMapping[i];
-            motor[motorIndex].send.pos = Visual_motor_receive_pos[i];
-        }
-        // motor[3].send.pos = Visual_motor_receive_pos[0];
-        // motor[4].send.pos = Visual_motor_receive_pos[1];
-        // motor[5].send.pos = Visual_motor_receive_pos[2];
-        // motor[0].send.pos = Visual_motor_receive_pos[3];
-        // motor[1].send.pos = Visual_motor_receive_pos[4];
-        // motor[2].send.pos = Visual_motor_receive_pos[5];
-        // motor[9].send.pos = Visual_motor_receive_pos[6];
-        // motor[10].send.pos = Visual_motor_receive_pos[7];
-        // motor[11].send.pos = Visual_motor_receive_pos[8];
-        // motor[6].send.pos = Visual_motor_receive_pos[9];
-        // motor[7].send.pos = Visual_motor_receive_pos[10];
-        // motor[8].send.pos = Visual_motor_receive_pos[11];
+            const int motorMapping[12] = {3, 4, 5, 0, 1, 2, 9, 10, 11, 6, 7, 8};
+            for (int i = 0; i < 12; i++) {
+                int motorIndex = motorMapping[i];
+                motor[motorIndex].send.pos = Visual_motor_receive_pos[i];
+            }
+            // motor[3].send.pos = Visual_motor_receive_pos[0];
+            // motor[4].send.pos = Visual_motor_receive_pos[1];
+            // motor[5].send.pos = Visual_motor_receive_pos[2];
+            // motor[0].send.pos = Visual_motor_receive_pos[3];
+            // motor[1].send.pos = Visual_motor_receive_pos[4];
+            // motor[2].send.pos = Visual_motor_receive_pos[5];
+            // motor[9].send.pos = Visual_motor_receive_pos[6];
+            // motor[10].send.pos = Visual_motor_receive_pos[7];
+            // motor[11].send.pos = Visual_motor_receive_pos[8];
+            // motor[6].send.pos = Visual_motor_receive_pos[9];
+            // motor[7].send.pos = Visual_motor_receive_pos[10];
+            // motor[8].send.pos = Visual_motor_receive_pos[11];
 
-        Angle_transfer();
+            Angle_transfer();
 #else
 
-        for(int i = 0; i < 12; i++)
-        {
-            //motor[i].send.tor = Receive_data[i];
-            motor[i].send.tor = Visual_motor_receive_tor[i];
-        }
-        Tor_transfer();
+            for(int i = 0; i < 12; i++)
+            {
+                //motor[i].send.tor = Receive_data[i];
+                motor[i].send.tor = Visual_motor_receive_tor[i];
+            }
+            Tor_transfer();
 #endif
-    }
+        }
 
-    if (RadioMaster.Sbus_JumpStart_Flag && !RadioMaster.Sbus_Data_Visual_Enable_Flag)
-    {
-        Jump_Front.Jumping_Flag = true;
+        if (RadioMaster.Sbus_JumpStart_Flag && !RadioMaster.Sbus_Data_Visual_Enable_Flag)
+        {
+            Jump_Front.Jumping_Flag = true;
+        }
+        else
+        {
+            Jump_Front.Jumping_Flag = false;
+        }
+        Jump_Front.Jump();
     }
-    else
-    {
-        Jump_Front.Jumping_Flag = false;
-    }
-    Jump_Front.Jump();
-
+  else
+  {
+      // for (int i = 0; i < 12; i++)
+      // {
+      //     motor[i].send.pos = 0;
+      // }
+      //All_motor_enable();
+  }
 
 }
 
@@ -379,16 +403,22 @@ void Upper_data_send::All_Data_get()
     All_data[31] = RadioMaster.Sbus_Data_Velocity_ForwardBackward;
     All_data[32] = RadioMaster.Sbus_Data_Velocity_RightLeft;
     All_data[33] = RadioMaster.Sbus_Data_Turn_Yaw;
-    All_data[34] = RadioMaster.Sbus_Data_WalkMode;
+    All_data[34] = RadioMaster.Sbus_Visual_Walk_Mode_Change_Flag;
+    All_data[35] = RadioMaster.Sbus_Data_Visual_Enable_Flag;
 
     // All_data[31] = 0;
     // All_data[32] = 0;
     // All_data[33] = 0;
     // All_data[34] = 0;
 
-    for (int i = 35; i < 47; i++)
+    for (int i = 36; i < 48; i++)
     {
-        All_data[i] = motor[i - 35].receive.T_coil;
+        All_data[i] = motor[i - 36].receive.state;
+    }
+
+    for (int i = 48; i < 60; i++)
+    {
+        All_data[i] = motor[i - 48].receive.T_coil;
     }
 
 #else
@@ -419,7 +449,7 @@ void Upper_data_send::All_Data_get()
         All_data[i] = Reactive_Force[i - 46];
     }
 #endif
-    for (int i = 0; i < 48; i++)
+    for (int i = 0; i < 60; i++)
     {
         tempFloat[i] = All_data[i];
     }
